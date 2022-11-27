@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>The Premium @KU Website</title>
+  <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+  <link th:rel="stylesheet" th:href="@{/css/myStyle.css}">
+</head>
+<style>
+  body{
+    /*            background-image: url('https://wallpaperaccess.com/full/2029165.jpg');*/
+    background:url('https://cdn.discordapp.com/attachments/800934715573010436/1039196060406521916/f2f2f7.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+</style>
+<body>
+<div th:insert="fragments/header :: header"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10" style="padding-top: 10%;align-items:center;">
+      <h2 style="text-align: center; color: #dc3545 ;text-shadow: -1px 0 , 0 1px ghostwhite, 1px 0 #1a1e21, 0 -1px #1a1e21">ที่มาของการออกแบบเว็บไซต์ระบบจัดเก็บข้อมูล</h2>
+      <h4 style="text-align: center; color: #dc3545">เพื่อจัดเก็บข้อมูลจำนวนมาก และจำเป็นจะต้องมีผู้ใช้หลายกลุ่มเข้ามาใช้งานเนื่องจากการที่สินค้าหนึ่ง<br>จะถูกยืนยันว่าผ่านการตรวจสอบมาตรฐานหรือไม่ จะต้องผ่านการตรวจสอบจากผู้ใช้หลายหน่วยงาน  <br>เพื่อให้สินค้านั้นได้รับการยืนยันว่าผ่านมาตรฐานในการตรวจสอบสินค้าโดยอ้างอิงจากเอกสารทางการ <br>ที่ทาง The Premium @KU ใช้ตรวจสอบ ดังนั้นเราจึงมีความต้องการที่จะออกแบบระบบเก็บข้อมูลผลิตภัณฑ์ <br>ของร้านค้า The Premium @KU บนเว็บไซต์ เพื่อที่จะเชื่อมให้หน่วยงานต่าง ๆ สามารถเข้ามาใช้งานเว็บไซต์ <br>และทำงานตามหน้าที่ได้อย่างเป็นระบบ ไม่ว่าจะเป็นการเข้าเพิ่มข้อมูล, เก็บข้อมูล, ตรวจสอบ, และเช็คข้อมูล<br>ได้อย่างสะดวกครบถ้วนไม่ตกหล่น และมีประสิทธิภาพมากยิ่งขึ้น</h4>
+    </div>
+    <div class="col-lg-1"></div>
+  </div>
+</div>
+
+</body>
+</html>

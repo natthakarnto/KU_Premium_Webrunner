@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Premium @KU Website</title>
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<style>
+    body
+    {
+        /*            background-image: url('https://wallpaperaccess.com/full/2029165.jpg');*/
+        background:url('https://cdn.discordapp.com/attachments/800934715573010436/1039196060406521916/f2f2f7.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+<body>
+<div th:insert="fragments/header :: header"></div>
+
+<div class="container" style="background-color: white; margin-top:50px; margin-bottom: 50px; padding-bottom: 20px ;border-radius: 25px;">
+    <h1 class="display-6 text-center" style="font-weight: bold; text-align:center; color: #dc3545 ;font-size: 45px ;margin-bottom: 50px; padding-top: 25px">Add Certificate</h1>
+
+    <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
+
+    <form th:action="@{/certificate/add}" method="POST">
+        <div class="row mb-4">
+<!--            <div class="col">-->
+<!--                <div class="mb-3">-->
+<!--                    <label for="productNameInput" class="form-label">เลขใบรับรองผลิตภัณฑ์</label>-->
+<!--                    <input id="productNameInput" type="text" class="form-control" name="prodCertificateID">-->
+<!--                    &lt;!&ndash;                        <label class="form-label" for="form7Example4">ชื่อสินค้าภาษาไทย</label>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <input type="text" id="form7Example4" class="form-control" th:name="productNameTH"/>&ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="col">
+                <div class="mb-3">
+                    <label for="productOwnerInput" class="form-label">ชื่อใบรับรองผลิตภัณฑ์ หรือมาตรฐานผลิตภัณฑ์</label>
+                    <input id="productOwnerInput" type="text" class="form-control" name="prodCertificateName">
+                    <!--                        <label class="form-label" for="form7Example5">รหัสเจ้าของสินค้า</label>-->
+                    <!--                        <input type="text" id="form7Example5" class="form-control" th:name="productOwnerID"/>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center" style="margin-bottom: 15px">
+            <button type="submit" class="btn btn-danger">Add Certificate</button>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

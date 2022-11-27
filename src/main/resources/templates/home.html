@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>The Premium @KU Website</title>
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <link th:rel="stylesheet" th:href="@{/css/myStyle.css}">
+</head>
+<style>
+    body{
+        /*            background-image: url('https://wallpaperaccess.com/full/2029165.jpg');*/
+        background:url('https://cdn.discordapp.com/attachments/800934715573010436/1039196060406521916/f2f2f7.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+</style>
+<body>
+<div th:insert="fragments/header :: header"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10" style="padding-top: 12%;align-items:center;">
+            <!--            <h1 style="text-align: center; color: #dc3545 ;text-shadow: -1px 0 , 0 1px ghostwhite, 1px 0 #1a1e21, 0 -1px #1a1e21; font-size: 50px">ง่วงก็ไป"นอน"<br>ไม่ไหวก็"พักผ่อน"</h1>-->
+            <h1 style="text-align: center; color: #dc3545 ;text-shadow: -1px 0 , 0 1px ghostwhite, 1px 0 #1a1e21, 0 -1px #1a1e21; font-size: 50px">The Premium @KU Project<br>ระบบเก็บข้อมูล และตรวจสอบคุณภาพสินค้า</h1>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+</div>
+
+</body>
+</html>

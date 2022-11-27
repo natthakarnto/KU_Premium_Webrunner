@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <link th:rel="stylesheet" th:href="https://fonts.googleapis.com/css?family=Roboto&display=swap">-->
+<!--    <script th:src="@{/js/bootstrap.min.js}"></script>-->
+<!--</head>-->
+
+<!--linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) )-->
+
+<style>
+    body
+    {
+        /*            background-image: url('https://wallpaperaccess.com/full/2029165.jpg');*/
+        background: url('https://cdn.discordapp.com/attachments/800934715573010436/1039196060406521916/f2f2f7.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-danger bg-danger" style="box-shadow: 0 30px 50px rgba(0,0,0,.2);" th:fragment="header">
+
+    <div class="container-fluid">
+        <!--        <img src="https://cdn.discordapp.com/attachments/800934715573010436/1039172279914991686/PNG________PNG__PSD_-removebg-preview.png" style="padding-left:10px;" alt="">-->
+        <img src="https://cdn.discordapp.com/attachments/800934715573010436/1039296378167369728/2_-removebg-preview_1_1_1_1.png" style="padding-left:10px;" alt="">
+        <div>
+            <h3 style="padding-left:25px ; text-align:center; color: whitesmoke ;font-size: 45px;">KU Premium</h3>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+        <!--            <span class="v5_77">The Premium @KU Project ระบบเก็บข้อมูล และตรวจสอบคุณภาพสินค้า</span>-->
+        <!--        </button>-->
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <!--                <li class="nav-item">-->
+                <!--                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px ;font-weight: bold" th:href="@{/}">Home</a>
+                </li>
+
+                <div sec:authorize="isAnonymous()">
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: whitesmoke ;font-size: 20px ;font-weight: bold" th:href="@{/detail}">Detail</a>
+                    </li>
+                </div>
+
+                <li sec:authorize="hasRole('USER')" class="nav-item">
+                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/cakes}">Product</a>
+                </li>
+                <li sec:authorize="hasRole('ADMIN')" class="nav-item">
+                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/cakes}">Product</a>
+                </li>
+
+                <div sec:authorize="hasRole('USER')">
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: whitesmoke ;font-size: 20px;font-weight: bold" th:href="@{/cakes/add}">Add-Data</a>
+                    </li>
+                </div>
+
+                <li sec:authorize="hasRole('USER')" class="nav-item">
+                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px;font-weight: bold" th:href="@{/cart}">Checklist</a>
+                </li>
+
+                <li sec:authorize="hasRole('USER')" class="nav-item">
+                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/order}">Check-Status</a>
+                </li>
+
+<!--                <li sec:authorize="hasRole('USER')" class="nav-item">-->
+<!--                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/products/check356}">FDA</a>-->
+<!--                </li>-->
+<!--                <li sec:authorize="hasRole('USER')" class="nav-item">-->
+<!--                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/products/inspection}">Inspection-Data</a>-->
+<!--                </li>-->
+<!--                <li sec:authorize="hasRole('USER')" class="nav-item">-->
+<!--                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/products/audit_results}">Audit-Results</a>-->
+<!--                </li>-->
+
+                <li sec:authorize="hasRole('ADMIN')" class="nav-item">
+                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px;font-weight: bold" th:href="@{/order}">Approve-Product</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px ;font-weight: bold" th:href="@{/contact}">Contact</a>
+                </li>
+                <div sec:authorize="isAnonymous()">
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/login}">Login</a>
+                    </li>
+                </div>
+                <div sec:authorize="isAnonymous()">
+                    <li id="type-signup" class="text-center">
+                        <a class="nav-link ,btn btn-light btn-md" style="color: #dc3545 ;font-size: 20px ;font-weight: bold ;border-radius: 10px;" th:href="@{/register}">Sign Up</a>
+                    </li>
+                </div>
+
+                <div sec:authorize="hasAnyRole('ADMIN','USER')">
+                    <!--                    hasAnyAuthority('ADMIN')-->
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/logout}">Logout</a>
+                    </li>
+                </div>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+</html>

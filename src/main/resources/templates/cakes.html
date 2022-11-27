@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>The Premium @KU Website</title>
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/myScript.js}"></script>
+</head>
+<style>
+    body
+    {
+        /*            background-image: url('https://wallpaperaccess.com/full/2029165.jpg');*/
+        background: url('https://cdn.discordapp.com/attachments/800934715573010436/1039196060406521916/f2f2f7.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+<body>
+<div th:insert="fragments/header :: header"></div>
+
+<div class="input-group mb-3 d-flex justify-content-center">
+    <div class="input-group-append">
+        <div class="topNav">
+            <div class="search-container" style="margin-top: 20px; text-align: end">
+                <form action="/action_page.php">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit">Submit<i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="container" style="margin-top:10px;">
+            <table style="width: 100%">
+                <tbody>
+                <form th:action="@{/cart}" method="post" th:each="cakes : ${cakes}"}>
+                    <tr>
+                        <div class="card custom-card text-center mr-2 mt-2 ml-2 mb-2"
+                             style="width: 20rem; display: inline-block; margin-right: 30px; border-radius: 25px; background-color: #D9D9D9; padding-top: 0px; padding-bottom: 20px; margin-bottom: 30px">
+                            <div class="card-body">
+                                <img alt="" class="rounded-circle img-responsive mt-2"
+                                     height="128" th:src="${'../../images/'+ cakes.productName +'.png'}" width="128">
+
+                                <h5 class="card-title" th:text="${cakes.getProductName}">Name</h5>
+                                <label></label>
+                                <p class="card-text" style="text-align:left;" th:text="${'Product Volume : ' + cakes.productVolume}">Volume</p>
+                                <p class="card-text" style="text-align:left;" th:text="${'Product Quantity : ' + cakes.productQuantity + ' Pieces' }">Quantity</p>
+                                <p class="card-text" style="text-align:left;" th:text="${'Product Price : ' + cakes.price + ' Baht'}" th:value="${cakes.price}">Price</p>
+
+                                <!--&lt;!&ndash;                                <button sec:authorize="hasRole('ADMIN')" type="button" class="btn btn-light increase" th:onclick="decrementValue([[${cakes}]])"  value="-" style="border-style: hidden">-</button>&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                <input  sec:authorize="hasRole('ADMIN')" type="number" style="text-align: center;border-style: hidden;background: none; position: center"   th:id="${cakes.id+'increase'}"  value="0" />&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                <button sec:authorize="hasRole('ADMIN')" type="button" class="btn btn-light" th:onclick="incrementValue([[${cakes}]])"  value="+" style="border-style: hidden; margin-left: -15px">+</button>&ndash;&gt;-->
+                                <input hidden type="text" th:name="name" th:value="${cakes.pID}">
+                                <input hidden type="number" style="text-align: center;border-style: hidden;background:none;"  th:id="${cakes.pID+'increase2'}" th:name="num" value="0" />
+                            </div>
+                            <div>
+
+                                <!--                                &lt;!&ndash; ปุ่ม Edit สินค้า &ndash;&gt;-->
+                                <!--&lt;!&ndash;                                <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/cakes/edit/{id}(id=${cakes.id})}" ><button type="button" class="btn btn-danger">Edit Product</button></a>&ndash;&gt;-->
+
+                                <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/cakes/edit/{id}(id=${cakes.pID})}" ><button type="button" class="btn btn-danger">Product information</button></a>
+                                <a sec:authorize="hasRole('ADMIN')" style="text-align: center" th:href="@{/cakes/edit/{id}(id=${cakes.pID})}" ><button type="button" class="btn btn-danger">Product information</button></a>
+
+                                <!--&lt;!&ndash;                                <button sec:authorize="hasRole('ADMIN')" class="btn btn-danger" style="margin-top: 10px" type="button" th:onclick="value=1" >Check Product Standard</button>&ndash;&gt;-->
+                                <button sec:authorize="hasRole('USER')" class="btn btn-danger" type="submit">Add Check</button>
+
+                                <!--                                <li sec:authorize="hasRole('ADMIN')" class="nav-item">-->
+                                <!--                                    <a class="nav-link" style="color: #dc3545" th:href="@{/cart}">Check Product Standard</a>-->
+                                <!--                                </li>-->
+
+                            </div>
+                        </div>
+                    </tr>
+                </form>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

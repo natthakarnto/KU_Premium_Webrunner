@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>The Premium @KU Website</title>
+  <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <link th:rel="stylesheet" th:href="@{/css/myStyle.css}">
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+  <script th:src="@{/js/myScript.js}"></script>
+</head>
+<style>
+  body
+  {
+    /*            background-image: url('https://wallpaperaccess.com/full/2029165.jpg');*/
+    background:url('https://cdn.discordapp.com/attachments/800934715573010436/1039196060406521916/f2f2f7.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  #login .container #login-row #login-column #login-box {
+    margin-top: 50px;
+    max-width: 1800px;
+    height: 450px;
+    border: 1px solid #9C9C9C;
+    /*border-radius: 10px;*/
+    background-color: #D9D9D9;
+  }
+  #login .container #login-row #login-column #login-box #login-form {
+    padding: 20px;
+  }
+  #login .container #login-row #login-column #login-box #login-form #register-link {
+    margin-top: -85px;
+  }
+</style>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<div id="login">
+  <div class="container" >
+    <div id="login-row" class="row justify-content-center align-items-center">
+      <div id="login-column" class="col-md-6">
+        <div id="login-box" class="col-md-12">
+          <form id="login-form" class="form" th:action="@{/login}" method="post">
+            <h2 style="text-align: left ; font-weight: bold;color: #dc3545">KU Premium</h2>
+            <h6 style="text-align: left ;color: #dc3545">ลงชื่อเข้าใช้งานของ Product Owner<br>ใช้บัญชีที่ลงทะเบียนของคุณ</h6>
+
+            <h6 class="col text-end" style="margin-top: 0px; margin-bottom: -5px; color: #dc3545">-CHOOSE YOUR ACCOUNT TYPE-</h6>
+
+            <div class="container" style="background-color: #dc3545; border-radius:10px; margin-top: 10px; padding-top: 15px; padding-bottom: -15px">
+
+<!--              <div class="row mb-4">-->
+<!--                <div class="col text-center">-->
+<!--                  <div class="mb-3">-->
+<!--                    <div id="check356-link" class="text-center">-->
+<!--                      <a class="text-light" th:href="@{/login}">Product_Owner</a>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+
+<!--                <div class="col text-center">-->
+<!--                  <div class="mb-3">-->
+<!--                    <div id="check414-link" class="text-center">-->
+<!--                      <a class="text-light" th:href="@{/login_rdi}">KU_RDI</a>-->
+<!--                    </div>-->
+
+<!--                  </div>-->
+<!--                </div>-->
+
+<!--                <div class="col text-center">-->
+<!--                  <div class="mb-3">-->
+<!--                    <div id="check416-link" class="text-center">-->
+<!--                      <a th:href="@{/login_employee}" class="text-light">Shop_Employee</a>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+
+<!--                <div class="col text-center">-->
+<!--                  <div class="mb-3">-->
+<!--                    <div id="check418-link" class="text-center">-->
+<!--                      <a th:href="@{/login_customer}" class="text-light">Customer</a>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+            </div>
+
+            <div class="form-group">
+              <label for="username" class="text-black">Username:</label><br>
+              <input type="text" name="username" id="username" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="password" class="text-black">Password:</label><br>
+              <input type="password" name="password" id="password" class="form-control">
+              <h2 style="text-align: left ;color: whitesmoke ;font-size: 50px" class="text-center text-info"></h2>
+            </div>
+            <!--            <div class="form-group">-->
+            <!--              <label for="remember-me" class="text-black"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>-->
+            <!--            </div>-->
+            <div class = "text-center form-group">
+              <input style="margin-top: 10px; margin-bottom: -10px" type="submit" name="submit" class ="btn btn-danger btn-md" value="submit">
+            </div>
+          </form>
+          <div id="register-link" class="text-center">
+            <a th:href="@{/register}" class="text-danger">Create an account here</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
