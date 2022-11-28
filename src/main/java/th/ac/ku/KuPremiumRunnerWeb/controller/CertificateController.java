@@ -55,7 +55,7 @@ public class CertificateController {
             return "redirect:/cakes/edit";
         }
         else {
-            redirectAttrs.addFlashAttribute("error","Please complete the information.");
+            redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
             return "redirect:/certificate/add";
         }
     }

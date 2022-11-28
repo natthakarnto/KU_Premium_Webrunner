@@ -64,12 +64,12 @@ public class CakesController {
                 return "redirect:/cakes";
             }
             else {
-                redirectAttrs.addFlashAttribute("error","Please complete the information.");
+                redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
                 return "redirect:/cakes/add";
             }
         }
         else {
-            redirectAttrs.addFlashAttribute("error","Don't enter negative numbers.");
+            redirectAttrs.addFlashAttribute("error","negative number is not allowed!");
             return "redirect:/cakes/add";
         }
     }

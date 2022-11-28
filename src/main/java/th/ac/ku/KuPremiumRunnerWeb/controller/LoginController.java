@@ -34,15 +34,15 @@ public class LoginController {
     public String addUser(@ModelAttribute User user, Model model, RedirectAttributes redirectAttrs, @ModelAttribute("repassword") String repassword){
 
         if (!registerCheck(user,repassword)){
-            redirectAttrs.addFlashAttribute("error","Please correct all information");
+            redirectAttrs.addFlashAttribute("error","Please check your information fields!");
         }
         else {
             if (!exits(user)){
-                redirectAttrs.addFlashAttribute("error","This email or Username has already exist");
+                redirectAttrs.addFlashAttribute("error","This email or Username has been used");
             }
             else {
                 if (!checkPassword(user.getPassword(),repassword)){
-                    redirectAttrs.addFlashAttribute("error","Your password is not same");
+                    redirectAttrs.addFlashAttribute("error","please enter the same password");
                 }
                 else {
                     userService.addUser(user);

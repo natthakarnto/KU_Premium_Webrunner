@@ -49,7 +49,7 @@ public class CheckListController {
     @PostMapping("/address")
     public String addOrder(Model model, @ModelAttribute Order order, @ModelAttribute User user, RedirectAttributes redirectAttrs){
         if (checkAddress(order)){
-            redirectAttrs.addFlashAttribute("error","Please correct all information");
+            redirectAttrs.addFlashAttribute("error","Please check your information fields!");
             return "redirect:/order/address";
         }
         else {
