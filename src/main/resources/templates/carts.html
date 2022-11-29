@@ -28,9 +28,9 @@
     <thead>
     <tr>
       <th>Product Picture</th>
-<!--      <th>Product ID</th>-->
+      <!--      <th>Product ID</th>-->
       <th>Product Name</th>
-<!--      <th>Product Owner ID</th>-->
+      <!--      <th>Product Owner ID</th>-->
       <th>Product Volume</th>
       <th>Product Price</th>
     </tr>
@@ -40,10 +40,10 @@
       <td><img th:src=" ${'../../images/' + cake.getCakes.productName+ '.png'} " width="100">
       </img></td>
       <!--เพิ่มรหัสเจ้าของสินค้าด้วยฮับ-->
-<!--      <td text="P0000001"></td>-->
+      <!--      <td text="P0000001"></td>-->
       <td th:text="${cake.getCakes().productName}"></td>
       <!--เพิ่มรหัสเจ้าของสินค้าด้วยฮับ-->
-<!--      <td text="T0000001"></td>-->
+      <!--      <td text="T0000001"></td>-->
       <td th:text="${cake.getCakes().productVolume}"></td>
       <td th:text="${cake.getCakes().price}"></td>
       <td>

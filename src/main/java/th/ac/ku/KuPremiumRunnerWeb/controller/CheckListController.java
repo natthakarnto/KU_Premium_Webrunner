@@ -60,7 +60,9 @@ public class CheckListController {
         else {
 //            total = cartService.priceCalculate();
 //            model.addAttribute("priceCal", total);
-            order.setDate(LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss"))));
+            Calendar calndr = Calendar.getInstance();
+            order.setDate(calndr.getTime());
+//            order.setDate(LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss"))));
             service.addOrder(order);
             cartService.removeall();
             return "redirect:/order";

@@ -50,7 +50,9 @@ public class OrderController {
     @GetMapping("/list/edit/{id}")
     public String editPayment(@PathVariable UUID id, Model model,Authentication authentication){
         Order set = service.getOneById(id);
-        set.setApprovedDate(LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss"))));
+//        set.setApprovedDate(LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss"))));
+        Calendar calendar = Calendar.getInstance();
+        set.setApprovedDate(calendar.getTime());
         set.setStatus("Approved");
 //        cakesService.updateCart(service.getDummyByID(id).getCartList());
         service.update(set);
@@ -60,7 +62,9 @@ public class OrderController {
     @GetMapping("/list/unapproved/{id}")
     public String unapprovedPayment(@PathVariable UUID id, Model model,Authentication authentication){
         Order set = service.getOneById(id);
-        set.setApprovedDate(LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss"))));
+//        set.setApprovedDate(LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss"))));
+        Calendar calendar = Calendar.getInstance();
+        set.setApprovedDate(calendar.getTime());
         set.setStatus("Unapproved");
 //        cakesService.updateCart(service.getDummyByID(id).getCartList());
         service.update(set);
