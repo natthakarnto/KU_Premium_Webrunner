@@ -25,6 +25,27 @@
 
     <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
 
+    <div th:if="${message}">
+        <h2 th:text="${message}"/>
+    </div>
+
+    <div>
+        <form method="POST" enctype="multipart/form-data" action="/cakes/add">
+            <table>
+                <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+                <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+            </table>
+        </form>
+    </div>
+
+    <div>
+        <ul>
+            <li th:each="file : ${files}">
+                <a th:href="${file}" th:text="${file}" />
+            </li>
+        </ul>
+    </div>
+
     <form th:action="@{/cakes/add}" method="POST">
         <div class="row mb-4">
             <div class="col">
