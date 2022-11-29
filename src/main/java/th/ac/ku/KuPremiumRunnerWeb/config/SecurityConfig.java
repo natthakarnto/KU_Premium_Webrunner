@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import th.ac.ku.KuPremiumRunnerWeb.service.AdminService;
 import th.ac.ku.KuPremiumRunnerWeb.service.UserService;
 
 import javax.sql.DataSource;
@@ -27,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/login*","/", "/home","/rings","/css/**","/js/**","/images/**","/order","/register", "/register_rdi","/contact", "/detail").permitAll()
+                .antMatchers("/login*","/", "/home","/rings","/css/**","/js/**","/images/**","/order","/register", "/register_rdi","/contact", "/detail", "/certificate", "/certificate_edit").permitAll()
                 .antMatchers("/rings/**","order/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()

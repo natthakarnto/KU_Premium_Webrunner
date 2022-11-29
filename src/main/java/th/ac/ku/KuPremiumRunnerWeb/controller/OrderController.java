@@ -10,6 +10,8 @@ import th.ac.ku.KuPremiumRunnerWeb.model.Order;
 import th.ac.ku.KuPremiumRunnerWeb.service.OrderService;
 import th.ac.ku.KuPremiumRunnerWeb.service.CakesService;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -22,6 +24,7 @@ public class OrderController {
     @Autowired
     private OrderService service;
     private List<Order> cart = new ArrayList<>();
+
     @Autowired
     private CakesService cakesService;
 
@@ -47,8 +50,7 @@ public class OrderController {
     @GetMapping("/list/edit/{id}")
     public String editPayment(@PathVariable UUID id, Model model,Authentication authentication){
         Order set = service.getOneById(id);
-        Calendar calendar = Calendar.getInstance();
-        set.setApprovedDate(calendar.getTime());
+        set.setApprovedDate(LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss"))));
         set.setStatus("Approved");
 //        cakesService.updateCart(service.getDummyByID(id).getCartList());
         service.update(set);
@@ -58,8 +60,7 @@ public class OrderController {
     @GetMapping("/list/unapproved/{id}")
     public String unapprovedPayment(@PathVariable UUID id, Model model,Authentication authentication){
         Order set = service.getOneById(id);
-        Calendar calendar = Calendar.getInstance();
-        set.setApprovedDate(calendar.getTime());
+        set.setApprovedDate(LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss"))));
         set.setStatus("Unapproved");
 //        cakesService.updateCart(service.getDummyByID(id).getCartList());
         service.update(set);

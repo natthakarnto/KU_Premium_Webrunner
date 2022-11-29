@@ -84,7 +84,7 @@ public class OrderService {
             }
         }
     }
-    public List<Order> getDummy(String name){ //getall
+    public List<Order> getDummy(String name){ //getAll
         this.OrderConfig();
         List<Order> cart2 = new ArrayList<>();
         if (name.equals("admin")){

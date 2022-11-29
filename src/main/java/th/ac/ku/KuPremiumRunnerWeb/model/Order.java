@@ -1,14 +1,14 @@
 package th.ac.ku.KuPremiumRunnerWeb.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 public class Order {
 
     private UUID orderId;
-    private Date date;
+    private LocalDateTime date;
     private String name;
     private String surname;
     private String mobile;
@@ -17,7 +17,7 @@ public class Order {
     private List<Cart> cartList = new ArrayList<>();
     private String username;
     private String status;
-    private Date approvedDate;
+    private LocalDateTime approvedDate;
 
 
     public void add(Cart cartList){
@@ -40,11 +40,11 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
@@ -104,11 +104,11 @@ public class Order {
         this.status = status;
     }
 
-    public Date getApprovedDate() {
+    public LocalDateTime getApprovedDate() {
         return approvedDate;
     }
 
-    public void setApprovedDate(Date approvedDate) {
+    public void setApprovedDate(LocalDateTime approvedDate) {
         this.approvedDate = approvedDate;
     }
 }

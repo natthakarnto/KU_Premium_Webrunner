@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import th.ac.ku.KuPremiumRunnerWeb.model.Cakes;
+import th.ac.ku.KuPremiumRunnerWeb.model.Order;
 import th.ac.ku.KuPremiumRunnerWeb.service.CakesService;
 import th.ac.ku.KuPremiumRunnerWeb.service.UserService;
 
@@ -32,9 +33,9 @@ public class CakesController {
 
     @PostMapping("/edit")
     public String edit(@ModelAttribute Cakes cakes, Model model) {
-        if(checkCake(cakes.getPrice(), cakes.getProductQuantity(), cakes.getProductDiscountPercent(), cakes.getPriceExcludingVat(), cakes.getPricePromotion())){
-            cakesService.update(cakes);
-        }
+//        if(checkCake(cakes.getPrice(), cakes.getProductQuantity(), cakes.getProductDiscountPercent(), cakes.getPriceExcludingVat(), cakes.getPricePromotion())){
+        cakesService.update(cakes);
+//        }
         return "redirect:/cakes";
     }
 

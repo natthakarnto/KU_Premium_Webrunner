@@ -1,19 +1,19 @@
 package th.ac.ku.KuPremiumRunnerWeb.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Certificate {
 
     private UUID prodCertificateID; //PK
-    private String pID; //FK
+    private String productName; //FK
     private String prodCertificateName;
 
-    public String getpID() {
-        return pID;
-    }
-
-    public void setpID(String pID) {
-        this.pID = pID;
+    public Certificate(UUID prodCertificateID, String productName, String prodCertificateName) {
+        this.prodCertificateID = prodCertificateID;
+        this.productName = productName;
+        this.prodCertificateName = prodCertificateName;
     }
 
     public UUID getProdCertificateID() {
@@ -24,6 +24,14 @@ public class Certificate {
         this.prodCertificateID = prodCertificateID;
     }
 
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
     public String getProdCertificateName() {
         return prodCertificateName;
     }
@@ -31,4 +39,15 @@ public class Certificate {
     public void setProdCertificateName(String prodCertificateName) {
         this.prodCertificateName = prodCertificateName;
     }
+
+    private List<Certificate> cartList = new ArrayList<>();
+
+//    public void add(Cart cartList){
+//        this.cartList.add(cartList);
+//    }
+
+    public void add(Certificate cartList){
+        this.cartList.add(cartList);
+    }
+
 }

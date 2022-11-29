@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import th.ac.ku.KuPremiumRunnerWeb.model.Admin;
 import th.ac.ku.KuPremiumRunnerWeb.model.User;
+import th.ac.ku.KuPremiumRunnerWeb.service.AdminService;
 import th.ac.ku.KuPremiumRunnerWeb.service.UserService;
 
 @Controller

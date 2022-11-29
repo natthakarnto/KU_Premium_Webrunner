@@ -14,7 +14,12 @@ import th.ac.ku.KuPremiumRunnerWeb.service.CartService;
 import th.ac.ku.KuPremiumRunnerWeb.service.OrderService;
 import th.ac.ku.KuPremiumRunnerWeb.service.CakesService;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Formatter;
+import java.util.Locale;
 
 @Controller
 @RequestMapping("/order")
@@ -55,8 +60,7 @@ public class CheckListController {
         else {
 //            total = cartService.priceCalculate();
 //            model.addAttribute("priceCal", total);
-            Calendar calndr = Calendar.getInstance();
-            order.setDate(calndr.getTime());
+            order.setDate(LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss"))));
             service.addOrder(order);
             cartService.removeall();
             return "redirect:/order";
