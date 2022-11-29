@@ -17,7 +17,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.stream.Stream;
 
 @Service
-public class RelatedResearchedFileSystemStorageService implements StorageService {
+public class RelatedResearchedFileSystemStorageService implements RelatedResearchStorageService {
 
 	private final Path rootLocation;
 
@@ -93,7 +93,7 @@ public class RelatedResearchedFileSystemStorageService implements StorageService
 	}
 
 	@Override
-	public void init() {
+	public void rrInit() {
 		try {
 			Files.createDirectories(rootLocation);
 		}
