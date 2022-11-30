@@ -51,8 +51,8 @@ public class OrderController {
 //        set.setApprovedDate(LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss"))));
 //        Calendar calendar = Calendar.getInstance();
 //        set.setApprovedDate(calendar.getTime());
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE dd/MM/yyyy HH:mm:ss", Locale.ENGLISH);
-        set.setApprovedDate(dateFormat.format(Calendar.getInstance().getTime()));
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE dd/MM/yyyy HH:mm:ss", Locale.ENGLISH);
+        set.setApprovedDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss")));
         set.setStatus("Approved");
 //        cakesService.updateCart(service.getDummyByID(id).getCartList());
         service.update(set);
@@ -65,8 +65,8 @@ public class OrderController {
 //        set.setApprovedDate(LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss"))));
 //        Calendar calendar = Calendar.getInstance();
 //        set.setApprovedDate(calendar.getTime());
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE dd/MM/yyyy HH:mm:ss", Locale.ENGLISH);
-        set.setApprovedDate(dateFormat.format(Calendar.getInstance().getTime()));
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE dd/MM/yyyy HH:mm:ss", Locale.ENGLISH);
+        set.setApprovedDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss")));
         set.setStatus("Unapproved");
 //        cakesService.updateCart(service.getDummyByID(id).getCartList());
         service.update(set);

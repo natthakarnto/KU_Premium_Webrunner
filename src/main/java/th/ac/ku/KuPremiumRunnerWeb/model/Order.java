@@ -56,9 +56,7 @@ public class Order {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
+
 
     public String getName() {
         return name;
@@ -126,6 +124,10 @@ public class Order {
 
     public String getApprovedDate() {
         return approvedDate;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public void setApprovedDate(String approvedDate) {

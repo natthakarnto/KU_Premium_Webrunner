@@ -63,9 +63,9 @@ public class CheckListController {
 //            total = cartService.priceCalculate();
 //            model.addAttribute("priceCal", total);
 
-            SimpleDateFormat dateFormat = new SimpleDateFormat("EEE dd/MM/yyyy HH:mm:ss",Locale.ENGLISH);
-            order.setDate(dateFormat.format(Calendar.getInstance().getTime()));
-//            order.setDate(LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss"))));
+//            SimpleDateFormat dateFormat = new SimpleDateFormat("EEE dd/MM/yyyy HH:mm:ss",Locale.ENGLISH);
+            order.setDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss")));
+//            order.setDate(LocalDateTime.parse());
             service.addOrder(order);
             cartService.removeall();
             return "redirect:/order";
