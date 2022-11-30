@@ -21,11 +21,11 @@
 <div th:insert="fragments/header :: header"></div>
 
 <div class="container" style="background-color: white; margin-top:50px; margin-bottom: 50px; padding-bottom: 20px ;border-radius: 25px;">
-    <h1 class="display-6 text-center" style="font-weight: bold; text-align:center; color: #dc3545 ;font-size: 45px ;margin-bottom: 50px; padding-top: 35px">Certificate Add</h1>
+    <h1 class="display-6 text-center" style="font-weight: bold; text-align:center; color: #dc3545 ;font-size: 45px ;margin-bottom: 50px; padding-top: 35px">Related Research Add</h1>
 
     <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
 
-    <form th:action="@{/certificate/add}" method="POST">
+    <form th:action="@{/research/add}" method="POST">
 
         <div class="mb-3">
             <label for="productNameInput" class="form-label">ชื่อผลิตภัณฑ์</label>
@@ -33,20 +33,20 @@
         </div>
 
         <div class="mb-3">
-            <label for="productOwnerInput" class="form-label">ชื่อใบรับรองผลิตภัณฑ์ หรือมาตรฐานผลิตภัณฑ์</label>
-            <input id="productOwnerInput" type="text" class="form-control" name="prodCertificateName">
+            <label for="productOwnerInput" class="form-label">ชื่อผลงานวิจัยที่รองรับผลิตภัณฑ์</label>
+            <input id="productOwnerInput" type="text" class="form-control" name="relatedResearchName">
         </div>
 
         <div class="row mb-4" style="margin-top: 10px">
             <div class="col" style="margin-left: 435px">
                 <div class="text-center">
-                    <button type="submit" class="btn btn-danger" style="margin-bottom: -35px">Add Certificate</button>
+                    <button type="submit" class="btn btn-danger" style="margin-bottom: -35px">Add Related Research</button>
                 </div>
             </div>
 
             <div class="col text-end">
                 <div class="mb-3">
-                    <a class="btn btn-danger" style="margin-right: 35px; margin-bottom: -35px" th:href="@{/certificate/list}">Back</a>
+                    <a class="btn btn-danger" style="margin-right: 35px; margin-bottom: -35px" th:href="@{/research/list}">Back</a>
                 </div>
             </div>
         </div>

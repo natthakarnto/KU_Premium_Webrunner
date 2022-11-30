@@ -21,21 +21,21 @@
 <div th:insert="fragments/header :: header"></div>
 
 <div class="container" style="background-color: white; margin-top:50px; margin-bottom: 50px; padding-bottom: 20px ;border-radius: 10px;">
-    <h1 class="display-6 text-center" style="font-weight: bold; text-align:center; color: #dc3545 ;font-size: 45px ;margin-bottom: 25px; padding-top: 30px">Certificate Edit</h1>
+    <h1 class="display-6 text-center" style="font-weight: bold; text-align:center; color: #dc3545 ;font-size: 45px ;margin-bottom: 25px; padding-top: 30px">Related Research Edit</h1>
 
     <div class="card-body text-center" style="margin-bottom: -10px; margin-top: -15px">
-        <img height="128" th:src="${'../../images/'+ certificate.productName +'.png'}" width="128">
+        <img height="128" th:src="${'../../images/'+ research.productName +'.png'}" width="128">
         <!--                                        alt="" class="r img-responsive mt-2"-->
-        <h4 class="card-title text-center" style="margin-top: 5px" th:text="${certificate.getProductName()}">Id</h4>
+        <h4 class="card-title text-center" style="margin-top: 5px" th:text="${research.getProductName()}">Id</h4>
     </div>
 
     <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
 
     <!--    <h3 class="col text-start" style="font-weight: bold; color: #dc3545; padding-top: 15px">Certificate Page</h3>-->
 
-    <form th:object="${certificate}" th:action="@{/certificate/edit}" method="POST">
+    <form th:object="${research}" th:action="@{/research/edit}" method="POST">
 
-        <input type="hidden" th:field="*{prodCertificateID}" id="id">
+        <input type="hidden" th:field="*{relatedResearchID}" id="id">
 
         <div class="mb-3">
             <label for="productNameInput" class="form-label">ชื่อผลิตภัณฑ์</label>
@@ -43,20 +43,20 @@
         </div>
 
         <div class="mb-3">
-            <label for="productOwnerInput" class="form-label">ชื่อใบรับรองผลิตภัณฑ์ หรือมาตรฐานผลิตภัณฑ์</label>
-            <input id="productOwnerInput" type="text" class="form-control" th:field="*{prodCertificateName}">
+            <label for="productOwnerInput" class="form-label">ชื่อผลงานวิจัยที่รองรับผลิตภัณฑ์</label>
+            <input id="productOwnerInput" type="text" class="form-control" th:field="*{relatedResearchName}">
         </div>
 
         <div class="row mb-4">
             <div class="col" style="margin-left: 435px; margin-top: 10px">
                 <div class="mb-3 text-center">
-                    <button class="btn btn-danger" type="submit" style="margin-bottom: -35px">Edit Certificate</button>
+                    <button class="btn btn-danger" type="submit" style="margin-bottom: -35px">Edit Related Research</button>
                 </div>
             </div>
 
             <div class="col text-end" style="margin-top: 15px">
                 <div class="mb-3">
-                    <a class="btn btn-danger" style="margin-right: 35px; margin-bottom: -35px" th:href="@{/certificate/list}">Back</a>
+                    <a class="btn btn-danger" style="margin-right: 35px; margin-bottom: -35px" th:href="@{/research/list}">Back</a>
                 </div>
             </div>
         </div>

@@ -8,12 +8,12 @@ public class Research {
 
     private UUID relatedResearchID; //PK
     private String productName; //FK
-    private String relatedResearchFilePath;
+    private String relatedResearchName;
 
     public Research(UUID relatedResearchID, String productName, String relatedResearchFilePath) {
         this.relatedResearchID = relatedResearchID;
         this.productName = productName;
-        this.relatedResearchFilePath = relatedResearchFilePath;
+        this.relatedResearchName = relatedResearchFilePath;
     }
 
     public UUID getRelatedResearchID() {
@@ -32,12 +32,20 @@ public class Research {
         this.productName = productName;
     }
 
-    public String getRelatedResearchFilePath() {
-        return relatedResearchFilePath;
+    public String getRelatedResearchName() {
+        return relatedResearchName;
     }
 
-    public void setRelatedResearchFilePath(String relatedResearchFilePath) {
-        this.relatedResearchFilePath = relatedResearchFilePath;
+    public void setRelatedResearchName(String relatedResearchName) {
+        this.relatedResearchName = relatedResearchName;
+    }
+
+    public List<Research> getCartList() {
+        return cartList;
+    }
+
+    public void setCartList(List<Research> cartList) {
+        this.cartList = cartList;
     }
 
     private List<Research> cartList = new ArrayList<>();

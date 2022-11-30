@@ -54,19 +54,19 @@
         <div class="col text-start">
             <div class="mb-3">
                 <div sec:authorize="hasRole('USER')">
-                    <a class="btn btn-danger" style="padding-top: 30px; margin-left: 35px; padding-bottom: -10px; font-weight: bold" th:href="@{/certificate/add}">Add Certificate</a>
+                    <a class="btn btn-danger" style="padding-top: 40px; margin-left: 35px; padding-bottom: -10px; font-weight: bold" th:href="@{/research/add}">Add Related Research</a>
                 </div>
             </div>
         </div>
 
         <div class="col text-center">
-            <h1 class="display-6 text-start" style="font-weight: bold; padding-top: 30px; padding-bottom: -10px; margin-left: 85px; margin-bottom: -15px">Certificate List</h1>
+            <h1 class="display-6 text-center" style="font-weight: bold; text-align: center; padding-top: 30px; padding-bottom: -10px; margin-left: 50px; margin-bottom: -15px; padding-right: 50px">Related Research List</h1>
         </div>
 
 
         <div class="col text-end">
             <div class="mb-3">
-                <a class="btn btn-danger" style="margin-right: 35px; margin-top: 40px; padding-bottom: -10px; margin-bottom: -15px" th:href="@{/cakes}">Back to Product</a>
+                <a class="btn btn-danger" style="margin-right: 35px; margin-top: 60px; padding-bottom: -10px; margin-bottom: -15px" th:href="@{/cakes}">Back to Product</a>
             </div>
         </div>
     </div>
@@ -78,19 +78,19 @@
         <div>
             <tr scope="column" style="text-align: center">
                 <th onclick="sortTable(0)">Product Name</th>
-                <th onclick="sortTable(1)">Product Certificate Name</th>
+                <th onclick="sortTable(1)">Product Related Research Name</th>
             </tr>
         </div>
         </thead>
         <tbody>
-        <div th:each="order : ${rings2}">
+        <div th:each="order : ${rings3}">
             <tr id="list" class="ord"  scope="row">
 
                 <td style="text-align: center" th:text="${order.productName}"></td>
-                <td style="text-align: center" th:text="${order.prodCertificateName}"></td>
+                <td style="text-align: center" th:text="${order.relatedResearchName}"></td>
 
                 <td sec:authorize="hasRole('USER')" style="text-align: center">
-                    <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/certificate/edit/{id}(id=${order.prodCertificateID})}" ><button type="button" class="btn btn-danger">Edit this Certificate</button></a>
+                    <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/research/edit/{id}(id=${order.relatedResearchID})}" ><button type="button" class="btn btn-danger">Edit this Related Research</button></a>
                     <!--                    <a th:href="@{certificate/remove/{id}(id=${order.prodCertificateID})}" ><button type="button" class="btn btn-danger">Delete</button></a>-->
                 </td>
             </tr>
