@@ -68,7 +68,7 @@ public class CertificateController {
     @GetMapping
     public String getCakes(Model model, Authentication authentication)
     {
-        userServices.setLoginUserCakes(authentication.getName());
+        userServices.setLoginUser(authentication.getName());
         model.addAttribute("certificate", certificateService.getAll());
         return "certificate-edit";
     }

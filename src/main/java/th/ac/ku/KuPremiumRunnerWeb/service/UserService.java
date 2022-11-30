@@ -50,6 +50,7 @@ public class UserService {
     public void setLoginUserCakes(String name){
         for(int i = 0 ; i <this.getAllCakes().size();i++){
             if(name.equals(this.getAllCakes().get(i).getProductName())){
+                System.out.println(this.getAllCakes().get(i).getProductName());
                 cakes = this.getAllCakes().get(i);
             }
         }

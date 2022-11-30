@@ -73,7 +73,7 @@ public class CertificateService {
         }
         else {
             for (int i =0; i<rings.size();i++) {
-                if(name.equals("Ying")) {
+                if(name.equals("admin")) {
                     if (nameRing.equals(rings.get(i).getProductName())) {
                         cart2.add(rings.get(i));
                     }
