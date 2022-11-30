@@ -10,12 +10,10 @@ import th.ac.ku.KuPremiumRunnerWeb.model.Order;
 import th.ac.ku.KuPremiumRunnerWeb.service.OrderService;
 import th.ac.ku.KuPremiumRunnerWeb.service.CakesService;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 @RequestMapping("/order")
@@ -51,8 +49,10 @@ public class OrderController {
     public String editPayment(@PathVariable UUID id, Model model,Authentication authentication){
         Order set = service.getOneById(id);
 //        set.setApprovedDate(LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss"))));
-        Calendar calendar = Calendar.getInstance();
-        set.setApprovedDate(calendar.getTime());
+//        Calendar calendar = Calendar.getInstance();
+//        set.setApprovedDate(calendar.getTime());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE dd/MM/yyyy HH:mm:ss", Locale.ENGLISH);
+        set.setApprovedDate(dateFormat.format(Calendar.getInstance().getTime()));
         set.setStatus("Approved");
 //        cakesService.updateCart(service.getDummyByID(id).getCartList());
         service.update(set);
@@ -63,8 +63,10 @@ public class OrderController {
     public String unapprovedPayment(@PathVariable UUID id, Model model,Authentication authentication){
         Order set = service.getOneById(id);
 //        set.setApprovedDate(LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss"))));
-        Calendar calendar = Calendar.getInstance();
-        set.setApprovedDate(calendar.getTime());
+//        Calendar calendar = Calendar.getInstance();
+//        set.setApprovedDate(calendar.getTime());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE dd/MM/yyyy HH:mm:ss", Locale.ENGLISH);
+        set.setApprovedDate(dateFormat.format(Calendar.getInstance().getTime()));
         set.setStatus("Unapproved");
 //        cakesService.updateCart(service.getDummyByID(id).getCartList());
         service.update(set);
