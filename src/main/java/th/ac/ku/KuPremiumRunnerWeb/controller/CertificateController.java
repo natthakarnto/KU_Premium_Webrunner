@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import th.ac.ku.KuPremiumRunnerWeb.model.Cakes;
 import th.ac.ku.KuPremiumRunnerWeb.model.Certificate;
+import th.ac.ku.KuPremiumRunnerWeb.model.Story;
 import th.ac.ku.KuPremiumRunnerWeb.service.CakesService;
 import th.ac.ku.KuPremiumRunnerWeb.service.CertificateService;
+import th.ac.ku.KuPremiumRunnerWeb.service.StoryService;
 import th.ac.ku.KuPremiumRunnerWeb.service.UserService;
 
 import java.util.UUID;
@@ -17,13 +19,11 @@ import java.util.UUID;
 @Controller
 @RequestMapping("/certificate")
 public class CertificateController {
-
     @Autowired
     private CertificateService certificateService;
 
     @Autowired
     private CakesService cakesService;
-
     @Autowired
     private UserService userServices;
 
@@ -37,21 +37,11 @@ public class CertificateController {
     @PostMapping("/edit")
     public String edit(@ModelAttribute Certificate certificate, Model model) {
         certificateService.update(certificate);
-//        return "redirect:/certificate/list";
         return "redirect:/certificate/list";
     }
 
-//    @GetMapping("/remove/{id}")
-//    public String removeRings(@PathVariable UUID id, Model model,Authentication authentication){
-//        Certificate set = certificateService.getOneById(id);
-//        certificateService.delete(set);
-//        return "/cakes";
-//    }
-
     @GetMapping("/list") //getAll
     public String getListForm(Model model, Authentication authentication) {
-        //model.addAttribute("rings", rings);
-        //model.addAttribute("rings2", ringsService.getDummy(authentication.getName(),rings.getName()));
         model.addAttribute("rings2", certificateService.getAll());
         return "certificate-list";
     }
@@ -66,8 +56,7 @@ public class CertificateController {
     }
 
     @GetMapping
-    public String getCakes(Model model, Authentication authentication)
-    {
+    public String getCakes(Model model, Authentication authentication) {
         userServices.setLoginUser(authentication.getName());
         model.addAttribute("certificate", certificateService.getAll());
         return "certificate-edit";

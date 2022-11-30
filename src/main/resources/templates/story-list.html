@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>The Premium @KU Website</title>
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/myScript.js}"></script>
+    <script>
+        function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[2];
+                if (td)
+                {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().localeCompare(filter) === 0)
+                    {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+<style>
+    body
+    {
+        /*            background-image: url('https://wallpaperaccess.com/full/2029165.jpg');*/
+        background: url('https://cdn.discordapp.com/attachments/800934715573010436/1039196060406521916/f2f2f7.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+<body>
+<div th:insert="fragments/header :: header"></div>
+
+<div class="alert alert-danger" style="padding-top: 20px ; padding-bottom: 20px ; text-align: center" role="alert" th:text="${error}" th:if="${error}"></div>
+
+<div class="container container-fluid" style="background-color:white; margin-top:60px; margin-bottom: 30px; margin-left: auto; padding-bottom: 30px; border-radius:25px;">
+    <div class="row mb-4">
+        <div class="col text-start">
+            <div class="mb-3">
+                <div sec:authorize="hasRole('USER')">
+                    <a class="btn btn-danger" style="padding-top: 40px; margin-left: 35px; padding-bottom: -10px; font-weight: bold" th:href="@{/story/add}">Add Story Embedded Video</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col text-center">
+            <h1 class="display-6 text-center" style="font-weight: bold; text-align: center; padding-top: 30px; padding-bottom: -10px; margin-left: 50px; margin-bottom: -15px; padding-right: 50px">Story Embedded Video List</h1>
+        </div>
+
+
+        <div class="col text-end">
+            <div class="mb-3">
+                <a class="btn btn-danger" style="margin-right: 35px; margin-top: 60px; padding-bottom: -10px; margin-bottom: -15px" th:href="@{/cakes}">Back to Product</a>
+            </div>
+        </div>
+    </div>
+
+    <p style="text-align: start; margin-top: -15px; margin-bottom: 5px">Click the headers to sort the table</p>
+
+    <table id = "myTable" class="table table-striped table-bordered" >
+        <thead>
+        <div>
+            <tr scope="column" style="text-align: center">
+                <th onclick="sortTable(0)">Product Name</th>
+                <th onclick="sortTable(1)">Product Story Embedded Video Name</th>
+            </tr>
+        </div>
+        </thead>
+        <tbody>
+        <div th:each="order : ${rings4}">
+            <tr id="list" class="ord"  scope="row">
+
+                <td style="text-align: center" th:text="${order.productName}"></td>
+                <td style="text-align: center" th:text="${order.prodStoryName}"></td>
+
+                <td sec:authorize="hasRole('USER')" style="text-align: center">
+                    <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/story/edit/{id}(id=${order.prodStoryID})}" ><button type="button" class="btn btn-danger">Edit this Story Embedded Video</button></a>
+                    <!--                    <a th:href="@{certificate/remove/{id}(id=${order.prodCertificateID})}" ><button type="button" class="btn btn-danger">Delete</button></a>-->
+                </td>
+            </tr>
+        </div>
+        </tbody>
+    </table>
+</div>
+<script>
+    function sortTable(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("myTable");
+        switching = true;
+        //Set the sorting direction to ascending:
+        dir = "asc";
+        /*Make a loop that will continue until
+        no switching has been done:*/
+        while (switching) {
+            //start by saying: no switching is done:
+            switching = false;
+            rows = table.rows;
+            /*Loop through all table rows (except the
+            first, which contains table headers):*/
+            for (i = 1; i < (rows.length - 1); i++) {
+                //start by saying there should be no switching:
+                shouldSwitch = false;
+                /*Get the two elements you want to compare,
+                one from current row and one from the next:*/
+                x = rows[i].getElementsByTagName("TD")[n];
+                y = rows[i + 1].getElementsByTagName("TD")[n];
+                /*check if the two rows should switch place,
+                based on the direction, asc or desc:*/
+                if (dir == "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch= true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                /*If a switch has been marked, make the switch
+                and mark that a switch has been done:*/
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                //Each time a switch is done, increase this count by 1:
+                switchcount ++;
+            } else {
+                /*If no switching has been done AND the direction is "asc",
+                set the direction to "desc" and run the while loop again.*/
+                if (switchcount == 0 && dir == "asc") {
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

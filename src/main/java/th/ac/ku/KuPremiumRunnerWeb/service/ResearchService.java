@@ -14,7 +14,6 @@ import java.util.UUID;
 
 @Service
 public class ResearchService {
-
     @Autowired
     private RestTemplate restTemplate;
 
@@ -39,6 +38,7 @@ public class ResearchService {
         Research research = response.getBody();
         return research;
     }
+
     public void update(Research research){
         String url = "http://localhost:8090/research/" + research.getRelatedResearchID();
         restTemplate.put(url, research, Research.class);

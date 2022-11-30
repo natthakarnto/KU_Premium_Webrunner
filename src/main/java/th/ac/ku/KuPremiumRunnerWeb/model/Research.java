@@ -10,10 +10,10 @@ public class Research {
     private String productName; //FK
     private String relatedResearchName;
 
-    public Research(UUID relatedResearchID, String productName, String relatedResearchFilePath) {
+    public Research(UUID relatedResearchID, String productName, String relatedResearchName) {
         this.relatedResearchID = relatedResearchID;
         this.productName = productName;
-        this.relatedResearchName = relatedResearchFilePath;
+        this.relatedResearchName = relatedResearchName;
     }
 
     public UUID getRelatedResearchID() {
@@ -40,6 +40,7 @@ public class Research {
         this.relatedResearchName = relatedResearchName;
     }
 
+
     public List<Research> getCartList() {
         return cartList;
     }
@@ -49,6 +50,7 @@ public class Research {
     }
 
     private List<Research> cartList = new ArrayList<>();
+
     public void add(Research cartList){
         this.cartList.add(cartList);
     }

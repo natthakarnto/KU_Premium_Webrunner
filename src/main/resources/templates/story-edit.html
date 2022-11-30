@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>The Premium @KU Website</title>
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<style>
+    body
+    {
+        /*            background-image: url('https://wallpaperaccess.com/full/2029165.jpg');*/
+        background:url('https://cdn.discordapp.com/attachments/800934715573010436/1039196060406521916/f2f2f7.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+<body>
+<div th:insert="fragments/header :: header"></div>
+
+<div class="container" style="background-color: white; margin-top:50px; margin-bottom: 50px; padding-bottom: 20px ;border-radius: 10px;">
+    <h1 class="display-6 text-center" style="font-weight: bold; text-align:center; color: #dc3545 ;font-size: 45px ;margin-bottom: 25px; padding-top: 30px">Story Embedded Video Edit</h1>
+
+    <div class="card-body text-center" style="margin-bottom: -10px; margin-top: -15px">
+        <img height="128" th:src="${'../../images/'+ story.productName +'.png'}" width="128">
+        <!--                                        alt="" class="r img-responsive mt-2"-->
+        <h4 class="card-title text-center" style="margin-top: 5px" th:text="${story.getProductName()}">Id</h4>
+    </div>
+
+    <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
+
+    <!--    <h3 class="col text-start" style="font-weight: bold; color: #dc3545; padding-top: 15px">Certificate Page</h3>-->
+
+    <form th:object="${story}" th:action="@{/story/edit}" method="POST">
+
+        <input type="hidden" th:field="*{prodStoryID}" id="id">
+
+        <div class="mb-3">
+            <label for="productNameInput" class="form-label">ชื่อผลิตภัณฑ์</label>
+            <input id="productNameInput" type="text" class="form-control" th:field="*{productName}">
+        </div>
+
+        <div class="mb-3">
+            <label for="productOwnerInput" class="form-label">ชื่อวิดิโอนำเสนอเรื่องราวผลิตภัณฑ์แบบฝังหน้าเว็บ</label>
+            <input id="productOwnerInput" type="text" class="form-control" th:field="*{prodStoryName}">
+        </div>
+
+        <div class="row mb-4">
+            <div class="col" style="margin-left: 435px; margin-top: 10px">
+                <div class="mb-3 text-center">
+                    <button class="btn btn-danger" type="submit" style="margin-bottom: -35px">Edit Story Embedded Video</button>
+                </div>
+            </div>
+
+            <div class="col text-end" style="margin-top: 15px">
+                <div class="mb-3">
+                    <a class="btn btn-danger" style="margin-right: 35px; margin-bottom: -35px" th:href="@{/story/list}">Back</a>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
