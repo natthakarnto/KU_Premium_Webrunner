@@ -60,13 +60,12 @@ public class CheckListController {
             return "redirect:/order/address";
         }
         else {
-//            TimeStamp
-//            SimpleDateFormat dateFormat = new SimpleDateFormat("EEE dd/MM/yyyy HH:mm:ss",Locale.ENGLISH);
-//            order.setDate(dateFormat.format(Calendar.getInstance().getTime()));
-//            order.setDate(LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss"))));
+//            total = cartService.priceCalculate();
+//            model.addAttribute("priceCal", total);
 
-            Calendar calndr = Calendar.getInstance();
-            order.setDate(calndr.getTime());
+            SimpleDateFormat dateFormat = new SimpleDateFormat("EEE dd/MM/yyyy HH:mm:ss",Locale.ENGLISH);
+            order.setDate(dateFormat.format(Calendar.getInstance().getTime()));
+//            order.setDate(LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss"))));
             service.addOrder(order);
             cartService.removeall();
             return "redirect:/order";
