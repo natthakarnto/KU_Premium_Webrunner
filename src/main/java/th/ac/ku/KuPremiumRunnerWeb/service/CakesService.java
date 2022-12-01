@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import th.ac.ku.KuPremiumRunnerWeb.model.Cart;
 import th.ac.ku.KuPremiumRunnerWeb.model.Cakes;
+import th.ac.ku.KuPremiumRunnerWeb.model.Certificate;
 
 
 import java.util.ArrayList;
@@ -18,6 +19,8 @@ public class CakesService {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    private List<Cakes> rings = new ArrayList<>();
 
     public List<Cakes> getAll(){
         String url = "http://localhost:8090/cakes";
@@ -52,6 +55,34 @@ public class CakesService {
     public void update(Cakes cakes){
         String url = "http://localhost:8090/cakes/" + cakes.getpID();
         restTemplate.put(url, cakes, Cakes.class);
+    }
+
+    public void OrderConfig(){
+        rings = this.getAll();
+        for(int i = 0; i < this.getAll().size(); i++){
+            String hee = new String("");
+            //hee = String.valueOf(this.getAll().get(i).getId());
+            Cakes ring = new Cakes(this.getAll().get(i).getpID(),this.getAll().get(i).getProductName(),this.getAll().get(i).getProductCategory()
+            ,this.getAll().get(i).getPrice(), this.getAll().get(i).getPoID(), this.getAll().get(i).getProductDescription()
+            ,this.getAll().get(i).getProductAttrib(), this.getAll().get(i).getProductUsageGuideline(), this.getAll().get(i).getProductIngredients()
+            ,this.getAll().get(i).getProductNutrition(), this.getAll().get(i).getProductUseIndication(), this.getAll().get(i).getProductQuantity()
+            ,this.getAll().get(i).getProductSize(), this.getAll().get(i).getProductVolume(), this.getAll().get(i).getProductWeight()
+            ,this.getAll().get(i).getProductPromotion(), this.getAll().get(i).getProductDiscountPercent(), this.getAll().get(i).getPriceExcludingVat()
+            ,this.getAll().get(i).getPricePromotion() ,this.getAll().get(i).getPcID(), this.getAll().get(i).getPrr_ID(), this.getAll().get(i).getPsvID()
+            ,this.getAll().get(i).getFtvID(), this.getAll().get(i).getaID(),this.getAll().get(i).getRreID());
+            rings.get(i).add(ring);
+        }
+    }
+
+    public boolean checkNameProduct(String name){
+        this.OrderConfig();
+        List<Cakes> cart2 = new ArrayList<>();
+        for (int i =0; i<rings.size();i++) {
+            if (name.equals(rings.get(i).getProductName())) {
+                return false;
+            }
+        }
+        return true;
     }
 
 //    public void updateCart(List<Cart> cart){ //Method อัพเดทเลขจำนวนเวลากด Add

@@ -13,12 +13,15 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import th.ac.ku.KuPremiumRunnerWeb.model.Cakes;
+import th.ac.ku.KuPremiumRunnerWeb.model.Order;
 import th.ac.ku.KuPremiumRunnerWeb.service.CakesService;
 import th.ac.ku.KuPremiumRunnerWeb.service.UserService;
 import th.ac.ku.KuPremiumRunnerWeb.storage.ProductPictureStorageService;
 import th.ac.ku.KuPremiumRunnerWeb.storage.StorageFileNotFoundException;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -65,17 +68,19 @@ public class CakesController {
     @PostMapping("/add")
     public String addCakes(@ModelAttribute Cakes cakes, Model model, RedirectAttributes redirectAttrs) {
         if(checkCake(cakes.getPrice(), cakes.getProductQuantity(), cakes.getProductDiscountPercent(), cakes.getPriceExcludingVat(), cakes.getPricePromotion())){
-            if(checkAddress(cakes.getProductName(), cakes.getProductCategory(), cakes.getPrice(),cakes.getPoID()
-                    , cakes.getProductDescription(), cakes.getProductAttrib(), cakes.getProductUsageGuideline()
-                    ,cakes.getProductIngredients(), cakes.getProductNutrition(), cakes.getProductUseIndication()
-                    , cakes.getProductQuantity(),cakes.getProductSize(), cakes.getProductVolume(), cakes.getProductWeight()
-                    , cakes.getProductPromotion(), cakes.getProductDiscountPercent(),cakes.getPriceExcludingVat()
-                    , cakes.getPricePromotion(), cakes.getPcID(), cakes.getPrr_ID(), cakes.getPsvID()
-                    ,cakes.getFtvID(), cakes.getaID(), cakes.getRreID())) {
-                cakesService.addCakes(cakes);
-                return "redirect:/cakes";
-            }
-            else {
+            if(checkAddress(cakes.getProductName(), cakes.getProductCategory(),cakes.getPoID(),cakes.getProductDescription(),
+                    cakes.getProductAttrib(), cakes.getProductUsageGuideline(),cakes.getProductIngredients(), cakes.getProductNutrition(),
+                    cakes.getProductUseIndication(),cakes.getProductSize(), cakes.getProductVolume(), cakes.getProductWeight(),
+                    cakes.getProductPromotion(), cakes.getPcID(), cakes.getPrr_ID(), cakes.getPsvID(),cakes.getFtvID(), cakes.getaID(),
+                    cakes.getRreID())) {
+                if(cakesService.checkNameProduct(cakes.getProductName())) {
+                    cakesService.addCakes(cakes);
+                    return "redirect:/cakes"; //หญิง
+                } else {
+                    redirectAttrs.addFlashAttribute("error","Please don't use the same product name!");
+                    return "redirect:/cakes/add";
+                }
+            } else {
                 redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
                 return "redirect:/cakes/add";
             }
@@ -93,16 +98,15 @@ public class CakesController {
         return false;
     }
 
-    public boolean checkAddress(String productName, String productCategory, double price, String poID, String productDescription //Method ดักให้ใส่ข้อมูลให้ครบ
+    public boolean checkAddress(String productName, String productCategory, String poID, String productDescription //Method ดักให้ใส่ข้อมูลให้ครบ
             ,String productAttrib, String productUsageGuideline, String productIngredients, String productNutrition, String productUseIndication
-            ,int productQuantity, String productSize, String productVolume, String productWeight, String productPromotion, double productDiscountPercent
-            ,double priceExcludingVat, double pricePromotion, String pcID, String prr_ID, String psvID, String ftvID, String aID, String rreID){
-        if (productName.equals("") || productCategory.equals("") || String.valueOf(price).equals("") || poID.equals("") || productDescription.equals("")
+            ,String productSize, String productVolume, String productWeight, String productPromotion,String pcID, String prr_ID,
+                                String psvID, String ftvID, String aID, String rreID){
+        if (productName.equals("") || productCategory.equals("") ||  poID.equals("") || productDescription.equals("")
         || productAttrib.equals("") || productUsageGuideline.equals("") || productIngredients.equals("") || productNutrition.equals("")
-        || productUseIndication.equals("") || String.valueOf(productQuantity).equals("") || productSize.equals("") || productVolume.equals("")
-        || productWeight.equals("") || productPromotion.equals("") || String.valueOf(productDiscountPercent).equals("")
-        || String.valueOf(priceExcludingVat).equals("") || String.valueOf(pricePromotion).equals("") || pcID.equals("") || prr_ID.equals("")
-        || psvID.equals("") || ftvID.equals("") || aID.equals("") || rreID.equals("")){
+        || productUseIndication.equals("") || productSize.equals("") || productVolume.equals("")
+        || productWeight.equals("") || productPromotion.equals("")
+        || pcID.equals("") || prr_ID.equals("") || psvID.equals("") || ftvID.equals("") || aID.equals("") || rreID.equals("")){
             return false;
         }return true;
     }

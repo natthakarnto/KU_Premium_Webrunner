@@ -41,8 +41,6 @@ public class OrderService {
         cakesOrder = cake;
         cakesOrder.setUsername(userService.getUser().getUsername());
         cakesOrder.setCakes(cartService.getCart().toString());
-        //ลองใส่ข้อมูลอื่น เพราะช่องข้อมูลเก็บไม่พอ
-        //cakesOrder.setCakes("suuuu");
         cakesOrder.setStatus("Unapproved");
         restTemplate.postForObject(url, cakesOrder, Order.class);
     }
@@ -64,8 +62,6 @@ public class OrderService {
                 split = list.get(j).trim().split("->");
                 List<String> list1 = Arrays.asList(split);
                 for (int k =0;k<list1.size();k++){
-
-//                    System.out.println(list1.get(k).trim());
                 }
                 Cakes cakes = new Cakes(UUID.fromString(list1.get(0)),list1.get(1),list1.get(2),Double.parseDouble(list1.get(3))
                         ,list1.get(4), list1.get(5), list1.get(6), list1.get(7), list1.get(8), list1.get(9), list1.get(10)
@@ -73,12 +69,6 @@ public class OrderService {
                         ,Double.parseDouble(list1.get(17)), Double.parseDouble(list1.get(18)), list1.get(19), list1.get(20),
                         list1.get(21), list1.get(22), list1.get(23), list1.get(24));
 
-                // ใส่ข้อมูลแบบไม่พึ่ง toString
-//                Cakes cakes = new Cakes(UUID.fromString("b84b1bee-5d4d-4cbe-a737-31d572946ab5"),"1111","2222",3333
-//                        ,"4444", "5555", "6666", "7777", "8888", "9999", "10101010"
-//                        ,11111111, "12121212","13131313","1414141414", "15151515", 16161616
-//                        ,17171717, 18181818, "19191919", "20202020",
-//                        "21212121", "22222222", "23232323", "24242424");
                 cart.get(i).add(new Cart(cakes));
 //                cart.get(i).add(new Cart(cakes,parseInt(list1.get(5))));
             }

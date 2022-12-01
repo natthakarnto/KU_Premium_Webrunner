@@ -45,13 +45,11 @@ public class Food {
         return cartList;
     }
 
-
     public void setCartList(List<Food> cartList) {
         this.cartList = cartList;
     }
 
     private List<Food> cartList = new ArrayList<>();
-
 
     public void add(Food cartList){
         this.cartList.add(cartList);

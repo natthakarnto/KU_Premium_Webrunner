@@ -1,5 +1,7 @@
 package th.ac.ku.KuPremiumRunnerWeb.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Cakes {
@@ -268,6 +270,12 @@ public class Cakes {
 
     public void setRreID(String rreID) {
         this.rreID = rreID;
+    }
+
+    private List<Cakes> cartList = new ArrayList<>();
+
+    public void add(Cakes cartList){
+        this.cartList.add(cartList);
     }
 
     @Override
