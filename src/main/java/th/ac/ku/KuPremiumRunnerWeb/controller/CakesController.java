@@ -46,10 +46,20 @@ public class CakesController {
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute Cakes cakes, Model model) {
-//        if(checkCake(cakes.getPrice(), cakes.getProductQuantity(), cakes.getProductDiscountPercent(), cakes.getPriceExcludingVat(), cakes.getPricePromotion())){
-        cakesService.update(cakes);
-//        }
+    public String edit(@ModelAttribute Cakes cakes, Model model, RedirectAttributes redirectAttrs) {
+        if(checkCake(cakes.getPrice(), cakes.getProductQuantity(), cakes.getProductDiscountPercent(), cakes.getPriceExcludingVat(), cakes.getPricePromotion())) {
+            if(checkAddress(cakes.getProductName(), cakes.getProductCategory(),cakes.getPoID(),cakes.getProductDescription(),
+                    cakes.getProductAttrib(), cakes.getProductUsageGuideline(),cakes.getProductIngredients(), cakes.getProductNutrition(),
+                    cakes.getProductUseIndication(),cakes.getProductSize(), cakes.getProductVolume(), cakes.getProductWeight(),
+                    cakes.getProductPromotion(), cakes.getPcID(), cakes.getPrr_ID(), cakes.getPsvID(),cakes.getFtvID(), cakes.getaID(),
+                    cakes.getRreID())) {
+                cakesService.update(cakes);
+                return "redirect:/cakes";
+            }
+            redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
+            return "redirect:/cakes";
+        }
+        redirectAttrs.addFlashAttribute("error","negative number is not allowed!");
         return "redirect:/cakes";
     }
 

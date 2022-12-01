@@ -47,8 +47,6 @@
 <body>
 <div th:insert="fragments/header :: header"></div>
 
-<div class="alert alert-danger" style="padding-top: 20px ; padding-bottom: 20px ; text-align: center" role="alert" th:text="${error}" th:if="${error}"></div>
-
 <div class="container container-fluid" style="background-color:white; margin-top:60px; margin-bottom: 30px; margin-left: auto; padding-bottom: 30px; border-radius:25px;">
     <div class="row mb-4">
         <div class="col text-start">
@@ -70,6 +68,8 @@
             </div>
         </div>
     </div>
+
+    <div class="alert alert-danger" style="text-align: center" role="alert" th:text="${error}" th:if="${error}"></div>
 
     <marquee>Click the headers to sort the table</marquee>
 

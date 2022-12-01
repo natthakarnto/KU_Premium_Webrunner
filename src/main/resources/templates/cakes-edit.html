@@ -21,7 +21,7 @@
 
 <div th:insert="fragments/header :: header"></div>
 
-<div class="container" style="background-color: white; margin-top:35px; padding-bottom: 20px; padding-left: 15px; padding-right: 15px;border-radius: 25px;">
+<div class="container" style="background-color: white; margin-top:35px; margin-bottom: 35px; padding-bottom: 20px; padding-left: 15px; padding-right: 15px;border-radius: 25px;">
     <h1 class="display-6 text-center" style="font-weight: bold; padding-left:-50px; padding-top: 30px; text-align:center; color: #dc3545 ">Product Information</h1>
 
     <div class="card-body text-center">
@@ -30,7 +30,8 @@
         <h4 class="card-title text-center" th:text="${cakes.getProductName()}">Id</h4>
     </div>
 
-    <h6 class="col text-end" style="margin-top: 0px; margin-bottom: -5px; color: #dc3545">-Browse more documents-</h6>
+    <marquee style="margin-bottom: -5px; size: 50px; color: #dc3545">Click the header to browse more documents</marquee>
+<!--    <h6 class="col text-end" style="margin-top: 0px; margin-bottom: -5px; color: #dc3545">-Browse more documents-</h6>-->
 
     <div class="container" style="background-color: #dc3545; border-radius:10px; margin-top: 10px; padding-top: 15px; padding-bottom: -15px">
 
@@ -87,6 +88,8 @@
     </div>
 
     <h3 class="col text-start" style="font-weight: bold; color: #dc3545; padding-top: 15px">Product Page</h3>
+
+    <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
 
     <form th:object="${cakes}" th:action="@{/cakes/edit}" method="POST">
 
@@ -254,135 +257,11 @@
             </div>
         </div>
 
-        <div sec:authorize="hasRole('USER')" class="text-center" style="padding-top: 30px; padding-bottom: 30px">
+        <div sec:authorize="hasRole('USER')" class="text-center" style="padding-top: 0px; padding-bottom: 15px">
             <button type="submit" class="btn btn-danger" onclick = "return confirm('Would you like to confirm?')">Edit Product</button>
         </div>
 
     </form>
-
-    <!--    <a sec:authorize="hasRole('USER')" style="-moz-box-align: end" th:href="@{/certificate/add}" ><button type="button" class="btn btn-danger">Add Certificate</button></a>-->
-
-    <!--    <form th:object="${certificate}" th:action="@{/certificate/edit}" method="POST">-->
-
-    <!--        <h3 class="col text-start" style="font-weight: bold; color: #dc3545; padding-top: 15px">Product Certificate</h3>-->
-
-    <!--        <div class="row mb-4">-->
-    <!--&lt;!&ndash;            <div class="col">&ndash;&gt;-->
-    <!--&lt;!&ndash;                <div class="mb-3">&ndash;&gt;-->
-    <!--&lt;!&ndash;                    <label for="CertificateIDInput" class="form-label">เลขใบรับรองของผลิตภัณฑ์</label>&ndash;&gt;-->
-    <!--&lt;!&ndash;                    <input id="CertificateIDInput" type="text" class="form-control" th:field="*{prodCertificateID}">&ndash;&gt;-->
-    <!--&lt;!&ndash;                </div>&ndash;&gt;-->
-    <!--&lt;!&ndash;            </div>&ndash;&gt;-->
-    <!--            <div class="col">-->
-    <!--                <div class="mb-3">-->
-    <!--                    <label for="CertificateNameInput" class="form-label">ชื่อใบรับรองผลิตภัณฑ์หรือมาตรฐานผลิตภัณฑ์ของผลิตภัณฑ์</label>-->
-    <!--                    <input id="CertificateNameInput" type="text" class="form-control" th:field="*{prodCertificateName}">-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </form>-->
-
-    <!--        <div class="row mb-4">-->
-    <!--            <div class="col">-->
-    <!--                <div class="mb-3">-->
-    <!--                    <label for="PIDInput" class="form-label">เลขรหัสสินค้า</label>-->
-    <!--                    <input id="PIDInput" type="text" class="form-control" th:field="*{pID}">-->
-    <!--                </div>-->
-    <!--            </div>-->
-
-    <!--            <div class="col">-->
-    <!--                <div class="mb-3">-->
-    <!--                    <label for="PCIDInput" class="form-label">เลขใบรับรองผลิตภัณฑ์</label>-->
-    <!--                    <input id="PCIDInput" type="text" class="form-control" th:field="*{pcID}">-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-
-    <!--        <div class="mb-3">-->
-    <!--            <label for="productCertificateInput" class="form-label">Product Related Research</label>-->
-    <!--            <input id="productCertificateInput" type="text" class="form-control" th:field="*{prr_ID}">-->
-    <!--        </div>-->
-
-    <!--        <h3 class="col text-start" style="font-weight: bold; color: #dc3545; padding-top: 15px">Product Related Research</h3>-->
-    <!--        <div class="row mb-4">-->
-    <!--            <div class="col">-->
-    <!--                <div class="mb-3">-->
-    <!--                    <label for="PIDRRInput" class="form-label">เลขรหัสสินค้า</label>-->
-    <!--                    <input id="PIDRRInput" type="text" class="form-control" th:field="*{price}">-->
-    <!--                </div>-->
-    <!--            </div>-->
-
-    <!--            <div class="col">-->
-    <!--                <div class="mb-3">-->
-    <!--                    <label for="PRRIDInput" class="form-label">เลขผลงานวิจัยที่รองรับผลิตภัณฑ์</label>-->
-    <!--                    <input id="PRRIDInput" type="text" class="form-control" th:field="*{price}">-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-
-    <!--        <div class="mb-3">-->
-    <!--            <label for="prodRelatedResearchNameInput" class="form-label">ชื่อผลงานวิจัยที่รองรับผลิตภัณฑ์</label>-->
-    <!--            <input id="prodRelatedResearchNameInput" type="text" class="form-control" th:field="*{price}">-->
-    <!--        </div>-->
-
-    <!--        <div class="mb-3">-->
-    <!--            <label for="prodRelatedResearchFileInput" class="form-label">ไฟล์ผลงานวิจัยที่รองรับผลิตภัณฑ์</label>-->
-    <!--            <input id="prodRelatedResearchFileInput" type="text" class="form-control" th:field="*{price}">-->
-    <!--        </div>-->
-
-    <!--        <h3 class="col text-start" style="font-weight: bold; color: #dc3545; padding-top: 15px">Product Story Embedded Video</h3>-->
-    <!--        <div class="mb-3">-->
-    <!--            <label for="PIDPSInput" class="form-label">เลขรหัสสินค้า</label>-->
-    <!--            <input id="PIDPSInput" type="text" class="form-control" th:field="*{price}">-->
-    <!--        </div>-->
-
-    <!--        <div class="mb-3">-->
-    <!--            <label for="productStoryEmbeddedVideoIDInput" class="form-label">Product Story Embedded Video ID</label>-->
-    <!--            <input id="productStoryEmbeddedVideoIDInput" type="text" class="form-control" th:field="*{price}">-->
-    <!--        </div>-->
-
-    <!--        <div class="mb-3">-->
-    <!--            <label for="productStoryEmbeddedVideoInput" class="form-label">Product Story Embedded Video</label>-->
-    <!--            <input id="productStoryEmbeddedVideoInput" type="text" class="form-control" th:field="*{price}">-->
-    <!--        </div>-->
-
-    <!--        <h3 class="col text-start" style="font-weight: bold; color: #dc3545; padding-top: 15px">Food Traceability Embedded Video</h3>-->
-    <!--        <div class="mb-3">-->
-    <!--            <label for="PIDFTInput" class="form-label">เลขรหัสสินค้า</label>-->
-    <!--            <input id="PIDFTInput" type="text" class="form-control" th:field="*{price}">-->
-    <!--        </div>-->
-
-    <!--        <div class="mb-3">-->
-    <!--            <label for="foodTraceabilityEmbeddedVideoIDInput" class="form-label">Food Traceability Embedded Video ID</label>-->
-    <!--            <input id="foodTraceabilityEmbeddedVideoIDInput" type="text" class="form-control" th:field="*{price}">-->
-    <!--        </div>-->
-
-    <!--        <div class="mb-3">-->
-    <!--            <label for="foodTraceabilityEmbeddedVideoInput" class="form-label">Food Traceability Embedded Video</label>-->
-    <!--            <input id="foodTraceabilityEmbeddedVideoInput" type="text" class="form-control" th:field="*{price}">-->
-    <!--        </div>-->
-
-    <!--        <h3 class="col text-start" style="font-weight: bold; color: #dc3545; padding-top: 15px">Product Audio</h3>-->
-    <!--        <div class="mb-3">-->
-    <!--            <label for="PIDPAInput" class="form-label">เลขรหัสสินค้า</label>-->
-    <!--            <input id="PIDPAInput" type="text" class="form-control" th:field="*{price}">-->
-    <!--        </div>-->
-
-    <!--        <div class="mb-3">-->
-    <!--            <label for="audioIDInput" class="form-label">Audio ID</label>-->
-    <!--            <input id="audioIDInput" type="text" class="form-control" th:field="*{price}">-->
-    <!--        </div>-->
-
-    <!--        <div class="mb-3">-->
-    <!--            <label for="AudioInput" class="form-label">Audio</label>-->
-    <!--            <input id="AudioInput" type="text" class="form-control" th:field="*{price}">-->
-    <!--        </div>-->
-
-    <!--        <div sec:authorize="hasRole('USER')" class="text-center" style="padding-top: 30px; padding-bottom: 30px">-->
-    <!--            <button type="submit" class="btn btn-danger">Edit Product</button>-->
-    <!--        </div>-->
-
-    <!--    </form>-->
 </div>
 </body>
 </html>

@@ -36,9 +36,16 @@ public class FoodController {
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute Food food, Model model) {
-        foodService.update(food);
-        return "redirect:/food/list";
+    public String edit(@ModelAttribute Food food, Model model, RedirectAttributes redirectAttrs) {
+        // พอรับเข้ามาจะเอาเข้า List
+        if(checkAddress(food.getProdFoodName(), food.getProductName())) {
+            foodService.update(food);
+            return "redirect:/food/list";
+        }
+        else {
+            redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
+            return "redirect:/food/list";
+        }
     }
 
     @GetMapping("/list") //getAll

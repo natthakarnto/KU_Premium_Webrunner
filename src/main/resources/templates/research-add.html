@@ -23,7 +23,7 @@
 <div class="container" style="background-color: white; margin-top:50px; margin-bottom: 50px; padding-bottom: 20px ;border-radius: 25px;">
     <h1 class="display-6 text-center" style="font-weight: bold; text-align:center; color: #dc3545 ;font-size: 45px ;margin-bottom: 50px; padding-top: 35px">Related Research Add</h1>
 
-    <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
+    <div class="alert alert-danger" style="text-align: center" role="alert" th:text="${error}" th:if="${error}"></div>
 
     <form th:action="@{/research/add}" method="POST">
 

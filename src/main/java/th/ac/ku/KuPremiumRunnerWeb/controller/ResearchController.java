@@ -34,9 +34,16 @@ public class ResearchController {
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute Research research, Model model) {
-        researchService.update(research);
-        return "redirect:/research/list";
+    public String edit(@ModelAttribute Research research, Model model, RedirectAttributes redirectAttrs) {
+        // พอรับเข้ามาจะเอาเข้า List
+        if(checkAddress(research.getRelatedResearchName(), research.getProductName())) {
+            researchService.update(research);
+            return "redirect:/research/list";
+        }
+        else {
+            redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
+            return "redirect:/research/list";
+        }
     }
 
     @GetMapping("/list") //getAll

@@ -25,6 +25,8 @@
 
     <form th:action="@{/certificate/add}" method="POST">
 
+        <div class="alert alert-danger" style="text-align: center" role="alert" th:text="${error}" th:if="${error}"></div>
+
         <div class="mb-3">
             <label for="productNameInput" class="form-label">ชื่อผลิตภัณฑ์</label>
             <input id="productNameInput" type="text" class="form-control" name="productName">
@@ -48,9 +50,6 @@
                 </div>
             </div>
         </div>
-
-
-
     </form>
 </div>
 </body>

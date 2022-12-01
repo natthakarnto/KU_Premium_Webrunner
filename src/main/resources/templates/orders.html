@@ -92,13 +92,13 @@
 
                 <td sec:authorize="hasRole('ADMIN')" style="text-align: center">
                     <a th:href="@{/order/list/edit/{id}(id=${order.getOrderId()})}" >
-                        <button type="button" class="btn btn-success" style="margin-bottom: 5px">Approve</button>
+                        <button type="button" class="btn btn-success" style="margin-bottom: 5px" onclick = "return confirm('Would you like to confirm?')">Approve</button>
                     </a>
                     <a th:href="@{/order/list/unapproved/{id}(id=${order.getOrderId()})}" >
-                        <button type="button" class="btn btn-warning" style="color: white; margin-bottom: 5px">Unapproved</button><br>
+                        <button type="button" class="btn btn-warning" style="color: white; margin-bottom: 5px" onclick = "return confirm('Would you like to confirm?')">Unapproved</button><br>
                     </a>
                     <a th:href="@{/order/list/remove/{id}(id=${order.getOrderId()})}" >
-                        <button type="button" class="btn btn-danger">Delete</button>
+                        <button type="button" class="btn btn-danger" onclick = "return confirm('Would you like to confirm?')">Delete</button>
                     </a>
                 </td>
             </tr>

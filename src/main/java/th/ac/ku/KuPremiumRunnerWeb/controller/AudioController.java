@@ -32,9 +32,15 @@ public class AudioController {
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute Audio audio, Model model) {
-        audioService.update(audio);
-        return "redirect:/audio/list";
+    public String edit(@ModelAttribute Audio audio, Model model, RedirectAttributes redirectAttrs) {
+        if(checkAddress(audio.getProdAudioName(), audio.getProductName())) {
+            audioService.update(audio);
+            return "redirect:/audio/list";
+        }
+        else {
+            redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
+            return "redirect:/audio/list";
+        }
     }
 
     @GetMapping("/list") //getAll

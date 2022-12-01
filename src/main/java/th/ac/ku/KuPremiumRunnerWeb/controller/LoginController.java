@@ -110,9 +110,7 @@ public class LoginController {
 //        return true;
 //    }
     public boolean exits(User user){
-        System.out.println(userService.getAll()+"1111");
         for (int i = 0; i < userService.getAll().size();i++){
-            System.out.println(userService.getAll()+"3333");
             if (user.getEmail().equals(userService.getAll().get(i).getEmail()) || user.getUsername().equals(userService.getAll().get(i).getUsername())){
                 return false;
             }

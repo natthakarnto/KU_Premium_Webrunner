@@ -33,9 +33,16 @@ public class StoryController {
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute Story story, Model model) {
-        storyService.update(story);
-        return "redirect:/story/list";
+    public String edit(@ModelAttribute Story story, Model model, RedirectAttributes redirectAttrs) {
+        // พอรับเข้ามาจะเอาเข้า List
+        if(checkAddress(story.getProdStoryName(), story.getProductName())) {
+            storyService.update(story);
+            return "redirect:/story/list";
+        }
+        else {
+            redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
+            return "redirect:/story/list";
+        }
     }
 
     @GetMapping("/list") //getAll

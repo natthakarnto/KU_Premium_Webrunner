@@ -35,9 +35,15 @@ public class CertificateController {
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute Certificate certificate, Model model) {
-        certificateService.update(certificate);
-        return "redirect:/certificate/list";
+    public String edit(@ModelAttribute Certificate certificate, Model model, RedirectAttributes redirectAttrs) {
+        if(checkAddress(certificate.getProdCertificateName(), certificate.getProductName())) {
+            certificateService.update(certificate);
+            return "redirect:/certificate/list";
+        }
+        else {
+            redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
+            return "redirect:/certificate/list";
+        }
     }
 
     @GetMapping("/list") //getAll
@@ -71,7 +77,6 @@ public class CertificateController {
     @PostMapping("/add")
     public String addCertificate(@ModelAttribute Certificate certificate, Model model, RedirectAttributes redirectAttrs) {
         // พอรับเข้ามาจะเอาเข้า List
-
         if(checkAddress(certificate.getProdCertificateName(), certificate.getProductName())) {
             certificateService.addCertificate(certificate);
             return "redirect:/certificate/list";
