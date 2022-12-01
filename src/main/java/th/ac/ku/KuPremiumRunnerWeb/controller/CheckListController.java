@@ -36,20 +36,15 @@ public class CheckListController {
     private CakesService cakesService;
 
     @GetMapping("/list")
-    public String getOrders(Model model)
-    {
-//        total = cartService.priceCalculate();
-//        model.addAttribute("priceCal", total);
-        model.addAttribute("price",cartService.getCart().size());
-        model.addAttribute("carts",cartService.getCart());
+    public String getOrders(Model model) {
+        model.addAttribute("price", cartService.getCart().size());
+        model.addAttribute("carts", cartService.getCart());
         return "checklist";
     }
 
     @GetMapping("/address")
-    public String getAddress(Model model){
-//        int total = cartService.priceCalculate();
-//        model.addAttribute("priceCal", total);
-        model.addAttribute("price",cartService.getCart().size());
+    public String getAddress(Model model) {
+        model.addAttribute("price", cartService.getCart().size());
         return "address";
     }
 
@@ -72,8 +67,8 @@ public class CheckListController {
             cartService.removeall();
             return "redirect:/order";
         }
-
     }
+
     public boolean checkAddress(Order order){
         if ((order.getName().equals("")) || (order.getSurname().equals("")) || (order.getMobile().equals(""))) {
             return true;

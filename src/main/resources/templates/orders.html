@@ -70,6 +70,7 @@
                 <th onclick="sortTable(3)">Product Owner Phone</th>
                 <th onclick="sortTable(4)">Status</th>
                 <th onclick="sortTable(5)">Approved-Date</th>
+                <th onclick="sortTable(6)">Message</th>
             </tr>
         </div>
         </thead>
@@ -87,6 +88,7 @@
                 <td th:text="${order.mobile}"></td>
                 <td th:text="${order.status}"></td>
                 <td th:text="${order.approvedDate}"></td>
+                <td th:text="${order.message}"></td>
 
                 <td sec:authorize="hasRole('ADMIN')" style="text-align: center">
                     <a th:href="@{/order/list/edit/{id}(id=${order.getOrderId()})}" >

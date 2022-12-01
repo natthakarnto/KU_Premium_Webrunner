@@ -73,6 +73,11 @@ public class OrderController {
         return "redirect:/order";
     }
 
+//    @RequestMapping("/message")
+//    public String getMessage(Model model) {
+//        return "message-unapproved";
+//    }
+
     @GetMapping("/list/remove/{id}")
     public String removePayment(@PathVariable UUID id, Model model,Authentication authentication){
         Order set = service.getOneById(id);

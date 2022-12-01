@@ -147,4 +147,9 @@ public class CakesController {
     public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
         return ResponseEntity.notFound().build();
     }
+
+    @RequestMapping("/upload")
+    public String getUpload(Model model) {
+        return "upload-test";
+    }
 }

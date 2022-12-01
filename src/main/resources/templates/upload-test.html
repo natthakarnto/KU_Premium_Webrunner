@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>The Premium @KU Website</title>
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<style>
+    body
+    {
+        /*            background-image: url('https://wallpaperaccess.com/full/2029165.jpg');*/
+        background:url('https://cdn.discordapp.com/attachments/800934715573010436/1039196060406521916/f2f2f7.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<div th:if="${message}">
+    <h2 th:text="${message}"/>
+</div>
+
+<div>
+    <form method="POST" enctype="multipart/form-data" action="/cakes/add">
+        <table>
+            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+        </table>
+    </form>
+</div>
+
+<div>
+    <ul>
+        <li th:each="file : ${files}">
+            <a th:href="${file}" th:text="${file}" />
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>
