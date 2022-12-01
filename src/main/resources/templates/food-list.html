@@ -54,13 +54,13 @@
         <div class="col text-start">
             <div class="mb-3">
                 <div sec:authorize="hasRole('USER')">
-                    <a class="btn btn-danger" style="padding-top: 40px; margin-left: 35px; padding-bottom: -10px; font-weight: bold" th:href="@{/story/add}">Add Story Embedded Video</a>
+                    <a class="btn btn-danger" style="padding-top: 40px; margin-left: 35px; padding-bottom: -10px; font-weight: bold" th:href="@{/food/add}">Add Food Traceability Video</a>
                 </div>
             </div>
         </div>
 
         <div class="col text-center">
-            <h1 class="display-6 text-center" style="font-weight: bold; text-align: center; padding-top: 30px; padding-bottom: -10px; margin-left: 50px; margin-bottom: -15px; padding-right: 50px">Story Embedded Video List</h1>
+            <h1 class="display-6 text-center" style="font-weight: bold; text-align: center; padding-top: 30px; padding-bottom: -10px; margin-left: 50px; margin-bottom: -15px; padding-right: 00px">Food Traceability Video List</h1>
         </div>
 
 
@@ -79,19 +79,19 @@
         <div>
             <tr scope="column" style="text-align: center">
                 <th onclick="sortTable(0)">Product Name</th>
-                <th onclick="sortTable(1)">Product Story Embedded Video Name</th>
+                <th onclick="sortTable(1)">Product Food Traceability Video Name</th>
             </tr>
         </div>
         </thead>
         <tbody>
-        <div th:each="order : ${rings4}">
+        <div th:each="order : ${rings5}">
             <tr id="list" class="ord"  scope="row">
 
                 <td style="text-align: center" th:text="${order.productName}"></td>
-                <td style="text-align: center" th:text="${order.prodStoryName}"></td>
+                <td style="text-align: center" th:text="${order.prodFoodName}"></td>
 
                 <td sec:authorize="hasRole('USER')" style="text-align: center">
-                    <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/story/edit/{id}(id=${order.prodStoryID})}" ><button type="button" class="btn btn-danger">Edit this Story Embedded Video</button></a>
+                    <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/food/edit/{id}(id=${order.prodFoodID})}" ><button type="button" class="btn btn-danger">Edit this Food Traceability Video</button></a>
                     <!--                    <a th:href="@{certificate/remove/{id}(id=${order.prodCertificateID})}" ><button type="button" class="btn btn-danger">Delete</button></a>-->
                 </td>
             </tr>

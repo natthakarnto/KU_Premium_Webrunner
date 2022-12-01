@@ -21,21 +21,21 @@
 <div th:insert="fragments/header :: header"></div>
 
 <div class="container" style="background-color: white; margin-top:50px; margin-bottom: 50px; padding-bottom: 20px ;border-radius: 10px;">
-    <h1 class="display-6 text-center" style="font-weight: bold; text-align:center; color: #dc3545 ;font-size: 45px ;margin-bottom: 25px; padding-top: 30px">Story Embedded Video Edit</h1>
+    <h1 class="display-6 text-center" style="font-weight: bold; text-align:center; color: #dc3545 ;font-size: 45px ;margin-bottom: 25px; padding-top: 30px">Food Traceability Video Edit</h1>
 
     <div class="card-body text-center" style="margin-bottom: -10px; margin-top: -15px">
-        <img height="128" th:src="${'../../images/'+ story.productName +'.png'}" width="128">
+        <img height="128" th:src="${'../../images/'+ food.productName +'.png'}" width="128">
         <!--                                        alt="" class="r img-responsive mt-2"-->
-        <h4 class="card-title text-center" style="margin-top: 5px" th:text="${story.getProductName()}">Id</h4>
+        <h4 class="card-title text-center" style="margin-top: 5px" th:text="${food.getProductName()}">Id</h4>
     </div>
 
     <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
 
     <!--    <h3 class="col text-start" style="font-weight: bold; color: #dc3545; padding-top: 15px">Certificate Page</h3>-->
 
-    <form th:object="${story}" th:action="@{/story/edit}" method="POST">
+    <form th:object="${food}" th:action="@{/food/edit}" method="POST">
 
-        <input type="hidden" th:field="*{prodStoryID}" id="id">
+        <input type="hidden" th:field="*{prodFoodID}" id="id">
 
         <div class="mb-3">
             <label for="productNameInput" class="form-label">ชื่อผลิตภัณฑ์</label>
@@ -43,20 +43,20 @@
         </div>
 
         <div class="mb-3">
-            <label for="productOwnerInput" class="form-label">ชื่อวิดิโอนำเสนอเรื่องราวผลิตภัณฑ์</label>
-            <input id="productOwnerInput" type="text" class="form-control" th:field="*{prodStoryName}">
+            <label for="productOwnerInput" class="form-label">ชื่อวิดิโอนำเสนอการตรวจสอบย้อนกลับของอาหาร</label>
+            <input id="productOwnerInput" type="text" class="form-control" th:field="*{prodFoodName}">
         </div>
 
         <div class="row mb-4">
             <div class="col" style="margin-left: 435px; margin-top: 10px">
                 <div class="mb-3 text-center">
-                    <button class="btn btn-danger" type="submit" style="margin-bottom: -35px">Edit Story Embedded Video</button>
+                    <button class="btn btn-danger" type="submit" style="margin-bottom: -35px">Edit Food Traceability Video</button>
                 </div>
             </div>
 
             <div class="col text-end" style="margin-top: 15px">
                 <div class="mb-3">
-                    <a class="btn btn-danger" style="margin-right: 35px; margin-bottom: -35px" th:href="@{/story/list}">Back</a>
+                    <a class="btn btn-danger" style="margin-right: 35px; margin-bottom: -35px" th:href="@{/food/list}">Back</a>
                 </div>
             </div>
         </div>

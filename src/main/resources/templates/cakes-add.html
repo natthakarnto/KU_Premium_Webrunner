@@ -21,7 +21,22 @@
 <div th:insert="fragments/header :: header"></div>
 
 <div class="container" style="background-color: white; margin-top:50px; margin-bottom: 50px; padding-bottom: 20px ;border-radius: 25px;">
-    <h1 class="display-6 text-center" style="font-weight: bold; text-align:center; color: #dc3545 ;font-size: 45px ;margin-bottom: 50px; padding-top: 25px">Add Product</h1>
+    <div class="row mb-4">
+        <div class="col">
+<!--            <h1 class="display-6 text-center" style="font-weight: bold; text-align: center; font-size: 45px; padding-top: 50px; margin-left: 400px; margin-bottom: 30px">Add Product</h1>-->
+            <h1></h1>
+        </div>
+
+        <div class="col">
+            <h1 class="display-6 text-center" style="font-weight: bold; text-align: center; font-size: 45px; padding-top: 50px; margin-left: 20px; margin-bottom: 0px">Add Product</h1>
+        </div>
+
+        <div class="col text-end">
+            <div class="mb-3">
+                <a class="btn btn-danger" style="margin-right: 35px; margin-top: 60px; margin-bottom: 0px" th:href="@{/cakes}">Back to Product</a>
+            </div>
+        </div>
+    </div>
 
     <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
 
@@ -208,7 +223,7 @@
             </div>
         </div>
 
-        <div class="text-center" style="margin-bottom: 15px">
+        <div class="text-center" style="margin-bottom: 20px">
             <button type="submit" class="btn btn-danger">Add Product</button>
         </div>
 

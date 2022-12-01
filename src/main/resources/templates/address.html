@@ -39,20 +39,52 @@
 
     <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
 
-    <div class="form-outline mb-4" style="margin-top: 20px">
-        <input type="text" id="form7Example4" class="form-control" th:name="name"/>
-        <label class="form-label" for="form7Example4">Product Owner Name</label>
-    </div>
+<!--    <div class="form-outline mb-4" style="margin-top: 20px">-->
+<!--        <input type="text" id="form7Example4" class="form-control" th:name="name"/>-->
+<!--        <label class="form-label" for="form7Example4">Product Owner Name</label>-->
+<!--    </div>-->
 
-    <div class="form-outline mb-4">
-        <input type="text" id="form7Example5" class="form-control" th:name="surname"/>
-        <label class="form-label" for="form7Example5">Product Owner Surname</label>
-    </div>
+<!--    <div class="form-outline mb-4">-->
+<!--        <input type="text" id="form7Example5" class="form-control" th:name="surname"/>-->
+<!--        <label class="form-label" for="form7Example5">Product Owner Surname</label>-->
+<!--    </div>-->
 
-    <div class="form-outline mb-4">
-        <input type="number" id="form7Example6" class="form-control"th:name="mobile"/>
-        <label class="form-label" for="form7Example6">Product Owner Phone</label>
-    </div>
+<!--    <div class="form-outline mb-4">-->
+<!--        <input type="number" id="form7Example6" class="form-control"th:name="mobile"/>-->
+<!--        <label class="form-label" for="form7Example6">Product Owner Phone</label>-->
+<!--    </div>-->
+
+    <label>
+        <p class="label-txt">Product Owner Name</p>
+        <input type="text" class="input" th:name="name" placeholder="Name">
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+    </label>
+
+    <label>
+        <p class="label-txt">Product Owner Surname</p>
+        <input type="text" class="input" th:name="surname" placeholder="Surname">
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+    </label>
+
+    <label>
+        <p class="label-txt">Product Owner Phone</p>
+        <input type="text" class="input" th:name="mobile" placeholder="Phone">
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+    </label>
+
+    <label>
+        <p class="label-txt">Product Owner Address</p>
+        <input type="text" class="input" th:name="address" placeholder="Address">
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+    </label>
 
 
     <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
@@ -86,6 +118,54 @@
       text-align: center;
       -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
       box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+  }
+  label {
+      display: block;
+      position: relative;
+      margin: 40px 0px;
+  }
+  .label-txt {
+      position: absolute;
+      top: -1.6em;
+      padding: 10px;
+      font-family: sans-serif;
+      font-size: .8em;
+      letter-spacing: 1px;
+      color: rgb(120,120,120);
+      transition: ease .3s;
+  }
+  .input {
+      width: 100%;
+      padding: 10px;
+      background: transparent;
+      border: none;
+      outline: none;
+  }
+
+  .line-box {
+      position: relative;
+      width: 100%;
+      height: 2px;
+      background: #BCBCBC;
+  }
+
+  .line {
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      top: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #8BC34A;
+      transition: ease .6s;
+  }
+
+  .input:focus + .line-box .line {
+      width: 100%;
+  }
+
+  .label-active {
+      top: -3em;
   }
 </style>
 </html>

@@ -58,6 +58,13 @@
                     </li>
                 </div>
 
+                <div sec:authorize="hasRole('USER')">
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: whitesmoke ;font-size: 20px;font-weight: bold" th:href="@{/cakes/add}">Add-Product</a>
+                    </li>
+                </div>
+
+
                 <li sec:authorize="hasRole('USER')" class="nav-item">
                     <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/cakes}">Product</a>
                 </li>
@@ -65,14 +72,8 @@
                     <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/cakes}">Product</a>
                 </li>
 
-                <div sec:authorize="hasRole('USER')">
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: whitesmoke ;font-size: 20px;font-weight: bold" th:href="@{/cakes/add}">Add-Data</a>
-                    </li>
-                </div>
-
                 <li sec:authorize="hasRole('USER')" class="nav-item">
-                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px;font-weight: bold" th:href="@{/cart}">Checklist</a>
+                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px;font-weight: bold" th:href="@{/cart}">Waiting-list</a>
                 </li>
 
                 <li sec:authorize="hasRole('USER')" class="nav-item">

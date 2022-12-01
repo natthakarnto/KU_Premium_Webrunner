@@ -61,7 +61,7 @@ public class ResearchController {
     }
 
     @PostMapping("/add")
-    public String addCertificate(@ModelAttribute Research research, Model model, RedirectAttributes redirectAttrs) {
+    public String addResearch(@ModelAttribute Research research, Model model, RedirectAttributes redirectAttrs) {
         // พอรับเข้ามาจะเอาเข้า List
 
         if(checkAddress(research.getRelatedResearchName(), research.getProductName())) {
