@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:margin-bottom="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>The Premium @KU Website</title>
@@ -19,26 +19,47 @@
 </style>
 <body>
 <div th:insert="fragments/header :: header"></div>
-<div th:if="${message}">
-    <h2 th:text="${message}"/>
-</div>
 
-<div>
-    <form method="POST" enctype="multipart/form-data" action="/cakes/add">
-        <table>
-            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-        </table>
-    </form>
-</div>
+<div class="container" style="background-color: white; margin-top:50px; margin-bottom: 50px; padding-bottom: 20px ;border-radius: 25px;">
+    <div class="row mb-4">
+        <div class="col">
+            <!--            <h1 class="display-6 text-center" style="font-weight: bold; text-align: center; font-size: 45px; padding-top: 50px; margin-left: 400px; margin-bottom: 30px">Add Product</h1>-->
+            <h1></h1>
+        </div>
 
-<div>
-    <ul>
-        <li th:each="file : ${files}">
-            <a th:href="${file}" th:text="${file}" />
-        </li>
-    </ul>
-</div>
+        <div class="col">
+            <h1 class="display-6 text-center" style="font-weight: bold; text-align: center; font-size: 45px; padding-top: 50px; margin-left: 20px; margin-bottom: 0px">Test Upload Files</h1>
+        </div>
 
+        <div class="col text-end">
+            <div class="mb-3">
+                <a class="btn btn-danger" style="margin-right: 35px; margin-top: 60px; margin-bottom: 0px" th:href="@{/cakes}">Back to Product</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-danger" style="text-align: center" role="alert" th:text="${error}" th:if="${error}"></div>
+
+    <div th:if="${message}">
+        <h2 th:text="${message}"/>
+    </div>
+
+    <div>
+        <form method="POST" enctype="multipart/form-data" action="/cakes/add">
+            <table>
+                <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+                <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+            </table>
+        </form>
+    </div>
+
+    <div>
+        <ul>
+            <li th:each="file : ${files}">
+                <a th:href="${file}" th:text="${file}" />
+            </li>
+        </ul>
+    </div>
+</div>
 </body>
 </html>

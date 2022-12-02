@@ -34,10 +34,6 @@ public class CakesController {
     @Autowired
     private UserService userServices;
 
-    public CakesController(ProductPictureStorageService storageService) {
-        this.storageService = storageService;
-    }
-
     @GetMapping("/edit/{id}")
     public String getEditForm(@PathVariable UUID id, Model model) {
         Cakes cakes = cakesService.getOneById(id);
@@ -78,11 +74,11 @@ public class CakesController {
     @PostMapping("/add")
     public String addCakes(@ModelAttribute Cakes cakes, Model model, RedirectAttributes redirectAttrs) {
         if(checkCake(cakes.getPrice(), cakes.getProductQuantity(), cakes.getProductDiscountPercent(), cakes.getPriceExcludingVat(), cakes.getPricePromotion())){
-            if(checkAddress(cakes.getProductName(), cakes.getProductCategory(),cakes.getPoID(),cakes.getProductDescription(),
-                    cakes.getProductAttrib(), cakes.getProductUsageGuideline(),cakes.getProductIngredients(), cakes.getProductNutrition(),
-                    cakes.getProductUseIndication(),cakes.getProductSize(), cakes.getProductVolume(), cakes.getProductWeight(),
-                    cakes.getProductPromotion(), cakes.getPcID(), cakes.getPrr_ID(), cakes.getPsvID(),cakes.getFtvID(), cakes.getaID(),
-                    cakes.getRreID())) {
+//            if(checkAddress(cakes.getProductName(), cakes.getProductCategory(),cakes.getPoID(),cakes.getProductDescription(),
+//                    cakes.getProductAttrib(), cakes.getProductUsageGuideline(),cakes.getProductIngredients(), cakes.getProductNutrition(),
+//                    cakes.getProductUseIndication(),cakes.getProductSize(), cakes.getProductVolume(), cakes.getProductWeight(),
+//                    cakes.getProductPromotion(), cakes.getPcID(), cakes.getPrr_ID(), cakes.getPsvID(),cakes.getFtvID(), cakes.getaID(),
+//                    cakes.getRreID())) {
                 if(cakesService.checkNameProduct(cakes.getProductName())) {
                     cakesService.addCakes(cakes);
                     return "redirect:/cakes"; //หญิง
@@ -90,10 +86,10 @@ public class CakesController {
                     redirectAttrs.addFlashAttribute("error","Please don't use the same product name!");
                     return "redirect:/cakes/add";
                 }
-            } else {
-                redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
-                return "redirect:/cakes/add";
-            }
+//            } else {
+//                redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
+//                return "redirect:/cakes/add";
+//            }
         }
         else {
             redirectAttrs.addFlashAttribute("error","negative number is not allowed!");
@@ -111,55 +107,15 @@ public class CakesController {
     public boolean checkAddress(String productName, String productCategory, String poID, String productDescription //Method ดักให้ใส่ข้อมูลให้ครบ
             ,String productAttrib, String productUsageGuideline, String productIngredients, String productNutrition, String productUseIndication
             ,String productSize, String productVolume, String productWeight, String productPromotion,String pcID, String prr_ID,
-                                String psvID, String ftvID, String aID, String rreID){
-        if (productName.equals("") || productCategory.equals("") ||  poID.equals("") || productDescription.equals("")
-        || productAttrib.equals("") || productUsageGuideline.equals("") || productIngredients.equals("") || productNutrition.equals("")
-        || productUseIndication.equals("") || productSize.equals("") || productVolume.equals("")
-        || productWeight.equals("") || productPromotion.equals("")
-        || pcID.equals("") || prr_ID.equals("") || psvID.equals("") || ftvID.equals("") || aID.equals("") || rreID.equals("")){
+                                String psvID, String ftvID, String aID, String rreID) {
+        if (productName.equals("") || productCategory.equals("") || poID.equals("") || productDescription.equals("")
+                || productAttrib.equals("") || productUsageGuideline.equals("") || productIngredients.equals("") || productNutrition.equals("")
+                || productUseIndication.equals("") || productSize.equals("") || productVolume.equals("")
+                || productWeight.equals("") || productPromotion.equals("")
+                || pcID.equals("") || prr_ID.equals("") || psvID.equals("") || ftvID.equals("") || aID.equals("") || rreID.equals("")) {
             return false;
-        }return true;
+        }
+        return true;
     }
 
-    private final ProductPictureStorageService storageService;
-
-    @GetMapping("/file")
-    public String listUploadedFiles(Model model) throws IOException {
-
-        model.addAttribute("files", storageService.loadAll().map(
-                        path -> MvcUriComponentsBuilder.fromMethodName(CakesController.class,
-                                "serveFile", path.getFileName().toString()).build().toUri().toString())
-                .collect(Collectors.toList()));
-
-        return "uploadForm";
-    }
-
-    @GetMapping("/files/{filename:.+}")
-    @ResponseBody
-    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-
-        Resource file = storageService.loadAsResource(filename);
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
-    }
-
-    @PostMapping("/")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
-
-        storageService.store(file);
-        redirectAttributes.addFlashAttribute("message",
-                "You successfully uploaded " + file.getOriginalFilename() + "!");
-
-        return "redirect:/";
-    }
-
-    @ExceptionHandler(StorageFileNotFoundException.class)
-    public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
-        return ResponseEntity.notFound().build();
-    }
-
-    @RequestMapping("/upload")
-    public String getUpload(Model model) {
-        return "upload-test";
-    }
 }
