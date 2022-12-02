@@ -16,7 +16,7 @@ public class CartService {
     private CakesService cakesService;
 
     private List<Cart> cart = new ArrayList<>();
-
+    // TODO: 2/12/2565  ถ้าเหลือเวลสมากพอ กลับมาทำ method เพื่อกันการ add product ซ้ำ
     public void addCart(UUID id){
         cart.add(new Cart(cakesService.getOneById(id)));
     }
@@ -32,6 +32,20 @@ public class CartService {
 
         }
     }
+
+//    public void addCart(UUID id) {
+//        List<Cart> cartList= new ArrayList<>();
+//
+////        cart.add(new Cart(cakesService.getOneById(id)));
+////        for(int i = 0 ; i < cart.size(); i++){
+////            if (id.equals(cart.get(i).getCakes().getpID())){
+////                System.out.println("Duplicated ID");
+////            }
+////            else {
+////                cart.add(new Cart(cakesService.getOneById(id)));
+////            }
+////        }
+//    }
 
 //    public int priceCalculate(){
 //        int total = 0;

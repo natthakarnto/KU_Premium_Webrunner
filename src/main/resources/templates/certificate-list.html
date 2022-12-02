@@ -93,7 +93,7 @@
 
                 <td sec:authorize="hasRole('USER')" style="text-align: center">
                     <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/certificate/edit/{id}(id=${order.prodCertificateID})}" ><button type="button" class="btn btn-danger">Edit this Certificate</button></a>
-                    <!--                    <a th:href="@{certificate/remove/{id}(id=${order.prodCertificateID})}" ><button type="button" class="btn btn-danger">Delete</button></a>-->
+                    <a th:href="@{/certificate/remove/{id}(id=${order.prodCertificateID})}" ><button type="button" class="btn btn-danger">Delete</button></a>
                 </td>
             </tr>
         </div>

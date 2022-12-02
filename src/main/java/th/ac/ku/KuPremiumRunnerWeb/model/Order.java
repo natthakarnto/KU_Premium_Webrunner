@@ -8,8 +8,8 @@ import java.util.UUID;
 public class Order {
 
     private UUID orderId;
-    private Date date;
-//    private String date;
+//    private Date date;
+    private String date;
     private String name;
     private String surname;
     private String mobile;
@@ -18,10 +18,10 @@ public class Order {
     private List<Cart> cartList = new ArrayList<>();
     private String username;
     private String status;
-    private Date approvedDate;
+//    private Date approvedDate;
     private String message;
 
-//    private String approvedDate;
+    private String approvedDate;
 
 //    private LocalDateTime approvedDate;
 
@@ -54,22 +54,22 @@ public class Order {
 //    }
 
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-
-//    public String getDate() {
+//    public Date getDate() {
 //        return date;
 //    }
 //
-//    public void setDate(String date) {
+//    public void setDate(Date date) {
 //        this.date = date;
 //    }
+
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public String getName() {
         return name;
@@ -135,13 +135,13 @@ public class Order {
 //        this.approvedDate = approvedDate;
 //    }
 
-    public Date getApprovedDate() {
-        return approvedDate;
-    }
-
-    public void setApprovedDate(Date approvedDate) {
-        this.approvedDate = approvedDate;
-    }
+//    public Date getApprovedDate() {
+//        return approvedDate;
+//    }
+//
+//    public void setApprovedDate(Date approvedDate) {
+//        this.approvedDate = approvedDate;
+//    }
 
     public String getMessage() {
         return message;
@@ -151,11 +151,11 @@ public class Order {
         this.message = message;
     }
 
-    //    public String getApprovedDate() {
-//        return approvedDate;
-//    }
-//
-//    public void setApprovedDate(String approvedDate) {
-//        this.approvedDate = approvedDate;
-//    }
+    public String getApprovedDate() {
+        return approvedDate;
+    }
+
+    public void setApprovedDate(String approvedDate) {
+        this.approvedDate = approvedDate;
+    }
 }

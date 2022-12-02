@@ -10,14 +10,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import th.ac.ku.KuPremiumRunnerWeb.storage.FileSystemStorageService;
-import th.ac.ku.KuPremiumRunnerWeb.storage.ProductPictureStorageService;
 import th.ac.ku.KuPremiumRunnerWeb.storage.StorageFileNotFoundException;
 
 import java.io.IOException;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/files")
+@RequestMapping("/upload_files")
 public class UploadController {
 
     public UploadController(FileSystemStorageService storageService) {
@@ -45,14 +44,14 @@ public class UploadController {
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 
-    @PostMapping("/")
+    @PostMapping("/handle_upload")
     public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
 
         storageService.store(file);
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
 
-        return "redirect:/";
+        return "redirect:/upload_files/upload";
     }
 
     @ExceptionHandler(StorageFileNotFoundException.class)
@@ -60,7 +59,7 @@ public class UploadController {
         return ResponseEntity.notFound().build();
     }
 
-    @RequestMapping("/upload")
+    @GetMapping("/upload")
     public String getUpload(Model model) {
         return "upload-test";
     }

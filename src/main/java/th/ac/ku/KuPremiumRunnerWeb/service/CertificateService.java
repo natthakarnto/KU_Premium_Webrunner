@@ -83,9 +83,9 @@ public class CertificateService {
         }
         return cart2;
     }
-//    public void delete(Certificate rings) {
-//        String url = "http://localhost:8090/certificate/" + rings.getProdCertificateID();
-//        restTemplate.delete(url, rings, Certificate.class);
-//    }
+    public void delete(Certificate rings) {
+        String url = "http://localhost:8090/certificate/" + rings.getProdCertificateID();
+        restTemplate.delete(url, rings, Certificate.class);
+    }
 
 }

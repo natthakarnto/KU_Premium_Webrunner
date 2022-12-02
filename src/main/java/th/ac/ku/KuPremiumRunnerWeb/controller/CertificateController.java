@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import th.ac.ku.KuPremiumRunnerWeb.model.Cakes;
 import th.ac.ku.KuPremiumRunnerWeb.model.Certificate;
+import th.ac.ku.KuPremiumRunnerWeb.model.Order;
 import th.ac.ku.KuPremiumRunnerWeb.model.Story;
 import th.ac.ku.KuPremiumRunnerWeb.service.CakesService;
 import th.ac.ku.KuPremiumRunnerWeb.service.CertificateService;
@@ -91,5 +92,12 @@ public class CertificateController {
         if (prodCertificateName.equals("") || (productName.equals(""))){
             return false;
         }return true;
+    }
+
+    @GetMapping("/remove/{id}")
+    public String removeCertificate(@PathVariable UUID id, Model model,Authentication authentication){
+        Certificate set = certificateService.getOneById(id);
+        certificateService.delete(set);
+        return "redirect:/certificate/list";
     }
 }
