@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import th.ac.ku.KuPremiumRunnerWeb.storage.FileSystemStorageService;
 import th.ac.ku.KuPremiumRunnerWeb.storage.ProductPictureStorageService;
 import th.ac.ku.KuPremiumRunnerWeb.storage.StorageFileNotFoundException;
 
@@ -19,16 +20,16 @@ import java.util.stream.Collectors;
 @RequestMapping("/files")
 public class UploadController {
 
-    public CakesController(ProductPictureStorageService storageService) {
+    public UploadController(FileSystemStorageService storageService) {
         this.storageService = storageService;
     }
-    private final ProductPictureStorageService storageService;
+    private final FileSystemStorageService storageService;
 
     @GetMapping("/file")
     public String listUploadedFiles(Model model) throws IOException {
 
         model.addAttribute("files", storageService.loadAll().map(
-                        path -> MvcUriComponentsBuilder.fromMethodName(CakesController.class,
+                        path -> MvcUriComponentsBuilder.fromMethodName(UploadController.class,
                                 "serveFile", path.getFileName().toString()).build().toUri().toString())
                 .collect(Collectors.toList()));
 

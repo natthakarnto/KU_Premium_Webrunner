@@ -11,7 +11,7 @@ public class StorageProperties {
 	 * Folder location for storing files
 	 */
 
-	private String location = "upload-dir";
+	private String location = "../kuPremium RunnerWeb/src/main/resources/uploaded file/";
 
 	public String getLocation() {
 		return location;

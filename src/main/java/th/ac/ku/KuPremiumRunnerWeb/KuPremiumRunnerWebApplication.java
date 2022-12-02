@@ -21,13 +21,4 @@ public class KuPremiumRunnerWebApplication {
 			storageService.init();
 		};
 	}
-
-	@Bean
-	CommandLineRunner rrInit(RelatedResearchStorageService rrStorageService) {
-		return (args) -> {
-			rrStorageService.deleteAll();
-			rrStorageService.rrInit();
-		};
-	}
-
 }
