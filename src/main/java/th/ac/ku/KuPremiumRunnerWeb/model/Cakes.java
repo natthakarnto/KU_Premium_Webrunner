@@ -1,5 +1,6 @@
 package th.ac.ku.KuPremiumRunnerWeb.model;
 
+import java.beans.Transient;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -43,6 +44,8 @@ public class Cakes {
     private String aID;
 
     private String rreID;
+
+    private String photos;
 
     public UUID getpID() {
         return pID;
@@ -307,5 +310,19 @@ public class Cakes {
                 "->" + aID +
                 "->" + rreID ;
 
+    }
+
+    public String getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(String photos) {
+        this.photos = photos;
+    }
+    @Transient
+    public String getPhotosImagePath() {
+        if (photos == null || pID == null) return null;
+
+        return "./KU_Premium_Webrunner/src/main/resources/static/images/" + pID + "/" + photos;
     }
 }

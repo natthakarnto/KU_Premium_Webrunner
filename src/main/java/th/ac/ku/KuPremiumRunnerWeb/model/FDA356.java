@@ -86,6 +86,15 @@ public class FDA356 {
         this.ph_value_f = ph_value_f;
     }
 
+    //ใช้สำหรับสารทีมีความเป็นกรด
+//    public boolean setPh_value_f_acid(boolean ph_value_f) {
+//        return !(ph_value_c > ph_value_s);
+//    }
+//    //ใช้สำหรับสารทีมีความเป็นเบส
+//    public boolean setPh_value_f_base(boolean ph_value_f) {
+//        return !(ph_value_s > ph_value_c);
+//    }
+
     public double getColi_s() {
         return coli_s;
     }
