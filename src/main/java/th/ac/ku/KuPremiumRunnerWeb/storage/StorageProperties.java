@@ -11,7 +11,7 @@ public class StorageProperties {
 	 * Folder location for storing files
 	 */
 
-	private String location = "../KU_Premium_Webrunner/src/main/resources/uploaded file/";
+	private String location = "../KU_Premium_Webrunner/src/main/resources/static/images/";
 
 	public String getLocation() {
 		return location;

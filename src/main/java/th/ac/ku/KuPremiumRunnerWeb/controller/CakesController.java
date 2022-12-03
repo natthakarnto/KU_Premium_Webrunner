@@ -62,11 +62,11 @@ public class CakesController {
     @PostMapping("/add")
     public String addCakes(@ModelAttribute Cakes cakes, Model model, RedirectAttributes redirectAttrs) {
         if(checkCake(cakes.getPrice(), cakes.getProductQuantity(), cakes.getProductDiscountPercent(), cakes.getPriceExcludingVat(), cakes.getPricePromotion())){
-//            if(checkAddress(cakes.getProductName(), cakes.getProductCategory(),cakes.getPoID(),cakes.getProductDescription(),
-//                    cakes.getProductAttrib(), cakes.getProductUsageGuideline(),cakes.getProductIngredients(), cakes.getProductNutrition(),
-//                    cakes.getProductUseIndication(),cakes.getProductSize(), cakes.getProductVolume(), cakes.getProductWeight(),
-//                    cakes.getProductPromotion(), cakes.getPcID(), cakes.getPrr_ID(), cakes.getPsvID(),cakes.getFtvID(), cakes.getaID(),
-//                    cakes.getRreID())) {
+            if(checkAddress(cakes.getProductName(), cakes.getProductCategory(),cakes.getPoID(),cakes.getProductDescription(),
+                    cakes.getProductAttrib(), cakes.getProductUsageGuideline(),cakes.getProductIngredients(), cakes.getProductNutrition(),
+                    cakes.getProductUseIndication(),cakes.getProductSize(), cakes.getProductVolume(), cakes.getProductWeight(),
+                    cakes.getProductPromotion(), cakes.getPcID(), cakes.getPrr_ID(), cakes.getPsvID(),cakes.getFtvID(), cakes.getaID(),
+                    cakes.getRreID())) {
                 if(cakesService.checkNameProduct(cakes.getProductName())) {
                     cakesService.addCakes(cakes);
                     return "redirect:/cakes"; //หญิง
@@ -74,10 +74,10 @@ public class CakesController {
                     redirectAttrs.addFlashAttribute("error","Please don't use the same product name!");
                     return "redirect:/cakes/add";
                 }
-//            } else {
-//                redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
-//                return "redirect:/cakes/add";
-//            }
+            } else {
+                redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
+                return "redirect:/cakes/add";
+            }
         }
         else {
             redirectAttrs.addFlashAttribute("error","negative number is not allowed!");

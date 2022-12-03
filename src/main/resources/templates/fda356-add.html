@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>The Premium @KU Website</title>
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<style>
+    body
+    {
+        /*            background-image: url('https://wallpaperaccess.com/full/2029165.jpg');*/
+        background:url('https://cdn.discordapp.com/attachments/800934715573010436/1039196060406521916/f2f2f7.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+<body>
+<div th:insert="fragments/header :: header"></div>
+
+<div class="container" style="background-color: white; margin-top:50px; margin-bottom: 50px; padding-bottom: 20px ;border-radius: 25px;">
+
+    <div class="row mb-4" style="margin-top: 10px">
+        <div class="col" style="margin-left: 10px">
+            <div class="text-start">
+                <h1 class="display-6 text-start" style="font-weight: bold; margin-bottom: 0px; text-align:start; color: #dc3545 ;font-size: 38px ; margin-top: 50px">Add Announcement of FDA No.356</h1>            </div>
+        </div>
+
+        <div class="col text-end">
+            <div class="mb-3">
+                <a class="btn btn-danger" style="margin-right: 15px; margin-bottom: 0px; margin-top: 60px" th:href="@{/fda356/list}">Back to Information FDA365</a>
+            </div>
+        </div>
+    </div>
+
+    <form th:action="@{/fda356/add}" method="POST">
+
+        <div class="alert alert-danger" style="text-align: center" role="alert" th:text="${error}" th:if="${error}"></div>
+
+        <div class="mb-3">
+            <label for="productInput" class="form-label">ชื่อสินค้า</label>
+            <input id="productInput" type="text" class="form-control" name="productName">
+        </div>
+
+        <div class="mb-3">
+            <label for="weightInput" class="form-label">ชื่อผู้ตรวจสอบตามประกาศ อ.ย. 356</label>
+            <input id="weightInput" type="text" class="form-control" name="r_name">
+        </div>
+
+        <div class="row mb-4">
+            <div class="col" >
+                <div class="form-outline">
+                    <label for="phValueSInput" class="form-label">เกณฑ์ค่า PH</label>
+                    <input id="phValueSInput" type="text" class="form-control" name="ph_value_s"> <!--Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล-->
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-outline">
+                    <label for="phValueInput" class="form-label">ผลการตรวจค่า PH</label>
+                    <input id="phValueInput" type="text" class="form-control" name="ph_value_c">
+                    <!--                        <label class="form-label" for="form7Example4">ชื่อสินค้าภาษาไทย</label>-->
+                    <!--                        <input type="text" id="form7Example4" class="form-control" th:name="productNameTH"/>-->
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-outline">
+                    <label for="phValueFInput" class="form-label">สรุปผลการตรวจสอบค่า PH</label>
+                    <input id="phValueFInput" type="text" class="form-control" name="ph_value_f">
+                    <!--                        <label class="form-label" for="form7Example5">รหัสเจ้าของสินค้า</label>-->
+                    <!--                        <input type="text" id="form7Example5" class="form-control" th:name="productOwnerID"/>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <label for="coliformSInput" class="form-label">เกณฑ์การตรวจโคลิฟอร์ม</label>
+                    <input id="coliformSInput" type="text" class="form-control" name="coli_s"> <!--Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล-->
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="mb-3">
+                    <label for="coliformCInput" class="form-label">ผลการตรวจโคลิฟอร์ม</label>
+                    <input id="coliformCInput" type="text" class="form-control" name="coli_c">
+                    <!--                        <label class="form-label" for="form7Example4">ชื่อสินค้าภาษาไทย</label>-->
+                    <!--                        <input type="text" id="form7Example4" class="form-control" th:name="productNameTH"/>-->
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="mb-3">
+                    <label for="coliformFInput" class="form-label">สรุปผลการตรวจสอบโคลิฟอร์ม</label>
+                    <input id="coliformFInput" type="text" class="form-control" name="coli_f">
+                    <!--                        <label class="form-label" for="form7Example5">รหัสเจ้าของสินค้า</label>-->
+                    <!--                        <input type="text" id="form7Example5" class="form-control" th:name="productOwnerID"/>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col" >
+                <div class="form-outline">
+                    <label for="yeastMoldSInput" class="form-label">เกณฑ์การตรวจยีสต์และรา</label>
+                    <input id="yeastMoldSInput" type="text" class="form-control" name="yeast_mold_s"> <!--Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล-->
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="mb-3">
+                    <label for="yeastMoldRInput" class="form-label">ผลการตรวจยีสต์และรา</label>
+                    <input id="yeastMoldRInput" type="text" class="form-control" name="yeast_mold_r">
+                    <!--                        <label class="form-label" for="form7Example4">ชื่อสินค้าภาษาไทย</label>-->
+                    <!--                        <input type="text" id="form7Example4" class="form-control" th:name="productNameTH"/>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col" >
+                <div class="form-outline">
+                    <label for="yeastsInput" class="form-label">ปริมาณยีสต์</label>
+                    <input id="yeastsInput" type="text" class="form-control" name="yeast_c"> <!--Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล-->
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="mb-3">
+                    <label for="moldsInput" class="form-label">ปริมาณรา</label>
+                    <input id="moldsInput" type="text" class="form-control" name="mold_c">
+                    <!--                        <label class="form-label" for="form7Example4">ชื่อสินค้าภาษาไทย</label>-->
+                    <!--                        <input type="text" id="form7Example4" class="form-control" th:name="productNameTH"/>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="yeastMoldFInput" class="form-label">สรุปผลการตรวจสอบยีสต์และรา</label>
+            <input id="yeastMoldFInput" type="text" class="form-control" name="yeast_mold_f">
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-danger" style="margin-bottom: 25px; margin-top: 25px" onclick = "return confirm('Would you like to confirm?')">Add Information of FDA Announcement No.356</button>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

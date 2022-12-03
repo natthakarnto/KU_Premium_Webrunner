@@ -42,10 +42,6 @@ public class Certificate {
 
     private List<Certificate> cartList = new ArrayList<>();
 
-//    public void add(Cart cartList){
-//        this.cartList.add(cartList);
-//    }
-
     public void add(Certificate cartList){
         this.cartList.add(cartList);
     }
