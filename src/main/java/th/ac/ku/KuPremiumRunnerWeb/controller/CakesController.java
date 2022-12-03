@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 import th.ac.ku.KuPremiumRunnerWeb.model.Cakes;
-import th.ac.ku.KuPremiumRunnerWeb.repository.CakesRepository;
 import th.ac.ku.KuPremiumRunnerWeb.service.CakesService;
 import th.ac.ku.KuPremiumRunnerWeb.service.FileUploadUtil;
 import th.ac.ku.KuPremiumRunnerWeb.service.UserService;
@@ -112,23 +111,23 @@ public class CakesController {
         return true;
     }
 
-    @Autowired
-    private CakesRepository repo;
-
-    @PostMapping("/users/save")
-    public RedirectView saveUser(Cakes cakes,
-                                 @RequestParam("image") MultipartFile multipartFile) throws IOException {
-
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        cakes.setPhotos(fileName);
-
-        Cakes savedCakes = repo.save(cakes);
-
-        String uploadDir = "../KU_Premium_Webrunner/src/main/resources/static/images/" + savedCakes.getpID();
-
-        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-
-        return new RedirectView("/users", true);
-    }
+//    @Autowired
+//    private CakesRepository repo;
+//
+//    @PostMapping("/save")
+//    public RedirectView saveUser(Cakes cakes,
+//                                 @RequestParam("image") MultipartFile multipartFile) throws IOException {
+//
+//        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+//        cakes.setPhotos(fileName);
+//
+//        Cakes savedCakes = repo.save(cakes);
+//
+//        String uploadDir = "../KU_Premium_Webrunner/src/main/resources/static/images/" + savedCakes.getpID();
+//
+//        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+//
+//        return new RedirectView("/cakes/add", true);
+//    }
 
 }

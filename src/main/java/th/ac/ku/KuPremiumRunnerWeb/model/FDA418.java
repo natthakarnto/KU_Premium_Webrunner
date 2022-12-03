@@ -18,7 +18,7 @@ public class FDA418 {
     private String synt_f;
     private double sod_s;
     private double sod_c;
-    private double sod_f;
+    private String sod_f;
     private double potas_s;
     private double potas_c;
     private String potas_f;
@@ -26,7 +26,7 @@ public class FDA418 {
     private double plate_c;
     private String plate_f;
 
-    public FDA418(UUID fda418ID, String productName, String r_name, double sum_benzoic_sorbic, double benzoic_c, double sorbic_c, String benzoic_sorbic_f, double synt_s, double synt_c, String synt_f, double sod_s, double sod_c, double sod_f, double potas_s, double potas_c, String potas_f, double plate_s, double plate_c, String plate_f) {
+    public FDA418(UUID fda418ID, String productName, String r_name, double sum_benzoic_sorbic, double benzoic_c, double sorbic_c, String benzoic_sorbic_f, double synt_s, double synt_c, String synt_f, double sod_s, double sod_c, String sod_f, double potas_s, double potas_c, String potas_f, double plate_s, double plate_c, String plate_f) {
         this.fda418ID = fda418ID;
         this.productName = productName;
         this.r_name = r_name;
@@ -144,11 +144,11 @@ public class FDA418 {
         this.sod_c = sod_c;
     }
 
-    public double getSod_f() {
+    public String getSod_f() {
         return sod_f;
     }
 
-    public void setSod_f(double sod_f) {
+    public void setSod_f(String sod_f) {
         this.sod_f = sod_f;
     }
 
@@ -198,5 +198,11 @@ public class FDA418 {
 
     public void setPlate_f(String plate_f) {
         this.plate_f = plate_f;
+    }
+
+    private List<FDA418> cartList = new ArrayList<>();
+
+    public void add(FDA418 cartList){
+        this.cartList.add(cartList);
     }
 }

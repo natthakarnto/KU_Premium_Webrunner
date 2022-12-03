@@ -45,7 +45,7 @@ public class Cakes {
 
     private String rreID;
 
-    private String photos;
+//    private String photos;
 
     public UUID getpID() {
         return pID;
@@ -81,6 +81,7 @@ public class Cakes {
         this.ftvID = ftvID;
         this.aID = aID;
         this.rreID = rreID;
+//        this.photos = photos;
     }
 
     public String getProductName() {
@@ -275,6 +276,14 @@ public class Cakes {
         this.rreID = rreID;
     }
 
+    public List<Cakes> getCartList() {
+        return cartList;
+    }
+
+    public void setCartList(List<Cakes> cartList) {
+        this.cartList = cartList;
+    }
+
     private List<Cakes> cartList = new ArrayList<>();
 
     public void add(Cakes cartList){
@@ -309,20 +318,21 @@ public class Cakes {
                 "->" + ftvID +
                 "->" + aID +
                 "->" + rreID ;
+//                "->" + photos ;
 
     }
 
-    public String getPhotos() {
-        return photos;
-    }
-
-    public void setPhotos(String photos) {
-        this.photos = photos;
-    }
-    @Transient
-    public String getPhotosImagePath() {
-        if (photos == null || pID == null) return null;
-
-        return "./KU_Premium_Webrunner/src/main/resources/static/images/" + pID + "/" + photos;
-    }
+//    public String getPhotos() {
+//        return photos;
+//    }
+//
+//    public void setPhotos(String photos) {
+//        this.photos = photos;
+//    }
+//    @Transient
+//    public String getPhotosImagePath() {
+//        if (photos == null || pID == null) return null;
+//
+//        return "./KU_Premium_Webrunner/src/main/resources/static/images/" + pID + "/" + photos;
+//    }
 }

@@ -44,34 +44,35 @@
         <h2 th:text="${message}"/>
     </div>
 
-<!--    <div>-->
-<!--        <form method="POST" enctype="multipart/form-data" action="/upload_files/handle_upload">-->
-<!--            <table>-->
-<!--                <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>-->
-<!--                <tr><td></td><td><input type="submit" value="Upload" /></td></tr>-->
-<!--            </table>-->
-<!--        </form>-->
-<!--    </div>-->
+    <div>
+        <form method="POST" enctype="multipart/form-data" action="/upload_files/handle_upload">
+            <table>
+                <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+                <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+            </table>
+        </form>
+    </div>
 
-<!--    <div>-->
-<!--        <ul>-->
-<!--            <li th:each="file : ${files}">-->
-<!--                <a th:href="${file}" th:text="${file}" />-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </div>-->
-    <form th:action="@{/users/save}"
-          th:object="${user}" method="post"
-          enctype="multipart/form-data">
-        <div>
+    <div>
+        <ul>
+            <li th:each="file : ${files}">
+                <a th:href="${file}" th:text="${file}" />
+            </li>
+        </ul>
+    </div>
 
-            <label>Photos: </label>
-            <input type="file" name="image" accept="image/png, image/jpeg" />
+<!--    <form th:action="@{/cakes/save}"-->
+<!--          th:object="${cakes}" method="post"-->
+<!--          enctype="multipart/form-data">-->
+<!--        <div>-->
 
-        </div>
+<!--            <label>Photos: </label>-->
+<!--            <input type="file" name="image" accept="image/png, image/jpeg" />-->
 
-        <img th:src="@{${cakes.photosImagePath}}" />
-    </form>
+<!--        </div>-->
+
+<!--        <img th:src="@{${cakes.photosImagePath}}" />-->
+<!--    </form>-->
 
     <form th:action="@{/cakes/add}" method="POST">
         <div class="row mb-4">

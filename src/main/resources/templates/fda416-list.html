@@ -68,13 +68,13 @@
         <div class="col text-start">
             <div class="mb-3">
                 <div sec:authorize="hasRole('ADMIN')">
-                    <a class="btn btn-danger" style="padding-top: 50px; margin-left: 35px; margin-bottom: -25px; font-weight: bold" th:href="@{/fda414/add}">Add FDA No.414</a>
+                    <a class="btn btn-danger" style="padding-top: 50px; margin-left: 35px; margin-bottom: -25px; font-weight: bold" th:href="@{/fda416/add}">Add FDA No.416</a>
                 </div>
             </div>
         </div>
 
         <div class="col text-center">
-            <h1 class="display-6 text-center" style="font-weight: bold; padding-left:-50px; padding-top: 30px; margin-bottom: -25px; text-align:center; color: black ">Announcement <br>FDA No.414</h1>
+            <h1 class="display-6 text-center" style="font-weight: bold; padding-left:-50px; padding-top: 30px; margin-bottom: -25px; text-align:center; color: black ">Announcement <br>FDA No.416</h1>
         </div>
 
 
@@ -131,25 +131,31 @@
             <div>
                 <tr scope="column" style="text-align: center">
                     <th onclick="sortTable(0)">Product Name</th>
-                    <th onclick="sortTable(1)">ชื่อผู้ตรวจสอบตามประกาศ อ.ย.414</th>
-                    <th onclick="sortTable(2)">เกณฑ์ผลการตรวจสารประกอบตะกั่ว</th>
-                    <th onclick="sortTable(3)">ผลการตรวจสารประกอบตะกั่ว</th>
-                    <th onclick="sortTable(4)">สรุปผลการตรวจสอบตะกั่ว</th>
+                    <th onclick="sortTable(1)">ชื่อผู้ตรวจสอบตามประกาศ อ.ย.416</th>
+                    <th onclick="sortTable(2)">เกณฑ์การตรวจแบคทีเรีย Salmonella</th>
+                    <th onclick="sortTable(3)">ผลการตรวจแบคทีเรีย Salmonella</th>
+                    <th onclick="sortTable(4)">สรุปผลการตรวจสอบ Salmonella</th>
+                    <th onclick="sortTable(5)">เกณฑ์การตรวจแบคทีเรีย S.areus</th>
+                    <th onclick="sortTable(6)">ผลการตรวจแบคทีเรีย S.areus</th>
+                    <th onclick="sortTable(7)">สรุปผลการตรวจสอบ S.areus</th>
                 </tr>
             </div>
             </thead>
             <tbody>
-            <div th:each="order : ${rings8}">
+            <div th:each="order : ${rings9}">
                 <tr id="list" class="ord"  scope="row">
 
                     <td style="text-align: center" th:text="${order.productName}"></td>
                     <td style="text-align: center" th:text="${order.r_name}"></td>
-                    <td style="text-align: center" th:text="${order.lead_s}"></td>
-                    <td style="text-align: center" th:text="${order.lead_c}"></td>
-                    <td style="text-align: center" th:text="${order.lead_f}"></td>
+                    <td style="text-align: center" th:text="${order.salla_s}"></td>
+                    <td style="text-align: center" th:text="${order.salla_c}"></td>
+                    <td style="text-align: center" th:text="${order.salla_f}"></td>
+                    <td style="text-align: center" th:text="${order.sareus_s}"></td>
+                    <td style="text-align: center" th:text="${order.sareus_c}"></td>
+                    <td style="text-align: center" th:text="${order.sareus_f}"></td>
 
                     <td sec:authorize="hasRole('ADMIN')" style="text-align: center">
-                        <a sec:authorize="hasRole('ADMIN')" style="text-align: center" th:href="@{/fda414/edit/{id}(id=${order.fda414ID})}" ><button type="button" class="btn btn-danger">Edit</button></a>
+                        <a sec:authorize="hasRole('ADMIN')" style="text-align: center" th:href="@{/fda416/edit/{id}(id=${order.fda416ID})}" ><button type="button" class="btn btn-danger">Edit</button></a>
 <!--                        <a th:href="@{/certificate/remove/{id}(id=${order.prodCertificateID})}" ><button type="button" class="btn btn-danger">Delete</button></a>-->
                     </td>
                 </tr>

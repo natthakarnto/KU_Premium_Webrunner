@@ -109,7 +109,7 @@
             <div class="col text-center">
                 <div class="mb-3">
                     <div id="check416-link" class="text-center">
-                        <a style="text-align: center" th:href="@{/fda356/list}" ><button type="button" class="btn btn-danger">ประกาศ อ.ย. ฉบับที่ 416</button></a>
+                        <a style="text-align: center" th:href="@{/fda416/list}" ><button type="button" class="btn btn-danger">ประกาศ อ.ย. ฉบับที่ 416</button></a>
                     </div>
                 </div>
             </div>
@@ -117,7 +117,7 @@
             <div class="col text-center">
                 <div class="mb-3">
                     <div id="check418-link" class="text-center">
-                        <a style="text-align: center" th:href="@{/fda356/list}" ><button type="button" class="btn btn-danger">ประกาศ อ.ย. ฉบับที่ 418</button></a>
+                        <a style="text-align: center" th:href="@{/fda418/list}" ><button type="button" class="btn btn-danger">ประกาศ อ.ย. ฉบับที่ 418</button></a>
                     </div>
                 </div>
             </div>
@@ -132,17 +132,17 @@
                 <tr scope="column" style="text-align: center">
                     <th onclick="sortTable(0)">Product Name</th>
                     <th onclick="sortTable(1)">ชื่อผู้ตรวจสอบตามประกาศ อ.ย.356</th>
-                    <th onclick="sortTable(2)">เกณฑ์ค่า PH</th>
-                    <th onclick="sortTable(3)">ผลการตรวจค่า PH</th>
-                    <th onclick="sortTable(4)">สรุปผลการตรวจสอบค่า PH</th>
-                    <th onclick="sortTable(5)">เกณฑ์การตรวจ<br>โคลิฟอร์ม</th>
-                    <th onclick="sortTable(6)">ผลการตรวจ<br>โคลิฟอร์ม</th>
-                    <th onclick="sortTable(7)">สรุปผลการตรวจสอบ<br>โคลิฟอร์ม</th>
-                    <th onclick="sortTable(8)">เกณฑ์การตรวจยีสต์และรา</th>
-                    <th onclick="sortTable(9)">ผลการตรวจยีสต์และรา</th>
-                    <th onclick="sortTable(10)">ปริมาณยีสต์</th>
-                    <th onclick="sortTable(11)">ปริมาณรา</th>
-                    <th onclick="sortTable(12)">สรุปผลการตรวจสอบยีสต์และรา</th>
+<!--                    <th onclick="sortTable(2)">เกณฑ์ค่า PH</th>-->
+                    <th onclick="sortTable(2)">ผลการตรวจค่า PH</th>
+                    <th onclick="sortTable(3)">สรุปผลการตรวจสอบค่า PH</th>
+<!--                    <th onclick="sortTable(5)">เกณฑ์การตรวจ<br>โคลิฟอร์ม</th>-->
+                    <th onclick="sortTable(4)">ผลการตรวจโคลิฟอร์ม</th>
+                    <th onclick="sortTable(5)">สรุปผลการตรวจสอบโคลิฟอร์ม</th>
+<!--                    <th onclick="sortTable(8)">เกณฑ์การตรวจยีสต์และรา</th>-->
+                    <th onclick="sortTable(6)">ผลการตรวจยีสต์และรา</th>
+                    <th onclick="sortTable(7)">ปริมาณยีสต์</th>
+                    <th onclick="sortTable(8)">ปริมาณรา</th>
+                    <th onclick="sortTable(9)">สรุปผลการตรวจสอบยีสต์และรา</th>
                 </tr>
             </div>
             </thead>
@@ -152,20 +152,20 @@
 
                     <td style="text-align: center" th:text="${order.productName}"></td>
                     <td style="text-align: center" th:text="${order.r_name}"></td>
-                    <td style="text-align: center" th:text="${order.ph_value_s}"></td>
+<!--                    <td style="text-align: center" th:text="${order.ph_value_s}"></td>-->
                     <td style="text-align: center" th:text="${order.ph_value_c}"></td>
                     <td style="text-align: center" th:text="${order.ph_value_f}"></td>
-                    <td style="text-align: center" th:text="${order.coli_s}"></td>
+<!--                    <td style="text-align: center" th:text="${order.coli_s}"></td>-->
                     <td style="text-align: center" th:text="${order.coli_c}"></td>
                     <td style="text-align: center" th:text="${order.coli_f}"></td>
-                    <td style="text-align: center" th:text="${order.yeast_mold_s}"></td>
+<!--                    <td style="text-align: center" th:text="${order.yeast_mold_s}"></td>-->
                     <td style="text-align: center" th:text="${order.yeast_mold_r}"></td>
                     <td style="text-align: center" th:text="${order.yeast_c}"></td>
                     <td style="text-align: center" th:text="${order.mold_c}"></td>
                     <td style="text-align: center" th:text="${order.yeast_mold_f}"></td>
 
-                    <td sec:authorize="hasRole('USER')" style="text-align: center">
-                        <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/fda356/edit/{id}(id=${order.fda356ID})}" ><button type="button" class="btn btn-danger">Edit</button></a>
+                    <td sec:authorize="hasRole('ADMIN')" style="text-align: center">
+                        <a sec:authorize="hasRole('ADMIN')" style="text-align: center" th:href="@{/fda356/edit/{id}(id=${order.fda356ID})}" ><button type="button" class="btn btn-danger">Edit</button></a>
 <!--                        <a th:href="@{/certificate/remove/{id}(id=${order.prodCertificateID})}" ><button type="button" class="btn btn-danger">Delete</button></a>-->
                     </td>
                 </tr>
