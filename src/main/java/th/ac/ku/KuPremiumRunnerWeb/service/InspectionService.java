@@ -65,17 +65,17 @@ public class InspectionService {
             rings.get(i).add(ring);
         }
     }
-//
-//    public boolean checkNameFDA(String name){
-//        this.OrderConfig();
-//        List<FDA416> cart2 = new ArrayList<>();
-//        for (int i =0; i<rings.size();i++) {
-//            if (name.equals(rings.get(i).getProductName())) {
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
+
+    public boolean checkNameInspection(String name){
+        this.OrderConfig();
+        List<Inspection> cart2 = new ArrayList<>();
+        for (int i =0; i<rings.size();i++) {
+            if (name.equals(rings.get(i).getProductName())) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     public List<Inspection> getDummy(String name, String nameRing){ //getAll
         this.OrderConfig();

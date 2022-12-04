@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>The Premium @KU Website</title>
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/myScript.js}"></script>
+    <script>
+        function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[2];
+                if (td)
+                {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().localeCompare(filter) === 0)
+                    {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<style>
+    body
+    {
+        /*            background-image: url('https://wallpaperaccess.com/full/2029165.jpg');*/
+        background: url('https://cdn.discordapp.com/attachments/800934715573010436/1039196060406521916/f2f2f7.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    #FDA365 .container #login-row #login-column #login-box {
+        margin-top: 50px;
+        max-width: 1500px;
+        height: 300px;
+        border: 1px solid #9C9C9C;
+        /*border-radius: 10px;*/
+        /*background-color: #D9D9D9;*/
+        background-color: white;
+    }
+    #FDA365 .container #login-row #login-column #login-box #login-form {
+        padding: 20px;
+    }
+    #FDA365 .container #login-row #login-column #login-box #login-form #register-link {
+        margin-top: -85px;
+    }
+</style>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<div id="Audit">
+<div class="container" style="background-color: white; margin-top:50px; margin-bottom: 35px; padding-bottom: 20px; padding-left: 15px; padding-right: 15px;border-radius: 25px;">
+
+    <div class="row mb-4">
+        <div class="col text-start">
+            <div class="mb-3">
+                <div sec:authorize="hasRole('ADMIN')">
+                    <a class="btn btn-danger" style="padding-top: 50px; margin-left: 35px; margin-bottom: 0px; font-weight: bold" th:href="@{/audit/add}">Add Standard Audit Results</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col text-center">
+            <h1 class="display-6 text-center" style="font-weight: bold; padding-left:-50px; padding-top: 30px; margin-bottom: 0px; text-align:center; color: black ">Product Standard Audit Results List</h1>
+        </div>
+
+
+        <div class="col text-end">
+            <div class="mb-3">
+                <a class="btn btn-danger" style="margin-right: 35px; margin-top: 60px; padding-bottom: -10px; margin-bottom: 0px; font-weight: bold" th:href="@{/}">Back to Homepage</a>
+            </div>
+        </div>
+    </div>
+
+<!--    <marquee style="margin-top: -25px; margin-bottom: -15px">Notification: "Able to create only 1 FDA standard"</marquee>-->
+
+        <div class="alert alert-danger" style="text-align: center" role="alert" th:text="${error}" th:if="${error}"></div>
+
+        <table id = "myTable" class="table table-striped table-bordered" >
+            <thead>
+            <div>
+                <tr scope="column" style="text-align: center">
+                    <th onclick="sortTable(0)">Product Name</th>
+                    <th onclick="sortTable(1)">สรุปผลตรวจตามประกาศอ.ย. 356</th>
+                    <th onclick="sortTable(2)">ชื่อผู้ตรวจสอบตามประกาศอ.ย. 356</th>
+                    <th onclick="sortTable(3)">สรุปผลตรวจตามประกาศอ.ย. 414</th>
+                    <th onclick="sortTable(4)">ชื่อผู้ตรวจสอบตามประกาศอ.ย. 414</th>
+                    <th onclick="sortTable(5)">สรุปผลตรวจตามประกาศอ.ย. 416</th>
+                    <th onclick="sortTable(6)">ชื่อผู้ตรวจสอบตามประกาศอ.ย. 416</th>
+                    <th onclick="sortTable(7)">สรุปผลตรวจตามประกาศอ.ย. 418</th>
+                    <th onclick="sortTable(8)">ชื่อผู้ตรวจสอบตามประกาศอ.ย. 418</th>
+                </tr>
+            </div>
+            </thead>
+            <tbody>
+            <div th:each="order : ${rings12}">
+                <tr id="list" class="ord"  scope="row">
+
+                    <td style="text-align: center" th:text="${order.productName}"></td>
+                    <td style="text-align: center" th:text="${order.fda_356_Res}"></td>
+                    <td style="text-align: center" th:text="${order.fda_356_Cer}"></td>
+                    <td style="text-align: center" th:text="${order.fda_414_Res}"></td>
+                    <td style="text-align: center" th:text="${order.fda_414_Cer}"></td>
+                    <td style="text-align: center" th:text="${order.fda_416_Res}"></td>
+                    <td style="text-align: center" th:text="${order.fda_416_Cer}"></td>
+                    <td style="text-align: center" th:text="${order.fda_418_Res}"></td>
+                    <td style="text-align: center" th:text="${order.fda_418_Cer}"></td>
+
+                    <td sec:authorize="hasRole('ADMIN')" style="text-align: center">
+                        <a sec:authorize="hasRole('ADMIN')" style="text-align: center" th:href="@{/audit/edit/{id}(id=${order.auditID})}" ><button type="button" class="btn btn-danger">Edit</button></a>
+<!--                        <a th:href="@{/certificate/remove/{id}(id=${order.prodCertificateID})}" ><button type="button" class="btn btn-danger">Delete</button></a>-->
+                    </td>
+                </tr>
+            </div>
+            </tbody>
+
+        </table>
+        </form>
+    </div>
+</div>
+
+<script>
+    function sortTable(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("myTable");
+        switching = true;
+        //Set the sorting direction to ascending:
+        dir = "asc";
+        /*Make a loop that will continue until
+        no switching has been done:*/
+        while (switching) {
+            //start by saying: no switching is done:
+            switching = false;
+            rows = table.rows;
+            /*Loop through all table rows (except the
+            first, which contains table headers):*/
+            for (i = 1; i < (rows.length - 1); i++) {
+                //start by saying there should be no switching:
+                shouldSwitch = false;
+                /*Get the two elements you want to compare,
+                one from current row and one from the next:*/
+                x = rows[i].getElementsByTagName("TD")[n];
+                y = rows[i + 1].getElementsByTagName("TD")[n];
+                /*check if the two rows should switch place,
+                based on the direction, asc or desc:*/
+                if (dir == "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch= true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                /*If a switch has been marked, make the switch
+                and mark that a switch has been done:*/
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                //Each time a switch is done, increase this count by 1:
+                switchcount ++;
+            } else {
+                /*If no switching has been done AND the direction is "asc",
+                set the direction to "desc" and run the while loop again.*/
+                if (switchcount == 0 && dir == "asc") {
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+</script>
+</body>
+<style>
+    form {
+        width: 50%;
+        margin: 60px auto;
+        background: #efefef;
+        padding: 50px 100px 50px 100px;
+        text-align: center;
+        -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+        box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+    }
+    label {
+        display: block;
+        position: relative;
+        margin: 30px 0px;
+    }
+    .label-txt {
+        position: absolute;
+        top: -1.6em;
+        padding: 10px;
+        font-family: sans-serif;
+        font-size: .8em;
+        letter-spacing: 1px;
+        color: rgb(120,120,120);
+        transition: ease .3s;
+    }
+    .input {
+        width: 100%;
+        padding: 10px;
+        background: transparent;
+        border: none;
+        outline: none;
+    }
+
+    .line-box {
+        position: relative;
+        width: 100%;
+        height: 2px;
+        background: #BCBCBC;
+    }
+
+    .line {
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        top: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #8BC34A;
+        transition: ease .6s;
+    }
+
+    .input:focus + .line-box .line {
+        width: 100%;
+    }
+
+    .label-active {
+        top: -3em;
+    }
+</style>
+</html>

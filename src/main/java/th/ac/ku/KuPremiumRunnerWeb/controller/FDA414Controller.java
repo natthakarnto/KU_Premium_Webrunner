@@ -75,8 +75,13 @@ public class FDA414Controller {
         // พอรับเข้ามาจะเอาเข้า List
         if(checkNum(fda414.getLead_s(), fda414.getLead_c())) {
             if (checkAddress(fda414.getProductName(), fda414.getR_name(), fda414.getLead_s(), fda414.getLead_c(), fda414.getLead_f())) {
-                fda414Service.addFDA414(fda414);
-                return "redirect:/fda414/list";
+                if(fda414Service.checkNameFDA(fda414.getProductName())) {
+                    fda414Service.addFDA414(fda414);
+                    return "redirect:/fda414/list";
+                } else {
+                    redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
+                    return "redirect:/fda414/add";
+                }
             } else {
                 redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
                 return "redirect:/fda414/add";

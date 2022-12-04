@@ -84,8 +84,13 @@ public class FDA418Controller {
                     , fda418.getSorbic_c(), fda418.getBenzoic_sorbic_f(), fda418.getSynt_s(), fda418.getSynt_c(), fda418.getSynt_f()
             , fda418.getSod_s(), fda418.getSod_c(), fda418.getSod_f(), fda418.getPotas_s(), fda418.getPotas_c(), fda418.getPotas_f()
             , fda418.getPlate_s(), fda418.getPlate_c(), fda418.getPlate_f())) {
-                fda418Service.addFDA418(fda418);
-                return "redirect:/fda418/list";
+                if(fda418Service.checkNameFDA(fda418.getProductName())) {
+                    fda418Service.addFDA418(fda418);
+                    return "redirect:/fda418/list";
+                } else {
+                    redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
+                    return "redirect:/fda418/add";
+                }
             } else {
                 redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
                 return "redirect:/fda418/add";

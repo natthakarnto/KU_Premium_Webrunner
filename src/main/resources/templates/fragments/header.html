@@ -91,9 +91,10 @@
                 <li sec:authorize="hasRole('ADMIN')" class="nav-item">
                     <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/inspection/list}">Inspection-Data</a>
                 </li>
-<!--                <li sec:authorize="hasRole('USER')" class="nav-item">-->
-<!--                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/products/audit_results}">Audit-Results</a>-->
-<!--                </li>-->
+
+                <li sec:authorize="hasRole('ADMIN')" class="nav-item">
+                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/audit/list}">Audit-Results</a>
+                </li>
 
                 <li sec:authorize="hasRole('ADMIN')" class="nav-item">
                     <a class="nav-link" style="color: whitesmoke ;font-size: 20px;font-weight: bold" th:href="@{/order}">Approve-Product</a>
