@@ -48,11 +48,11 @@ public class FDA418Controller {
 //                }
             } else {
                 redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
-                return "redirect:/fda418/edit";
+                return "redirect:/fda418/list";
             }
         } else {
             redirectAttrs.addFlashAttribute("error", "negative number is not allowed!");
-            return "redirect:/fda418/edit";
+            return "redirect:/fda418/list";
         }
     }
 
@@ -92,7 +92,7 @@ public class FDA418Controller {
             }
         } else {
             redirectAttrs.addFlashAttribute("error", "negative number is not allowed!");
-            return "redirect:/fda418/edit";
+            return "redirect:/fda418/add";
         }
     }
 

@@ -70,7 +70,7 @@
                 <th onclick="sortTable(3)">Product Owner Phone</th>
                 <th onclick="sortTable(4)">Status</th>
                 <th onclick="sortTable(5)">Approved-Date</th>
-                <th onclick="sortTable(6)">Message</th>
+<!--                <th onclick="sortTable(6)">Message</th>-->
             </tr>
         </div>
         </thead>
@@ -88,14 +88,14 @@
                 <td th:text="${order.mobile}"></td>
                 <td th:text="${order.status}"></td>
                 <td th:text="${order.approvedDate}"></td>
-                <td th:text="${order.message}"></td>
+<!--                <td th:text="${order.message}"></td>-->
 
                 <td sec:authorize="hasRole('ADMIN')" style="text-align: center">
                     <a th:href="@{/order/list/edit/{id}(id=${order.getOrderId()})}" >
-                        <button type="button" class="btn btn-success" style="margin-bottom: 5px" onclick = "return confirm('Would you like to confirm?')">Approve</button>
+                        <button type="button" class="btn btn-success" style="margin-bottom: 5px" onclick = "return confirm('Would you like to confirm?')">Approve</button> <br>
                     </a>
                     <a th:href="@{/order/list/unapproved/{id}(id=${order.getOrderId()})}" >
-                        <button type="button" class="btn btn-warning" style="color: white; margin-bottom: 5px" onclick = "return confirm('Would you like to confirm?')">Unapproved</button><br>
+                        <button type="button" class="btn btn-warning" style="color: white; margin-bottom: 5px" onclick = "return confirm('Would you like to confirm?')">Unapproved</button> <br>
                     </a>
                     <a th:href="@{/order/list/remove/{id}(id=${order.getOrderId()})}" >
                         <button type="button" class="btn btn-danger" onclick = "return confirm('Would you like to confirm?')">Delete</button>

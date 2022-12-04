@@ -88,9 +88,9 @@
                     <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/fda356/list}">FDA</a>
                 </li>
 
-<!--                <li sec:authorize="hasRole('USER')" class="nav-item">-->
-<!--                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/products/inspection}">Inspection-Data</a>-->
-<!--                </li>-->
+                <li sec:authorize="hasRole('ADMIN')" class="nav-item">
+                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/inspection/list}">Inspection-Data</a>
+                </li>
 <!--                <li sec:authorize="hasRole('USER')" class="nav-item">-->
 <!--                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/products/audit_results}">Audit-Results</a>-->
 <!--                </li>-->
