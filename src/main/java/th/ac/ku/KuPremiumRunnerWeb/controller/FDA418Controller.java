@@ -1,5 +1,6 @@
 package th.ac.ku.KuPremiumRunnerWeb.controller;
 
+import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -39,13 +40,13 @@ public class FDA418Controller {
                     , fda418.getSorbic_c(), fda418.getBenzoic_sorbic_f(), fda418.getSynt_s(), fda418.getSynt_c(), fda418.getSynt_f()
                     , fda418.getSod_s(), fda418.getSod_c(), fda418.getSod_f(), fda418.getPotas_s(), fda418.getPotas_c(), fda418.getPotas_f()
                     , fda418.getPlate_s(), fda418.getPlate_c(), fda418.getPlate_f())) {
-//                if(fda418Service.checkNameFDA(fda418.getProductName())) {
-                    fda418Service.addFDA418(fda418);
+                if(checkTrueFalse(fda418.getBenzoic_sorbic_f(), fda418.getSynt_f(), fda418.getSod_f(), fda418.getPotas_f(), fda418.getPlate_f())) {
+                    fda418Service.update(fda418);
                     return "redirect:/fda418/list";
-//                } else {
-//                    redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
-//                    return "redirect:/fda418/add";
-//                }
+                }else {
+                    redirectAttrs.addFlashAttribute("error", "Please type only Pass or Not Pass!");
+                    return "redirect:/fda418/list";
+                }
             } else {
                 redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
                 return "redirect:/fda418/list";
@@ -85,8 +86,13 @@ public class FDA418Controller {
             , fda418.getSod_s(), fda418.getSod_c(), fda418.getSod_f(), fda418.getPotas_s(), fda418.getPotas_c(), fda418.getPotas_f()
             , fda418.getPlate_s(), fda418.getPlate_c(), fda418.getPlate_f())) {
                 if(fda418Service.checkNameFDA(fda418.getProductName())) {
-                    fda418Service.addFDA418(fda418);
-                    return "redirect:/fda418/list";
+                    if(checkTrueFalse(fda418.getBenzoic_sorbic_f(), fda418.getSynt_f(), fda418.getSod_f(), fda418.getPotas_f(), fda418.getPlate_f())) {
+                        fda418Service.addFDA418(fda418);
+                        return "redirect:/fda418/list";
+                    }else {
+                        redirectAttrs.addFlashAttribute("error", "Please type only Pass or Not Pass!");
+                        return "redirect:/fda418/add";
+                    }
                 } else {
                     redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
                     return "redirect:/fda418/add";
@@ -99,6 +105,17 @@ public class FDA418Controller {
             redirectAttrs.addFlashAttribute("error", "negative number is not allowed!");
             return "redirect:/fda418/add";
         }
+    }
+
+    public boolean checkTrueFalse(String benzoic_sorbic_f, String synt_f, String sod_f, String potas_f, String plate_f) {
+        if (benzoic_sorbic_f.equals("Pass") || benzoic_sorbic_f.equals("Not Pass") || benzoic_sorbic_f.equals("pass") || benzoic_sorbic_f.equals("not pass") || benzoic_sorbic_f.equals("NotPass") ||
+                synt_f.equals("Pass") || synt_f.equals("Not Pass") || synt_f.equals("pass") || synt_f.equals("not pass") || synt_f.equals("NotPass") ||
+                sod_f.equals("Pass") || sod_f.equals("Not Pass") || sod_f.equals("pass") || sod_f.equals("not pass") || sod_f.equals("NotPass") ||
+                potas_f.equals("Pass") || potas_f.equals("Not Pass") || potas_f.equals("pass") || potas_f.equals("not pass") || potas_f.equals("NotPass") ||
+                plate_f.equals("Pass") || plate_f.equals("Not Pass") || plate_f.equals("pass") || plate_f.equals("not pass") || plate_f.equals("NotPass")) {
+            return true;
+        }
+        return false;
     }
 
     public boolean checkNum(double sum_benzoic_sorbic, double benzoic_c, double sorbic_c, double synt_s, double synt_c, double sod_s, double sod_c, double potas_s, double potas_c, double plate_s, double plate_c){ //Method ดักห้ามใส่จำนวนเป็น 0

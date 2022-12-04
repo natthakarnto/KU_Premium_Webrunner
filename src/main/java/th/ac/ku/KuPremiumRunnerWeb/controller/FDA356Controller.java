@@ -37,15 +37,25 @@ public class FDA356Controller {
             if (checkAddress(fda356.getProductName(), fda356.getR_name(), fda356.getPh_value_s(), fda356.getPh_value_c(), fda356.getPh_value_f()
                     , fda356.getColi_s(), fda356.getColi_c(), fda356.getColi_f(), fda356.getYeast_mold_s(), fda356.getYeast_mold_r()
                     , fda356.getYeast_c(), fda356.getMold_c(), fda356.getYeast_mold_f())) {
-                fda356Service.update(fda356);
-                return "redirect:/fda356/list";
+//                if(fda356Service.checkNameFDA(fda356.getProductName())) {
+                    if(checkTrueFalse(fda356.getPh_value_f(), fda356.getColi_f(), fda356.getYeast_mold_f())) {
+                        fda356Service.update(fda356);
+                        return "redirect:/fda356/list";
+                    }else {
+                        redirectAttrs.addFlashAttribute("error", "Please type only Pass or Not Pass!");
+                        return "redirect:/fda356/list";
+                    }
+//                } else {
+//                    redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
+//                    return "redirect:/fda356/add";
+//                }
             } else {
                 redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
-                return "redirect:/fda356/edit";
+                return "redirect:/fda356/list";
             }
         } else {
             redirectAttrs.addFlashAttribute("error", "negative number is not allowed!");
-            return "redirect:/fda356/edit";
+            return "redirect:/fda356/list";
         }
     }
 
@@ -76,8 +86,13 @@ public class FDA356Controller {
                     , fda356.getColi_s(), fda356.getColi_c(), fda356.getColi_f(), fda356.getYeast_mold_s(), fda356.getYeast_mold_r()
                     , fda356.getYeast_c(), fda356.getMold_c(), fda356.getYeast_mold_f())) {
                 if(fda356Service.checkNameFDA(fda356.getProductName())) {
-                    fda356Service.addFDA356(fda356);
-                    return "redirect:/fda356/list";
+                    if(checkTrueFalse(fda356.getPh_value_f(), fda356.getColi_f(), fda356.getYeast_mold_f())) {
+                        fda356Service.addFDA356(fda356);
+                        return "redirect:/fda356/list";
+                    }else {
+                        redirectAttrs.addFlashAttribute("error", "Please type only Pass or Not Pass!");
+                        return "redirect:/fda356/add";
+                    }
                 } else {
                     redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
                     return "redirect:/fda356/add";
@@ -107,6 +122,17 @@ public class FDA356Controller {
             || yeast_mold_f.equals("")){
             return false;
         }return true;
+    }
+
+    public boolean checkTrueFalse(String ph_value_f, String coli_f, String yeast_mold_f){
+        if (ph_value_f.equals("Pass") || coli_f.equals("Pass") || yeast_mold_f.equals("Pass") ||
+                ph_value_f.equals("Not Pass") || coli_f.equals("Not Pass") || yeast_mold_f.equals("Not Pass") ||
+                ph_value_f.equals("pass") || coli_f.equals("pass") || yeast_mold_f.equals("pass") ||
+                ph_value_f.equals("not pass") || coli_f.equals("not pass") || yeast_mold_f.equals("not pass") ||
+                ph_value_f.equals("NotPass") || coli_f.equals("NotPass") || yeast_mold_f.equals("NotPass")) {
+            return true;
+        }
+        return false;
     }
 
     @GetMapping("/remove/{id}")

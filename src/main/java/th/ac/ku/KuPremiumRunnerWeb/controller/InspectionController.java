@@ -32,25 +32,19 @@ public class InspectionController {
 
     @PostMapping("/edit")
     public String edit(@ModelAttribute Inspection inspection, Model model, RedirectAttributes redirectAttrs) {
-//        if(checkNum(fda418.getSum_benzoic_sorbic(), fda418.getBenzoic_c(), fda418.getSorbic_c(), fda418.getSynt_s(), fda418.getSynt_c()
-//                , fda418.getSod_s(), fda418.getSod_c(), fda418.getPotas_s(), fda418.getPotas_c(), fda418.getPlate_s(), fda418.getPlate_c())) {
         if (checkAddress(inspection.getProductName(), inspection.getSent_Date(), inspection.getR_Name(), inspection.getR_Rank()
                 , inspection.getNote(), inspection.getStatus())) {
-//                if(fda418Service.checkNameFDA(fda418.getProductName())) {
-                inspectionService.addInspection(inspection);
+            if(checkTrueFalse(inspection.getStatus())) {
+                inspectionService.update(inspection);
                 return "redirect:/inspection/list";
-//                } else {
-//                    redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
-//                    return "redirect:/fda418/add";
-//                }
             } else {
-                redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
+                redirectAttrs.addFlashAttribute("error", "Please type only Done or Not Done!");
                 return "redirect:/inspection/list";
             }
-//        } else {
-//            redirectAttrs.addFlashAttribute("error", "negative number is not allowed!");
-//            return "redirect:/inspection/edit";
-//        }
+        } else {
+            redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
+            return "redirect:/inspection/list";
+        }
     }
 
     @GetMapping("/list") //getAll
@@ -77,16 +71,29 @@ public class InspectionController {
             if (checkAddress(inspection.getProductName(), inspection.getSent_Date(), inspection.getR_Name(), inspection.getR_Rank()
                     , inspection.getNote(), inspection.getStatus())) {
                 if(inspectionService.checkNameInspection(inspection.getProductName())) {
-                    inspectionService.addInspection(inspection);
-                    return "redirect:/audit/list";
+                    if(checkTrueFalse(inspection.getStatus())) {
+                        inspectionService.addInspection(inspection);
+                        return "redirect:/inspection/list";
+                    }else {
+                        redirectAttrs.addFlashAttribute("error", "Please type only Done or Not Done!");
+                        return "redirect:/inspection/add";
+                    }
                 } else {
                     redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
-                    return "redirect:/audit/add";
+                    return "redirect:/inspection/add";
                 }
             } else {
                 redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
                 return "redirect:/inspection/add";
             }
+    }
+
+    public boolean checkTrueFalse(String status) {
+        if (status.equals("Done") || status.equals("Not Done") || status.equals("done") || status.equals("not done") ||
+                status.equals("notdone") || status.equals("Not done") || status.equals("not Done")) {
+            return true;
+        }
+        return false;
     }
 
     public boolean checkAddress(String productName, String sent_Date, String r_Name, String r_Rank, String note, String status){

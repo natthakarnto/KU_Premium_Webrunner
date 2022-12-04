@@ -55,6 +55,7 @@
                                 <p class="card-text" style="text-align:left;" th:text="${'Product Quantity : ' + cakes.productQuantity + ' Pieces' }">Quantity</p>
                                 <p class="card-text" style="text-align:left;" th:text="${'Product Price : ' + cakes.price + ' Baht'}" th:value="${cakes.price}">Price</p>
 
+                                <input hidden type="text" th:name="productName" th:value="${cakes.productName}">
                                 <input hidden type="text" th:name="name" th:value="${cakes.pID}">
                                 <input hidden type="number" style="text-align: center;border-style: hidden;background:none;"  th:id="${cakes.pID+'increase2'}" th:name="num" value="0" />
                             </div>

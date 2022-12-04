@@ -30,7 +30,8 @@ public class CartController {
     }
 
     @PostMapping("")
-    public String addCart(@ModelAttribute("num") int number, @ModelAttribute("name") UUID id, Model model) {
+    public String addCart(@ModelAttribute("num") int number, @ModelAttribute("productName") String productName, @ModelAttribute("name") UUID id, Model model) {
+        System.out.println(productName);
         if (number == 0) {
 //            if (!exists(id, cartService.getCart(), number)) {
 //                cartService.addCart(id,number);

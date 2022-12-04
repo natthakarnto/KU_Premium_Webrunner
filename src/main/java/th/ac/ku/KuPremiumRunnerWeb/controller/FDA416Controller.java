@@ -35,22 +35,22 @@ public class FDA416Controller {
     @PostMapping("/edit")
     public String edit(@ModelAttribute FDA416 fda416, Model model, RedirectAttributes redirectAttrs) {
         if(checkNum(fda416.getSalla_s(), fda416.getSalla_c(), fda416.getSareus_s(), fda416.getSareus_c())) {
-            if (checkAddress(fda416.getProductName(), fda416.getR_name(), fda416.getSalla_s(), fda416.getSalla_c()
+            if(checkAddress(fda416.getProductName(), fda416.getR_name(), fda416.getSalla_s(), fda416.getSalla_c()
                     , fda416.getSalla_f(), fda416.getSareus_c(), fda416.getSareus_c(), fda416.getSareus_f())) {
-//                if(fda416Service.checkNameFDA(fda416.getProductName())) {
-                    fda416Service.addFDA416(fda416);
+                if(checkTrueFalse(fda416.getSalla_f(), fda416.getSareus_f())) {
+                    fda416Service.update(fda416);
                     return "redirect:/fda416/list";
-//                } else {
-//                    redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
-//                    return "redirect:/fda416/add";
-//                }
+                } else {
+                    redirectAttrs.addFlashAttribute("error", "Please type only Pass or Not Pass!");
+                    return "redirect:/fda416/list";
+                }
             } else {
                 redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
-                return "redirect:/fda416/edit";
+                return "redirect:/fda416/list";
             }
         } else {
             redirectAttrs.addFlashAttribute("error", "negative number is not allowed!");
-            return "redirect:/fda416/edit";
+            return "redirect:/fda416/list";
         }
     }
 
@@ -80,8 +80,13 @@ public class FDA416Controller {
             if (checkAddress(fda416.getProductName(), fda416.getR_name(), fda416.getSalla_s(), fda416.getSalla_c()
                     , fda416.getSalla_f(), fda416.getSareus_c(), fda416.getSareus_c(), fda416.getSareus_f())) {
                 if(fda416Service.checkNameFDA(fda416.getProductName())) {
-                    fda416Service.addFDA416(fda416);
-                    return "redirect:/fda416/list";
+                    if(checkTrueFalse(fda416.getSalla_f(), fda416.getSareus_f())) {
+                        fda416Service.addFDA416(fda416);
+                        return "redirect:/fda416/list";
+                    }else {
+                        redirectAttrs.addFlashAttribute("error", "Please type only Pass or Not Pass!");
+                        return "redirect:/fda416/add";
+                    }
                 } else {
                     redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
                     return "redirect:/fda416/add";
@@ -92,8 +97,16 @@ public class FDA416Controller {
             }
         } else {
             redirectAttrs.addFlashAttribute("error", "negative number is not allowed!");
-            return "redirect:/fda416/edit";
+            return "redirect:/fda416/add";
         }
+    }
+
+    public boolean checkTrueFalse(String salla_f, String sareus_f) {
+        if (salla_f.equals("Pass") || salla_f.equals("Not Pass") || salla_f.equals("pass") || salla_f.equals("not pass") || salla_f.equals("NotPass") ||
+                sareus_f.equals("Pass") || sareus_f.equals("Not Pass") || sareus_f.equals("pass") || sareus_f.equals("not pass") || sareus_f.equals("NotPass")) {
+            return true;
+        }
+        return false;
     }
 
     public boolean checkNum(double lead_s, double lead_c, double sareus_s, double sareus_c){ //Method ดักห้ามใส่จำนวนเป็น 0

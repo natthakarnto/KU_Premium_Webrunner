@@ -3,9 +3,7 @@ package th.ac.ku.KuPremiumRunnerWeb.model;
 public class Cart {
 
     private Cakes cakes;
-
 //    private int quantity;
-
 
     public Cart(Cakes cakes){
         this.cakes = cakes;

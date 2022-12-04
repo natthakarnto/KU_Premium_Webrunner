@@ -7,10 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import th.ac.ku.KuPremiumRunnerWeb.model.Audit;
-import th.ac.ku.KuPremiumRunnerWeb.model.Inspection;
 import th.ac.ku.KuPremiumRunnerWeb.service.AuditService;
 import th.ac.ku.KuPremiumRunnerWeb.service.CakesService;
-import th.ac.ku.KuPremiumRunnerWeb.service.InspectionService;
 import th.ac.ku.KuPremiumRunnerWeb.service.UserService;
 
 import java.util.UUID;
@@ -38,8 +36,13 @@ public class AuditController {
         if (checkAddress(audit.getProductName(), audit.getFda_356_Att(), audit.getFda_356_Res(), audit.getFda_356_Cer(), audit.getFda_414_Att(),
                 audit.getFda_414_Res(), audit.getFda_414_Cer(), audit.getFda_416_Att(), audit.getFda_416_Res(), audit.getFda_416_Cer(),
                 audit.getFda_418_Att(), audit.getFda_418_Res(), audit.getFda_418_Cer())) {
-            auditService.addAudit(audit);
-            return "redirect:/audit/list";
+            if(checkTrueFalse(audit.getFda_356_Cer(), audit.getFda_414_Cer(), audit.getFda_416_Cer(), audit.getFda_418_Cer())) {
+                auditService.update(audit);
+                return "redirect:/audit/list";
+            }else {
+                redirectAttrs.addFlashAttribute("error", "Please type only Pass or Not Pass!");
+                return "redirect:/audit/list";
+            }
         } else {
             redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
             return "redirect:/audit/list";
@@ -71,8 +74,13 @@ public class AuditController {
                 audit.getFda_414_Res(), audit.getFda_414_Cer(), audit.getFda_416_Att(), audit.getFda_416_Res(), audit.getFda_416_Cer(),
                 audit.getFda_418_Att(), audit.getFda_418_Res(), audit.getFda_418_Cer())) {
             if(auditService.checkNameAudit(audit.getProductName())) {
-                auditService.addAudit(audit);
-                return "redirect:/audit/list";
+                if(checkTrueFalse(audit.getFda_356_Cer(), audit.getFda_414_Cer(), audit.getFda_416_Cer(), audit.getFda_418_Cer())) {
+                    auditService.addAudit(audit);
+                    return "redirect:/audit/list";
+                }else {
+                    redirectAttrs.addFlashAttribute("error", "Please type only Pass or Not Pass!");
+                    return "redirect:/audit/add";
+                }
             } else {
                 redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
                 return "redirect:/audit/add";
@@ -81,6 +89,16 @@ public class AuditController {
             redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
             return "redirect:/audit/add";
         }
+    }
+
+    public boolean checkTrueFalse(String fda_356_Cer, String fda_414_Cer, String fda_416_Cer, String fda_418_Cer) {
+        if (fda_356_Cer.equals("True") || fda_356_Cer.equals("False") || fda_356_Cer.equals("true") || fda_356_Cer.equals("false") || fda_356_Cer.equals("T") || fda_356_Cer.equals("t") || fda_356_Cer.equals("F") || fda_356_Cer.equals("f") ||
+                fda_414_Cer.equals("True") || fda_414_Cer.equals("False") || fda_414_Cer.equals("true") || fda_414_Cer.equals("false") || fda_414_Cer.equals("T") || fda_414_Cer.equals("t") || fda_414_Cer.equals("F") || fda_414_Cer.equals("f") ||
+                fda_416_Cer.equals("True") || fda_416_Cer.equals("False") || fda_416_Cer.equals("true") || fda_416_Cer.equals("false") || fda_416_Cer.equals("T") || fda_416_Cer.equals("t") || fda_416_Cer.equals("F") || fda_416_Cer.equals("f") ||
+                fda_418_Cer.equals("True") || fda_418_Cer.equals("False") || fda_418_Cer.equals("true") || fda_418_Cer.equals("false") || fda_418_Cer.equals("T") || fda_418_Cer.equals("t") || fda_418_Cer.equals("F") || fda_418_Cer.equals("f")) {
+            return true;
+        }
+        return false;
     }
 
     public boolean checkAddress(String productName, String fda_356_Att, String fda_356_Res, String fda_356_Cer, String fda_414_Att,

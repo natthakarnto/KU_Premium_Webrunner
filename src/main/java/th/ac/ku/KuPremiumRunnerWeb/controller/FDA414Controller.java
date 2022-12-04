@@ -34,20 +34,20 @@ public class FDA414Controller {
     public String edit(@ModelAttribute FDA414 fda414, Model model, RedirectAttributes redirectAttrs) {
         if(checkNum(fda414.getLead_s(), fda414.getLead_c())) {
             if (checkAddress(fda414.getProductName(), fda414.getR_name(), fda414.getLead_s(), fda414.getLead_c(), fda414.getLead_f())) {
-//                if(fda414Service.checkNameFDA(fda414.getProductName())) {
-                    fda414Service.addFDA414(fda414);
-                    return "redirect:/fda356/list";
-//                } else {
-//                    redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
-//                    return "redirect:/fda356/add";
-//                }
+                if(checkTrueFalse(fda414.getLead_f())) {
+                    fda414Service.update(fda414);
+                    return "redirect:/fda414/list";
+                }else {
+                    redirectAttrs.addFlashAttribute("error", "Please type only Pass or Not Pass!");
+                    return "redirect:/fda414/list";
+                }
             } else {
                 redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
-                return "redirect:/fda414/edit";
+                return "redirect:/fda414/list";
             }
         } else {
             redirectAttrs.addFlashAttribute("error", "negative number is not allowed!");
-            return "redirect:/fda414/edit";
+            return "redirect:/fda414/list";
         }
     }
 
@@ -76,8 +76,13 @@ public class FDA414Controller {
         if(checkNum(fda414.getLead_s(), fda414.getLead_c())) {
             if (checkAddress(fda414.getProductName(), fda414.getR_name(), fda414.getLead_s(), fda414.getLead_c(), fda414.getLead_f())) {
                 if(fda414Service.checkNameFDA(fda414.getProductName())) {
-                    fda414Service.addFDA414(fda414);
-                    return "redirect:/fda414/list";
+                    if(checkTrueFalse(fda414.getLead_f())) {
+                        fda414Service.addFDA414(fda414);
+                        return "redirect:/fda414/list";
+                    }else {
+                        redirectAttrs.addFlashAttribute("error", "Please type only Pass or Not Pass!");
+                        return "redirect:/fda414/add";
+                    }
                 } else {
                     redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
                     return "redirect:/fda414/add";
@@ -90,6 +95,13 @@ public class FDA414Controller {
             redirectAttrs.addFlashAttribute("error", "negative number is not allowed!");
             return "redirect:/fda414/edit";
         }
+    }
+
+    public boolean checkTrueFalse(String lead_f){
+        if (lead_f.equals("Pass") || lead_f.equals("Not Pass") || lead_f.equals("pass") || lead_f.equals("not pass") || lead_f.equals("NotPass")) {
+            return true;
+        }
+        return false;
     }
 
     public boolean checkNum(double lead_s, double lead_c){ //Method ดักห้ามใส่จำนวนเป็น 0
