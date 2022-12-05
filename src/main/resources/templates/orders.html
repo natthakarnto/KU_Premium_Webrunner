@@ -50,11 +50,11 @@
 <div class="container container-fluid" style="background-color:white; margin-top:50px; margin-bottom: 30px; margin-left: auto ; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 30px; border-radius:10px;">
 
     <li sec:authorize="hasRole('USER')" class="nav-item" style="margin-top: -15px">
-        <h1 class="display-6 text-center" style="font-weight: bold">Check-Status</h1>
+        <h1 class="display-6 text-center" style="font-weight: bold; color: cornflowerblue">Check-Status</h1>
     </li>
 
     <li sec:authorize="hasRole('ADMIN')" class="nav-item" style="margin-top: -15px">
-        <h1 class="display-6 text-center" style="font-weight: bold">Approve Product</h1>
+        <h1 class="display-6 text-center" style="font-weight: bold; color: cornflowerblue">Approve Product</h1>
     </li>
 
     <marquee>Click the headers to sort the table</marquee>
@@ -64,12 +64,12 @@
         <thead>
         <div>
             <tr scope="column">
-                <th onclick="sortTable(0)">Date</th>
-                <th onclick="sortTable(1)">Product Name</th>
-                <th onclick="sortTable(2)">Product Owner Name</th>
-                <th onclick="sortTable(3)">Product Owner Phone</th>
-                <th onclick="sortTable(4)">Status</th>
-                <th onclick="sortTable(5)">Approved-Date</th>
+                <th onclick="sortTable(0)" style="color: cornflowerblue">Date</th>
+                <th onclick="sortTable(1)" style="color: cornflowerblue">Product Name</th>
+                <th onclick="sortTable(2)" style="color: cornflowerblue">Product Owner Name</th>
+                <th onclick="sortTable(3)" style="color: cornflowerblue">Product Owner Phone</th>
+                <th onclick="sortTable(4)" style="color: cornflowerblue">Status</th>
+                <th onclick="sortTable(5)" style="color: cornflowerblue">Approved-Date</th>
 <!--                <th onclick="sortTable(6)">Message</th>-->
             </tr>
         </div>

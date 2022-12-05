@@ -12,7 +12,7 @@
 <div th:insert="fragments/header :: header"></div>
 
 <form th:action="@{/register}" method="post">
-  <h2 class="text-center" style="font-weight: bold; text-align:center; color: #dc3545 ;margin-bottom: 50px; padding-top: 25px">Create a user account for the Product Owner</h2>
+  <h2 class="text-center" style="font-weight: bold; text-align:center; color: cornflowerblue ;margin-bottom: 50px; padding-top: 25px">Create a user account for the Product Owner</h2>
 
   <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
 
@@ -100,12 +100,12 @@
   <!--  </label>-->
   <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
     <div class="btn-group" role="group" aria-label="First group">
-      <a th:href="@{/}">
-        <button type="button" class="btn btn-danger btn-md">back</button>
+      <a th:href="@{/login}">
+        <button type="button" class="btn btn-primary btn-md" style="font-weight: bold">back to Login</button>
       </a>
     </div>
     <div class="input-group">
-      <button type="submit" class="btn btn-danger btn-md" onclick = "return confirm('Would you like to confirm?')">submit</button>
+      <button type="submit" class="btn btn-primary btn-md" style="font-weight: bold" onclick = "return confirm('Would you like to confirm?')">Submit</button>
     </div>
   </div>
 </form>

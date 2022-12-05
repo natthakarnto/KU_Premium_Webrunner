@@ -40,7 +40,7 @@ public class LoginController {
         }
         else {
             if (!exits(user)){
-                redirectAttrs.addFlashAttribute("error","This email or Username has been used");
+                redirectAttrs.addFlashAttribute("error","This Email or Username has been used");
             }
             else {
                 if (!checkPassword(user.getPassword(),repassword)){

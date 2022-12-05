@@ -68,31 +68,32 @@
         <div class="col text-start">
             <div class="mb-3">
                 <div sec:authorize="hasRole('ADMIN')">
-                    <a class="btn btn-danger" style="padding-top: 50px; margin-left: 35px; margin-bottom: -25px; font-weight: bold" th:href="@{/fda416/add}">Add FDA No.416</a>
+                    <a class="btn btn-primary" style="padding-top: 50px; margin-left: 35px; margin-bottom: -25px; font-weight: bold" th:href="@{/fda416/add}">Add FDA No.416</a>
                 </div>
             </div>
         </div>
 
         <div class="col text-center">
-            <h1 class="display-6 text-center" style="font-weight: bold; padding-left:-50px; padding-top: 30px; margin-bottom: -25px; text-align:center; color: black ">Announcement <br>FDA No.416</h1>
+            <h1 class="display-6 text-center" style="font-weight: bold; padding-left:-50px; padding-top: 30px; margin-bottom: -25px; text-align:center; color: cornflowerblue">Announcement <br>FDA No.416</h1>
         </div>
 
 
         <div class="col text-end">
             <div class="mb-3">
-                <a class="btn btn-danger" style="margin-right: 35px; margin-top: 60px; padding-bottom: -10px; margin-bottom: -25px; font-weight: bold" th:href="@{/}">Back to Homepage</a>
+                <a class="btn btn-primary" style="margin-right: 35px; margin-top: 60px; padding-bottom: -10px; margin-bottom: -25px; font-weight: bold" th:href="@{/}">Back to Homepage</a>
             </div>
         </div>
     </div>
 
     <marquee style="margin-top: -25px; margin-bottom: -15px">Notification: "Able to create only 1 FDA standard"</marquee>
 
-    <div class="container" style="background-color: #dc3545; border-radius:10px; margin-top: 15px; padding-top: 15px; padding-bottom: -15px">
+    <div class="container" style="background-color: royalblue; border-radius:10px; margin-top: 15px; padding-top: 15px; padding-bottom: -15px">
         <div class="row mb-4">
             <div class="col text-center">
                 <div class="mb-3">
                     <div id="check356-link" class="text-center">
-                        <a style="text-align: center" th:href="@{/fda356/list}" ><button type="button" class="btn btn-danger">ประกาศ อ.ย. ฉบับที่ 356</button></a>
+                        <!--                        <a style="text-align: center" th:href="@{/fda356/list}" ><button type="button" class="btn btn-primary">ประกาศ อ.ย. ฉบับที่ 356</button></a>-->
+                        <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/fda356/list}">ประกาศ อ.ย. ฉบับที่ 356</a>
                     </div>
                 </div>
             </div>
@@ -100,7 +101,9 @@
             <div class="col text-center">
                 <div class="mb-3">
                     <div id="check414-link" class="text-center">
-                        <a style="text-align: center" th:href="@{/fda414/list}" ><button type="button" class="btn btn-danger">ประกาศ อ.ย. ฉบับที่ 414</button></a>
+                        <!--                        <a style="text-align: center" th:href="@{/fda414/list}" ><button type="button" class="btn btn-primary">ประกาศ อ.ย. ฉบับที่ 414</button></a>-->
+                        <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/fda414/list}">ประกาศ อ.ย. ฉบับที่ 414</a>
+
                     </div>
 
                 </div>
@@ -109,7 +112,9 @@
             <div class="col text-center">
                 <div class="mb-3">
                     <div id="check416-link" class="text-center">
-                        <a style="text-align: center" th:href="@{/fda416/list}" ><button type="button" class="btn btn-danger">ประกาศ อ.ย. ฉบับที่ 416</button></a>
+                        <!--                        <a style="text-align: center" th:href="@{/fda416/list}" ><button type="button" class="btn btn-primary">ประกาศ อ.ย. ฉบับที่ 416</button></a>-->
+                        <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/fda416/list}">ประกาศ อ.ย. ฉบับที่ 416</a>
+
                     </div>
                 </div>
             </div>
@@ -117,7 +122,8 @@
             <div class="col text-center">
                 <div class="mb-3">
                     <div id="check418-link" class="text-center">
-                        <a style="text-align: center" th:href="@{/fda418/list}" ><button type="button" class="btn btn-danger">ประกาศ อ.ย. ฉบับที่ 418</button></a>
+                        <!--                        <a style="text-align: center" th:href="@{/fda418/list}" ><button type="button" class="btn btn-primary">ประกาศ อ.ย. ฉบับที่ 418</button></a>-->
+                        <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/fda418/list}">ประกาศ อ.ย. ฉบับที่ 418</a>
                     </div>
                 </div>
             </div>
@@ -155,7 +161,7 @@
                     <td style="text-align: center" th:text="${order.sareus_f}"></td>
 
                     <td sec:authorize="hasRole('ADMIN')" style="text-align: center">
-                        <a sec:authorize="hasRole('ADMIN')" style="text-align: center" th:href="@{/fda416/edit/{id}(id=${order.fda416ID})}" ><button type="button" class="btn btn-danger">Edit</button></a>
+                        <a sec:authorize="hasRole('ADMIN')" style="text-align: center" th:href="@{/fda416/edit/{id}(id=${order.fda416ID})}" ><button type="button" class="btn btn-primary">Edit</button></a>
 <!--                        <a th:href="@{/certificate/remove/{id}(id=${order.prodCertificateID})}" ><button type="button" class="btn btn-danger">Delete</button></a>-->
                     </td>
                 </tr>
