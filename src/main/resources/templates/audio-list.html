@@ -52,19 +52,19 @@
         <div class="col text-start">
             <div class="mb-3">
                 <div sec:authorize="hasRole('USER')">
-                    <a class="btn btn-danger" style="padding-top: 40px; margin-left: 35px; padding-bottom: -10px; font-weight: bold" th:href="@{/audio/add}">Add Product Audio</a>
+                    <a class="btn btn-primary" style="padding-top: 40px; margin-left: 35px; padding-bottom: -10px; font-weight: bold" th:href="@{/audio/add}">Add Product Audio</a>
                 </div>
             </div>
         </div>
 
         <div class="col text-center">
-            <h1 class="display-6 text-center" style="font-weight: bold; text-align: center; padding-top: 30px; padding-bottom: -10px; margin-left: 50px; margin-bottom: -15px; padding-right: 00px">Product Audio List</h1>
+            <h1 class="display-6 text-center" style="font-weight: bold; color: cornflowerblue; text-align: center; padding-top: 30px; padding-bottom: -10px; margin-left: 50px; margin-bottom: -15px; padding-right: 00px">Product Audio List</h1>
         </div>
 
 
         <div class="col text-end">
             <div class="mb-3">
-                <a class="btn btn-danger" style="margin-right: 35px; margin-top: 35px; padding-bottom: -10px; margin-bottom: -15px" th:href="@{/cakes}">Back to Product</a>
+                <a class="btn btn-primary" style="margin-right: 35px; margin-top: 35px; padding-bottom: -10px; margin-bottom: -15px" th:href="@{/cakes}">Back to Product</a>
             </div>
         </div>
     </div>
@@ -91,7 +91,7 @@
                 <td style="text-align: center" th:text="${order.prodAudioName}"></td>
 
                 <td sec:authorize="hasRole('USER')" style="text-align: center">
-                    <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/audio/edit/{id}(id=${order.prodAudioID})}" ><button type="button" class="btn btn-danger">Edit this Product Audio</button></a>
+                    <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/audio/edit/{id}(id=${order.prodAudioID})}" ><button type="button" class="btn btn-primary">Edit this Product Audio</button></a>
                     <!--                    <a th:href="@{certificate/remove/{id}(id=${order.prodCertificateID})}" ><button type="button" class="btn btn-danger">Delete</button></a>-->
                 </td>
             </tr>

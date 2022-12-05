@@ -25,13 +25,13 @@
     <div class="row mb-4" style="margin-top: 10px">
         <div class="col" style="margin-left: 10px">
             <div class="text-start">
-                <h1 class="display-6 text-start" style="font-weight: bold; margin-bottom: 0px; text-align:start; color: #dc3545 ;font-size: 38px ; margin-top: 50px">Add Announcement of FDA No.416</h1>
+                <h1 class="display-6 text-start" style="font-weight: bold; margin-bottom: 0px; text-align:start; color: cornflowerblue ;font-size: 38px ; margin-top: 50px">Add Announcement of FDA No.416</h1>
             </div>
         </div>
 
         <div class="col text-end">
             <div class="mb-3">
-                <a class="btn btn-danger" style="margin-right: 15px; margin-bottom: 0px; margin-top: 60px" th:href="@{/fda416/list}">Back to Information FDA416</a>
+                <a class="btn btn-primary" style="margin-right: 15px; margin-bottom: 0px; margin-top: 60px" th:href="@{/fda416/list}">Back to Information FDA416</a>
             </div>
         </div>
     </div>
@@ -39,6 +39,27 @@
     <form th:action="@{/fda416/add}" method="POST">
 
         <div class="alert alert-danger" style="text-align: center" role="alert" th:text="${error}" th:if="${error}"></div>
+
+<!--        <div th:if="${message}">-->
+<!--            <h2 th:text="${message}"/>-->
+<!--        </div>-->
+
+<!--        <div>-->
+<!--            <form method="POST" enctype="multipart/form-data" action="/upload_files/handle_upload">-->
+<!--                <table>-->
+<!--                    <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>-->
+<!--                    <tr><td></td><td><input type="submit" value="Upload" /></td></tr>-->
+<!--                </table>-->
+<!--            </form>-->
+<!--        </div>-->
+
+<!--        <div>-->
+<!--            <ul>-->
+<!--                <li th:each="file : ${files}">-->
+<!--                    <a th:href="${file}" th:text="${file}" />-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
 
         <div class="mb-3">
             <label for="productInput" class="form-label">ชื่อสินค้า</label>
@@ -97,7 +118,7 @@
         </div>
 
         <div class="text-center">
-            <button type="submit" class="btn btn-danger" style="margin-bottom: 25px; margin-top: 25px" onclick = "return confirm('Would you like to confirm?')">Add Information of FDA Announcement No.416</button>
+            <button type="submit" class="btn btn-primary" style="margin-bottom: 25px; margin-top: 25px" onclick = "return confirm('Would you like to confirm?')">Add Information of FDA Announcement No.416</button>
         </div>
 
     </form>

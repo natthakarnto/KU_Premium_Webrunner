@@ -28,12 +28,12 @@
         </div>
 
         <div class="col">
-            <h1 class="display-6 text-center" style="font-weight: bold; text-align: center; font-size: 45px; padding-top: 50px; margin-left: 20px; margin-bottom: 0px">Add Product</h1>
+            <h1 class="display-6 text-center" style="color: cornflowerblue; font-weight: bold; text-align: center; font-size: 45px; padding-top: 50px; margin-left: 20px; margin-bottom: 0px">Add Product</h1>
         </div>
 
         <div class="col text-end">
             <div class="mb-3">
-                <a class="btn btn-danger" style="margin-right: 35px; margin-top: 60px; margin-bottom: 0px" th:href="@{/cakes}">Back to Product</a>
+                <a class="btn btn-primary" style="margin-right: 35px; margin-top: 60px; margin-bottom: 0px" th:href="@{/cakes}">Back to Product</a>
             </div>
         </div>
     </div>
@@ -47,7 +47,7 @@
     <div>
         <form method="POST" enctype="multipart/form-data" action="/upload_files/handle_upload">
             <table>
-                <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+                <tr><td>File to upload (.png):</td><td><input type="file" name="file" /></td></tr>
                 <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
             </table>
         </form>
@@ -79,7 +79,7 @@
             <div class="col">
                 <div class="mb-3">
                     <label for="productNameInput" class="form-label">ชื่อผลิตภัณฑ์</label>
-                    <input id="productNameInput" type="text" class="form-control" name="productName">
+                    <input id="productNameInput" type="text" class="form-control" name="productName" placeholder="Ex.Cleansing Water">
                     <!--                        <label class="form-label" for="form7Example4">ชื่อสินค้าภาษาไทย</label>-->
                     <!--                        <input type="text" id="form7Example4" class="form-control" th:name="productNameTH"/>-->
                 </div>
@@ -87,7 +87,7 @@
             <div class="col">
                 <div class="mb-3">
                     <label for="productOwnerInput" class="form-label">รหัสเจ้าของสินค้า</label>
-                    <input id="productOwnerInput" type="text" class="form-control" name="poID">
+                    <input id="productOwnerInput" type="text" class="form-control" name="poID" placeholder="Ex.T0000001">
                     <!--                        <label class="form-label" for="form7Example5">รหัสเจ้าของสินค้า</label>-->
                     <!--                        <input type="text" id="form7Example5" class="form-control" th:name="productOwnerID"/>-->
                 </div>
@@ -102,53 +102,53 @@
             <!--            </div>-->
             <div class="col">
                 <div class="form-outline">
-                    <label for="productInput" class="form-label">ราคาสินค้า</label>
-                    <input id="productInput" type="text" class="form-control" name="price">
+                    <label for="productInput" class="form-label">ราคาสินค้า (Baht)</label>
+                    <input id="productInput" type="text" class="form-control" name="price" placeholder="Ex.499.00">
                 </div>
             </div>
             <div class="col">
                 <div class="form-outline">
                     <label for="weightInput" class="form-label">ประเภทสินค้า</label>
-                    <input id="weightInput" type="text" class="form-control" name="productCategory">
+                    <input id="weightInput" type="text" class="form-control" name="productCategory" placeholder="Ex.เวชภัณฑ์">
                 </div>
             </div>
         </div>
 
         <div class="mb-3">
             <label for="amountInput" class="form-label">คำอธิบายรายละเอียดสินค้า</label>
-            <input id="amountInput" type="text" class="form-control" name="productDescription">
+            <input id="amountInput" type="text" class="form-control" name="productDescription" placeholder="Ex.เซรั่มที่ช่วยดูแลปัญหาผิวที่มีสิวโดยเฉพาะช่วยควบคุมความมัน...">
         </div>
         <div class="mb-3">
             <label for="priceInput" class="form-label">คุณสมบัติสินค้า</label>
-            <input id="priceInput" type="text" class="form-control" name="productAttrib">
+            <input id="priceInput" type="text" class="form-control" name="productAttrib" placeholder="Ex.มีคุณสมบัติที่ช่วยในการลดสิว และจุดด่างดำ พร้อมทำให้หน้าชุ่มชื้น...">
         </div>
         <div class="mb-3">
             <label for="productUseGuidelineInput" class="form-label">วิธีการใช้งาน</label>
-            <input id="productUseGuidelineInput" type="text" class="form-control" name="productUsageGuideline">
+            <input id="productUseGuidelineInput" type="text" class="form-control" name="productUsageGuideline" placeholder="Ex.แกะและอบพร้อมทาน...">
         </div>
         <div class="mb-3">
             <label for="productIngredientsInput" class="form-label">ส่วนประกอบ</label>
-            <input id="productIngredientsInput" type="text" class="form-control" name="productIngredients">
+            <input id="productIngredientsInput" type="text" class="form-control" name="productIngredients" placeholder="Ex.1.แมคคาเดเมียอบแห้ง 2.เกลือ 3.น้ำมัน...">
         </div>
         <div class="mb-3">
             <label for="productNutritionInput" class="form-label">สารอาหาร</label>
-            <input id="productNutritionInput" type="text" class="form-control" name="productNutrition">
+            <input id="productNutritionInput" type="text" class="form-control" name="productNutrition" placeholder="Ex.มีคุณค่าทางโภชนาการสูง ไม่ว่าจะเป็นวิตามิน แร่ธาตุ และ...">
         </div>
         <div class="mb-3">
             <label for="productUseIndicationInput" class="form-label">ข้อบ่งใช้</label>
-            <input id="productUseIndicationInput" type="text" class="form-control" name="productUseIndication">
+            <input id="productUseIndicationInput" type="text" class="form-control" name="productUseIndication" placeholder="Ex.ใช่รับประทานเหมาะสำหรับคนที่ทานคีโต หรือใช้ตกแต่งหน้าขนม...">
         </div>
         <div class="row mb-4">
             <div class="col">
                 <div class="mb-3">
-                    <label for="productQuantityInput" class="form-label">จำนวณของผลิตภัณฑ์</label>
-                    <input id="productQuantityInput" type="text" class="form-control" name="productQuantity">
+                    <label for="productQuantityInput" class="form-label">จำนวนของผลิตภัณฑ์</label>
+                    <input id="productQuantityInput" type="text" class="form-control" name="productQuantity" placeholder="Ex.49">
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <label for="productSizeInput" class="form-label">ขนาดของผลิตภัณฑ์</label>
-                    <input id="productSizeInput" type="text" class="form-control" name="productSize">
+                    <input id="productSizeInput" type="text" class="form-control" name="productSize" placeholder="Ex.Shirt = S, M, L, XL">
                 </div>
             </div>
         </div>
@@ -156,37 +156,37 @@
             <div class="col">
                 <div class="mb-3">
                     <label for="productVolumeInput" class="form-label">ปริมาตรสุทธิ</label>
-                    <input id="productVolumeInput" type="text" class="form-control" name="productVolume">
+                    <input id="productVolumeInput" type="text" class="form-control" name="productVolume" placeholder="Ex.90 ML">
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <label for="productWeightInput" class="form-label">น้ำหนักสุทธิ</label>
-                    <input id="productWeightInput" type="text" class="form-control" name="productWeight">
+                    <input id="productWeightInput" type="text" class="form-control" name="productWeight" placeholder="Ex.70 KG">
                 </div>
             </div>
         </div>
         <div class="mb-3">
             <label for="productPromotionInput" class="form-label">โปรโมชั่นของสินค้า</label>
-            <input id="productPromotionInput" type="text" class="form-control" name="productPromotion">
+            <input id="productPromotionInput" type="text" class="form-control" name="productPromotion" placeholder="Ex.โปรโมชั่นลดแรง Sale 10%">
         </div>
         <div class="row mb-4">
             <div class="col">
                 <div class="form-outline">
-                    <label for="productDiscountPercentIDInput" class="form-label">เปอร์เซ็นต์ส่วนลดสินค้า</label>
-                    <input id="productDiscountPercentIDInput" type="text" class="form-control" name="productDiscountPercent"> <!--Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล-->
+                    <label for="productDiscountPercentIDInput" class="form-label">เปอร์เซ็นต์ส่วนลดสินค้า (%)</label>
+                    <input id="productDiscountPercentIDInput" type="text" class="form-control" name="productDiscountPercent" placeholder="Ex.10.00"> <!--Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล-->
                 </div>
             </div>
             <div class="col">
                 <div class="form-outline">
-                    <label for="priceExcludingVatInput" class="form-label">ราคาก่อนรวมภาษี</label>
-                    <input id="priceExcludingVatInput" type="text" class="form-control" name="priceExcludingVat">
+                    <label for="priceExcludingVatInput" class="form-label">ราคาก่อนรวมภาษี (Baht)</label>
+                    <input id="priceExcludingVatInput" type="text" class="form-control" name="priceExcludingVat" placeholder="Ex.350.00">
                 </div>
             </div>
             <div class="col">
                 <div class="form-outline">
-                    <label for="pricePromotionInput" class="form-label">ราคาหลังโปรโมชั่น</label>
-                    <input id="pricePromotionInput" type="text" class="form-control" name="pricePromotion">
+                    <label for="pricePromotionInput" class="form-label">ราคาหลังโปรโมชั่น (Baht)</label>
+                    <input id="pricePromotionInput" type="text" class="form-control" name="pricePromotion" placeholder="Ex.441.00">
                 </div>
             </div>
         </div>
@@ -195,13 +195,13 @@
             <div class="col">
                 <div class="mb-3">
                     <label for="PCIDInput" class="form-label">เลขใบรับรองผลิตภัณฑ์</label>
-                    <input id="PCIDInput" type="text" class="form-control" name="pcID">
+                    <input id="PCIDInput" type="text" class="form-control" name="pcID" placeholder="Ex.C0000001">
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <label for="PRR_IDInput" class="form-label">เลขผลงานวิจัยที่รองรับผลิตภัณฑ์</label>
-                    <input id="PRR_IDInput" type="text" class="form-control" name="prr_ID">
+                    <input id="PRR_IDInput" type="text" class="form-control" name="prr_ID"placeholder="Ex.R0000001">
                 </div>
             </div>
         </div>
@@ -210,13 +210,13 @@
             <div class="col">
                 <div class="mb-3">
                     <label for="PSVIDInput" class="form-label">Product story embedded video ID</label>
-                    <input id="PSVIDInput" type="text" class="form-control" name="psvID">
+                    <input id="PSVIDInput" type="text" class="form-control" name="psvID" placeholder="Ex.PSV01">
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <label for="FTVIDInput" class="form-label">Food traceability embedded video ID</label>
-                    <input id="FTVIDInput" type="text" class="form-control" name="ftvID">
+                    <input id="FTVIDInput" type="text" class="form-control" name="ftvID" placeholder="Ex.FTV01">
                 </div>
             </div>
         </div>
@@ -225,19 +225,19 @@
             <div class="col">
                 <div class="mb-3">
                     <label for="AIDInput" class="form-label">Audio ID</label>
-                    <input id="AIDInput" type="text" class="form-control" name="aID">
+                    <input id="AIDInput" type="text" class="form-control" name="aID" placeholder="Ex.A01">
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <label for="RREIDInput" class="form-label">เลขคะแนนและรีวิวของผลิตภัณฑ์</label>
-                    <input id="RREIDInput" type="text" class="form-control" name="rreID">
+                    <input id="RREIDInput" type="text" class="form-control" name="rreID" placeholder="Ex.RE0001">
                 </div>
             </div>
         </div>
 
         <div class="text-center" style="margin-bottom: 20px">
-            <button type="submit" class="btn btn-danger" onclick = "return confirm('Would you like to confirm?')">Add Product</button>
+            <button type="submit" class="btn btn-primary" onclick = "return confirm('Would you like to confirm?')">Add Product</button>
         </div>
 
     </form>

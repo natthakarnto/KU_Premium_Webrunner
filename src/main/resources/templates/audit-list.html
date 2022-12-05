@@ -68,19 +68,19 @@
         <div class="col text-start">
             <div class="mb-3">
                 <div sec:authorize="hasRole('ADMIN')">
-                    <a class="btn btn-danger" style="padding-top: 50px; margin-left: 35px; margin-bottom: 0px; font-weight: bold" th:href="@{/audit/add}">Add Standard Audit Results</a>
+                    <a class="btn btn-primary" style="padding-top: 50px; margin-left: 35px; margin-bottom: 0px; font-weight: bold" th:href="@{/audit/add}">Add Standard Audit Results</a>
                 </div>
             </div>
         </div>
 
         <div class="col text-center">
-            <h1 class="display-6 text-center" style="font-weight: bold; padding-left:-50px; padding-top: 30px; margin-bottom: 0px; text-align:center; color: black ">Product Standard Audit Results List</h1>
+            <h1 class="display-6 text-center" style="font-weight: bold; padding-left:-50px; padding-top: 30px; margin-bottom: 0px; text-align:center; color: cornflowerblue ">Product Standard Audit Results List</h1>
         </div>
 
 
         <div class="col text-end">
             <div class="mb-3">
-                <a class="btn btn-danger" style="margin-right: 35px; margin-top: 60px; padding-bottom: -10px; margin-bottom: 0px; font-weight: bold" th:href="@{/}">Back to Homepage</a>
+                <a class="btn btn-primary" style="margin-right: 35px; margin-top: 60px; padding-bottom: -10px; margin-bottom: 0px; font-weight: bold" th:href="@{/}">Back to Homepage</a>
             </div>
         </div>
     </div>
@@ -93,15 +93,15 @@
             <thead>
             <div>
                 <tr scope="column" style="text-align: center">
-                    <th onclick="sortTable(0)">Product Name</th>
-                    <th onclick="sortTable(1)">สรุปผลตรวจตามประกาศอ.ย. 356</th>
-                    <th onclick="sortTable(2)">ชื่อผู้ตรวจสอบตามประกาศอ.ย. 356</th>
-                    <th onclick="sortTable(3)">สรุปผลตรวจตามประกาศอ.ย. 414</th>
-                    <th onclick="sortTable(4)">ชื่อผู้ตรวจสอบตามประกาศอ.ย. 414</th>
-                    <th onclick="sortTable(5)">สรุปผลตรวจตามประกาศอ.ย. 416</th>
-                    <th onclick="sortTable(6)">ชื่อผู้ตรวจสอบตามประกาศอ.ย. 416</th>
-                    <th onclick="sortTable(7)">สรุปผลตรวจตามประกาศอ.ย. 418</th>
-                    <th onclick="sortTable(8)">ชื่อผู้ตรวจสอบตามประกาศอ.ย. 418</th>
+                    <th onclick="sortTable(0)" style="color: cornflowerblue">Product Name</th>
+                    <th onclick="sortTable(1)" style="color: cornflowerblue">สรุปผลตรวจตามประกาศอ.ย. 356</th>
+                    <th onclick="sortTable(2)" style="color: cornflowerblue">ชื่อผู้ตรวจสอบตามประกาศอ.ย. 356</th>
+                    <th onclick="sortTable(3)" style="color: cornflowerblue">สรุปผลตรวจตามประกาศอ.ย. 414</th>
+                    <th onclick="sortTable(4)" style="color: cornflowerblue">ชื่อผู้ตรวจสอบตามประกาศอ.ย. 414</th>
+                    <th onclick="sortTable(5)" style="color: cornflowerblue">สรุปผลตรวจตามประกาศอ.ย. 416</th>
+                    <th onclick="sortTable(6)" style="color: cornflowerblue">ชื่อผู้ตรวจสอบตามประกาศอ.ย. 416</th>
+                    <th onclick="sortTable(7)" style="color: cornflowerblue">สรุปผลตรวจตามประกาศอ.ย. 418</th>
+                    <th onclick="sortTable(8)" style="color: cornflowerblue">ชื่อผู้ตรวจสอบตามประกาศอ.ย. 418</th>
                 </tr>
             </div>
             </thead>
@@ -120,7 +120,7 @@
                     <td style="text-align: center" th:text="${order.fda_418_Cer}"></td>
 
                     <td sec:authorize="hasRole('ADMIN')" style="text-align: center">
-                        <a sec:authorize="hasRole('ADMIN')" style="text-align: center" th:href="@{/audit/edit/{id}(id=${order.auditID})}" ><button type="button" class="btn btn-danger">Edit</button></a>
+                        <a sec:authorize="hasRole('ADMIN')" style="text-align: center" th:href="@{/audit/edit/{id}(id=${order.auditID})}" ><button type="button" class="btn btn-primary">Edit</button></a>
 <!--                        <a th:href="@{/certificate/remove/{id}(id=${order.prodCertificateID})}" ><button type="button" class="btn btn-danger">Delete</button></a>-->
                     </td>
                 </tr>

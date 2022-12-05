@@ -48,25 +48,42 @@
       <td th:text="${cake.getCakes().price}"></td>
       <td>
         <a th:href="@{/cart/remove/{id}(id=${cake.getCakes().pID})}">
-          <button type="button" class="btn btn-danger">Delete</button>
+          <button type="button" class="btn btn-primary">Delete</button>
         </a>
       </td>
 
     </tr>
     <!--    <h1 th:text="${'Total '+ priceCal +' Baht'}"></h1>-->
-    <h4 class="col text-end" style="padding-left:0;" th:text="${price} + ' products'"></h4>
     </tbody>
-    <h1 class="display-6" style="padding-bottom: 10px">Check the products that need to be sent to check the standards</h1>
+<!--    <h1 class="display-6" style="padding-bottom: 10px">Checklist</h1>-->
+
+    <div class="row mb-4">
+      <div class="col">
+        <h1></h1>
+      </div>
+
+      <div class="col">
+        <h1 class="display-6 text-center" style="color: cornflowerblue; font-weight: bold; text-align: center; font-size: 45px; margin-bottom: -15px">Checklist</h1>
+      </div>
+
+      <div class="col text-end">
+        <div class="mb-3">
+          <h4 class="col text-end" style="padding-left:0; margin-bottom: -15px" th:text="${price} + ' products'"></h4>
+        </div>
+      </div>
+    </div>
+    <marquee>Do not check the same type of product.</marquee>
   </table>
+
   <!--  <div class="d-flex justify-content-center">-->
   <!--    <a  class="btn btn-danger" th:href="@{/order/list}" type="submit">Payment</a>-->
   <!--  </div>-->
   <!--  <a th:href="@{/order/address}"><button class="btn">CHECKOUT</button></a>-->
   <div class="d-flex justify-content-center">
-    <a  class="btn btn-danger" th:href="@{/order/address}" type="submit">Next</a>
+    <a  class="btn btn-primary" th:href="@{/order/address}" type="submit">Next</a>
   </div>
   <div>
-    <a class="btn btn-danger" th:href="@{/products}">Back to product page</a>
+    <a class="btn btn-primary" th:href="@{/products}">Back to product page</a>
   </div>
 </div>
 </body>

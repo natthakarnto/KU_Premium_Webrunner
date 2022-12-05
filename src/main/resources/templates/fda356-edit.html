@@ -21,7 +21,7 @@
 <div th:insert="fragments/header :: header"></div>
 
 <div class="container" style="background-color: white; margin-top:50px; margin-bottom: 50px; padding-bottom: 20px ;border-radius: 10px;">
-    <h1 class="display-6 text-center" style="font-weight: bold; text-align:center; color: #dc3545 ;font-size: 45px ;margin-bottom: 25px; padding-top: 30px">Edit Announcement of FDA No.356</h1>
+    <h1 class="display-6 text-center" style="font-weight: bold; text-align:center; color: cornflowerblue ;font-size: 45px ;margin-bottom: 25px; padding-top: 30px">Edit Announcement of FDA No.356</h1>
 
     <div class="card-body text-center" style="margin-bottom: -10px; margin-top: -15px">
         <img height="128" th:src="${'../../images/'+ fda356.productName +'.png'}" width="128">
@@ -139,19 +139,19 @@
 
         <div class="mb-3">
             <label for="yeastMoldFInput" class="form-label">สรุปผลการตรวจสอบยีสต์และรา</label>
-            <input id="yeastMoldFInput" type="text" class="form-control" th:field="*{yeast_mold_f} placeholder="Type only Pass or Not Pass"">
+            <input id="yeastMoldFInput" type="text" class="form-control" placeholder="Type only Pass or Not Pass" th:field="*{yeast_mold_f}">
         </div>
 
         <div class="row mb-4">
             <div class="col" style="margin-left: 435px; margin-top: 10px">
                 <div class="mb-3 text-center">
-                    <button class="btn btn-danger" type="submit" style="margin-bottom: -35px" onclick = "return confirm('Would you like to confirm?')">Edit Information of FDA Announcement No.356</button>
+                    <button class="btn btn-primary" type="submit" style="margin-bottom: -35px" onclick = "return confirm('Would you like to confirm?')">Edit Information of FDA Announcement No.356</button>
                 </div>
             </div>
 
             <div class="col text-end" style="margin-top: 15px">
                 <div class="mb-3">
-                    <a class="btn btn-danger" style="margin-right: 35px; margin-bottom: -35px" th:href="@{/fda356/list}">Back</a>
+                    <a class="btn btn-primary" style="margin-right: 35px; margin-bottom: -35px" th:href="@{/fda356/list}">Back</a>
                 </div>
             </div>
         </div>

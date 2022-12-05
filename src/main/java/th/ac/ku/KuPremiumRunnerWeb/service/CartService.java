@@ -21,16 +21,56 @@ public class CartService {
 
     private List<Cart> cart = new ArrayList<>();
     // TODO: 2/12/2565  ถ้าเหลือเวลสมากพอ กลับมาทำ method เพื่อกันการ add product ซ้ำ
-    public void addCart(UUID id){
-        cart.add(new Cart(cakesService.getOneById(id)));
+
+//    int count = 0;
+//    int enhypen = 0;
+
+    public void addCart(UUID id) {
+//        if (count == 0) {
+            cart.add(new Cart(cakesService.getOneById(id)));
+//            count++;
+//        } else {
+//            System.out.println(cart + "cart 1");
+//            System.out.println(cart.size() + "size 2");
+//            for (int i = 0; i < cart.size(); i++) {
+////                if (enhypen == 0) {
+//                String hee = new String("");
+//                String hee2 = new String("");
+//                hee = String.valueOf(cart.get(i).getCakes());
+//                System.out.println(hee + "hee 3");
+//
+//                hee = hee.replace("[", "").replace("]", "");
+//                hee = hee.replace("{", "[").replace("}", "]");
+//                hee = hee.replace("[", "").replace("]", "");
+//                String[] split = hee.split(",");
+//                List<String> list = Arrays.asList(split);
+//                for (int j = 0; j < list.size(); j++) {
+//                    //String hee2 =list.get(j);
+//                    split = list.get(j).trim().split("->");
+//                    List<String> list1 = Arrays.asList(split);
+//                    System.out.println(list1.get(0) + "list1 4");
+//                    System.out.println(id + "id 5");
+//                    if (!String.valueOf(id).equals(list1.get(0))) {
+//                        System.out.println("เข้านะ 6");
+//                        cart.add(new Cart(cakesService.getOneById(id)));
+//                        i = i + 100;
+//                    } else {
+//                        i = i +100;
+//                        System.out.println("ออกนะ 7");
+////                            enhypen++;
+//                    }
+//                }
+//
+////            }
+//        }
     }
 
 //    public void OrderConfig(){
-//        for(int i = 0; i < this.getAll().size(); i++){
+//        for(int i = 0; i < cart.size(); i++){
 //            String hee = new String("");
 //            String hee2 = new String("");
-//            hee = this.getAll().get(i).getCakes();
-//            hee2 = this.getAll().get(i).getName();
+//            hee = String.valueOf(cart.get(i).getCakes());
+////            hee2 = cart.get(i).getName();
 //            hee = hee.replace("[", "").replace("]","");
 //            hee = hee.replace("{","[").replace("}","]");
 //            hee = hee.replace("[","").replace("]","");
