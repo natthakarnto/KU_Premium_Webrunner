@@ -42,7 +42,7 @@ public class CertificateController {
             return "redirect:/certificate/list";
         }
         else {
-            redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
+            redirectAttrs.addFlashAttribute("error","Please fill in the rest of the information fields!");
             return "redirect:/certificate/list";
         }
     }
@@ -83,7 +83,7 @@ public class CertificateController {
             return "redirect:/certificate/list";
         }
         else {
-            redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
+            redirectAttrs.addFlashAttribute("error","Please fill in the rest of the information fields!");
             return "redirect:/certificate/add";
         }
     }

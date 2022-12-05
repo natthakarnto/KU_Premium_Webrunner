@@ -38,7 +38,7 @@ public class AudioController {
             return "redirect:/audio/list";
         }
         else {
-            redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
+            redirectAttrs.addFlashAttribute("error","Please fill in the rest of the information fields!");
             return "redirect:/audio/list";
         }
     }
@@ -77,7 +77,7 @@ public class AudioController {
             return "redirect:/audio/list";
         }
         else {
-            redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
+            redirectAttrs.addFlashAttribute("error","Please fill in the rest of the information fields!");
             return "redirect:/audio/add";
         }
     }

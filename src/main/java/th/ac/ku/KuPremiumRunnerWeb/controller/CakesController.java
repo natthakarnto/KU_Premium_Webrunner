@@ -45,10 +45,10 @@ public class CakesController {
                 cakesService.update(cakes);
                 return "redirect:/cakes";
             }
-            redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
+            redirectAttrs.addFlashAttribute("error","Please fill in the rest of the information fields!");
             return "redirect:/cakes";
         }
-        redirectAttrs.addFlashAttribute("error","negative number is not allowed!");
+        redirectAttrs.addFlashAttribute("error","The value must be greater than 0!");
         return "redirect:/cakes";
     }
 
@@ -76,16 +76,16 @@ public class CakesController {
                     cakesService.addCakes(cakes);
                     return "redirect:/cakes"; //หญิง
                 } else {
-                    redirectAttrs.addFlashAttribute("error","Please don't use the same product name!");
+                    redirectAttrs.addFlashAttribute("error","Product already exist! please make sure that the product hasn't been register yet.");
                     return "redirect:/cakes/add";
                 }
             } else {
-                redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
+                redirectAttrs.addFlashAttribute("error","Please fill in the rest of the information fields!");
                 return "redirect:/cakes/add";
             }
         }
         else {
-            redirectAttrs.addFlashAttribute("error","negative number is not allowed!");
+            redirectAttrs.addFlashAttribute("error","The value must be greater than 0!");
             return "redirect:/cakes/add";
         }
     }
