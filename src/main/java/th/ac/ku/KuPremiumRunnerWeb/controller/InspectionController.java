@@ -38,7 +38,7 @@ public class InspectionController {
                 inspectionService.update(inspection);
                 return "redirect:/inspection/list";
             } else {
-                redirectAttrs.addFlashAttribute("error", "Please type in either Done or Not Done!");
+                redirectAttrs.addFlashAttribute("error", "Please type in either \"Done\" or \"Not Done yet\"!");
                 return "redirect:/inspection/list";
             }
         } else {
@@ -75,7 +75,7 @@ public class InspectionController {
                         inspectionService.addInspection(inspection);
                         return "redirect:/inspection/list";
                     }else {
-                        redirectAttrs.addFlashAttribute("error", "Please type in either Done or Not Done!");
+                        redirectAttrs.addFlashAttribute("error", "Please type in either \"Done\" or \"Not Done yet\"!");
                         return "redirect:/inspection/add";
                     }
                 } else {
