@@ -108,14 +108,27 @@ public class FDA418Controller {
     }
 
     public boolean checkTrueFalse(String benzoic_sorbic_f, String synt_f, String sod_f, String potas_f, String plate_f) {
-        if (benzoic_sorbic_f.equals("Pass") || benzoic_sorbic_f.equals("Not Pass") || benzoic_sorbic_f.equals("pass") || benzoic_sorbic_f.equals("not pass") || benzoic_sorbic_f.equals("NotPass") ||
-                synt_f.equals("Pass") || synt_f.equals("Not Pass") || synt_f.equals("pass") || synt_f.equals("not pass") || synt_f.equals("NotPass") ||
-                sod_f.equals("Pass") || sod_f.equals("Not Pass") || sod_f.equals("pass") || sod_f.equals("not pass") || sod_f.equals("NotPass") ||
-                potas_f.equals("Pass") || potas_f.equals("Not Pass") || potas_f.equals("pass") || potas_f.equals("not pass") || potas_f.equals("NotPass") ||
-                plate_f.equals("Pass") || plate_f.equals("Not Pass") || plate_f.equals("pass") || plate_f.equals("not pass") || plate_f.equals("NotPass")) {
-            return true;
+        if (benzoic_sorbic_f.equals("Pass") || benzoic_sorbic_f.equals("Not Pass") || benzoic_sorbic_f.equals("pass") || benzoic_sorbic_f.equals("not pass") || benzoic_sorbic_f.equals("NotPass")) {
+            if(synt_f.equals("Pass") || synt_f.equals("Not Pass") || synt_f.equals("pass") || synt_f.equals("not pass") || synt_f.equals("NotPass")) {
+                if(sod_f.equals("Pass") || sod_f.equals("Not Pass") || sod_f.equals("pass") || sod_f.equals("not pass") || sod_f.equals("NotPass")) {
+                    if(potas_f.equals("Pass") || potas_f.equals("Not Pass") || potas_f.equals("pass") || potas_f.equals("not pass") || potas_f.equals("NotPass")) {
+                        if(plate_f.equals("Pass") || plate_f.equals("Not Pass") || plate_f.equals("pass") || plate_f.equals("not pass") || plate_f.equals("NotPass")) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    } else {
+                    return false;
+                    }
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
-        return false;
     }
 
     public boolean checkNum(double sum_benzoic_sorbic, double benzoic_c, double sorbic_c, double synt_s, double synt_c, double sod_s, double sod_c, double potas_s, double potas_c, double plate_s, double plate_c){ //Method ดักห้ามใส่จำนวนเป็น 0

@@ -102,11 +102,15 @@ public class FDA416Controller {
     }
 
     public boolean checkTrueFalse(String salla_f, String sareus_f) {
-        if (salla_f.equals("Pass") || salla_f.equals("Not Pass") || salla_f.equals("pass") || salla_f.equals("not pass") || salla_f.equals("NotPass") ||
-                sareus_f.equals("Pass") || sareus_f.equals("Not Pass") || sareus_f.equals("pass") || sareus_f.equals("not pass") || sareus_f.equals("NotPass")) {
-            return true;
+        if (salla_f.equals("Pass") || salla_f.equals("Not Pass") || salla_f.equals("pass") || salla_f.equals("not pass") || salla_f.equals("NotPass")) {
+            if (sareus_f.equals("Pass") || sareus_f.equals("Not Pass") || sareus_f.equals("pass") || sareus_f.equals("not pass") || sareus_f.equals("NotPass")) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
-        return false;
     }
 
     public boolean checkNum(double lead_s, double lead_c, double sareus_s, double sareus_c){ //Method ดักห้ามใส่จำนวนเป็น 0

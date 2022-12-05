@@ -124,15 +124,20 @@ public class FDA356Controller {
         }return true;
     }
 
-    public boolean checkTrueFalse(String ph_value_f, String coli_f, String yeast_mold_f){
-        if (ph_value_f.equals("Pass") || coli_f.equals("Pass") || yeast_mold_f.equals("Pass") ||
-                ph_value_f.equals("Not Pass") || coli_f.equals("Not Pass") || yeast_mold_f.equals("Not Pass") ||
-                ph_value_f.equals("pass") || coli_f.equals("pass") || yeast_mold_f.equals("pass") ||
-                ph_value_f.equals("not pass") || coli_f.equals("not pass") || yeast_mold_f.equals("not pass") ||
-                ph_value_f.equals("NotPass") || coli_f.equals("NotPass") || yeast_mold_f.equals("NotPass")) {
-            return true;
+    public boolean checkTrueFalse(String ph_value_f, String coli_f, String yeast_mold_f) {
+        if (ph_value_f.equals("Pass") || ph_value_f.equals("Not Pass") || ph_value_f.equals("pass") || ph_value_f.equals("not pass") || ph_value_f.equals("NotPass")) {
+            if (coli_f.equals("Pass") || coli_f.equals("Not Pass") || coli_f.equals("pass") || coli_f.equals("not pass") || coli_f.equals("NotPass")) {
+                if (yeast_mold_f.equals("Pass") || yeast_mold_f.equals("Not Pass") || yeast_mold_f.equals("pass") || yeast_mold_f.equals("not pass") || yeast_mold_f.equals("NotPass")) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
-        return false;
     }
 
     @GetMapping("/remove/{id}")
