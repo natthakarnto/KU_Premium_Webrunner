@@ -38,11 +38,11 @@ public class InspectionController {
                 inspectionService.update(inspection);
                 return "redirect:/inspection/list";
             } else {
-                redirectAttrs.addFlashAttribute("error", "Please type only Done or Not Done!");
+                redirectAttrs.addFlashAttribute("error", "Please type in either \"Done\" or \"Not Done yet\"!");
                 return "redirect:/inspection/list";
             }
         } else {
-            redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
+            redirectAttrs.addFlashAttribute("error", "Please fill in the rest of the information fields!");
             return "redirect:/inspection/list";
         }
     }
@@ -75,15 +75,15 @@ public class InspectionController {
                         inspectionService.addInspection(inspection);
                         return "redirect:/inspection/list";
                     }else {
-                        redirectAttrs.addFlashAttribute("error", "Please type only Done or Not Done!");
+                        redirectAttrs.addFlashAttribute("error", "Please type in either \"Done\" or \"Not Done yet\"!");
                         return "redirect:/inspection/add";
                     }
                 } else {
-                    redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
+                    redirectAttrs.addFlashAttribute("error","Existed products!,please try again");
                     return "redirect:/inspection/add";
                 }
             } else {
-                redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
+                redirectAttrs.addFlashAttribute("error", "Please fill in the rest of the information fields!");
                 return "redirect:/inspection/add";
             }
     }

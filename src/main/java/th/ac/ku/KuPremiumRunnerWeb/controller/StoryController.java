@@ -41,7 +41,7 @@ public class StoryController {
             return "redirect:/story/list";
         }
         else {
-            redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
+            redirectAttrs.addFlashAttribute("error", "Please fill in the rest of the information fields!");
             return "redirect:/story/list";
         }
     }

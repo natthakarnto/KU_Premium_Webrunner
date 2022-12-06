@@ -34,13 +34,6 @@ public class CakesController {
         return "cakes-edit";
     }
 
-//    @GetMapping("/edit/{id}")
-//    public String getEditForm(@PathVariable UUID id, Model model) {
-//        Products products = productsService.getOneById(id);
-//        model.addAttribute("products", products);
-//        return "products-edit";
-//    }
-
     @PostMapping("/edit")
     public String edit(@ModelAttribute Cakes cakes, Model model, RedirectAttributes redirectAttrs) {
         if(checkCake(cakes.getPrice(), cakes.getProductQuantity(), cakes.getProductDiscountPercent(), cakes.getPriceExcludingVat(), cakes.getPricePromotion())) {
@@ -51,35 +44,13 @@ public class CakesController {
                     cakes.getRreID())) {
                 cakesService.update(cakes);
                 return "redirect:/cakes";
-            } else {
-                redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
-                return "redirect:/cakes";
             }
-        } else {
-            redirectAttrs.addFlashAttribute("error","negative number is not allowed!");
+            redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
             return "redirect:/cakes";
         }
+        redirectAttrs.addFlashAttribute("error","negative number is not allowed!");
+        return "redirect:/cakes";
     }
-
-//    @PostMapping("/edit")
-//    public String edit(@ModelAttribute Products products, Model model, RedirectAttributes redirectAttrs) {
-//        if(checkProduct(products.getPrice(), products.getProductQuantity(), products.getProductDiscountPercent(), products.getPriceExcludingVat(), products.getPricePromotion())) {
-//            if(checkString(products.getProductName(), products.getProductCategory(),products.getPoID(),products.getProductDescription(),
-//                    products.getProductAttrib(), products.getProductUsageGuideline(),products.getProductIngredients(), products.getProductNutrition(),
-//                    products.getProductUseIndication(),products.getProductSize(), products.getProductVolume(), products.getProductWeight(),
-//                    products.getProductPromotion(), products.getPcID(), products.getPrr_ID(), products.getPsvID(),products.getFtvID(), products.getaID(),
-//                    products.getRreID())) {
-//                productsService.update(products);
-//                return "redirect:/products";
-//            } else {
-//                redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
-//                return "redirect:/products";
-//            }
-//        } else {
-//            redirectAttrs.addFlashAttribute("error","negative number is not allowed!");
-//            return "redirect:/products";
-//        }
-//    }
 
     @GetMapping
     public String getCakes(Model model, Authentication authentication)
@@ -118,33 +89,6 @@ public class CakesController {
             return "redirect:/cakes/add";
         }
     }
-
-//    โค้ด Edit
-//    @PostMapping("/add")
-//    public String addProducts(@ModelAttribute Products products, Model model, RedirectAttributes redirectAttrs) {
-//        if(checkProducts(products.getPrice(), products.getProductQuantity(), products.getProductDiscountPercent(), products.getPriceExcludingVat(), products.getPricePromotion())){
-//            if(checkString(products.getProductName(), products.getProductCategory(),products.getPoID(),products.getProductDescription(),
-//                    products.getProductAttrib(), products.getProductUsageGuideline(),products.getProductIngredients(), products.getProductNutrition(),
-//                    products.getProductUseIndication(),products.getProductSize(), products.getProductVolume(), products.getProductWeight(),
-//                    products.getProductPromotion(), products.getPcID(), products.getPrr_ID(), products.getPsvID(),products.getFtvID(), products.getaID(),
-//                    products.getRreID())) {
-//                if(productsService.checkNameProduct(products.getProductName())) {
-//                    productsService.addProducts(products);
-//                    return "redirect:/products";
-//                } else {
-//                    redirectAttrs.addFlashAttribute("error","Please don't use the same product name!");
-//                    return "redirect:/products/add";
-//                }
-//            } else {
-//                redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
-//                return "redirect:/products/add";
-//            }
-//        }
-//        else {
-//            redirectAttrs.addFlashAttribute("error","negative number is not allowed!");
-//            return "redirect:/products/add";
-//        }
-//    }
 
     public boolean checkCake(double price, int productQuantity, double productDiscountPercent, double priceExcludingVat, double pricePromotion){ //Method ดักห้ามใส่จำนวนเป็น 0
         if(price > 0 && productQuantity > 0 && productDiscountPercent > 0 && priceExcludingVat > 0 && pricePromotion > 0){

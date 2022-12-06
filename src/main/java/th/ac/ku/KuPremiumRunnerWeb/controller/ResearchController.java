@@ -42,7 +42,7 @@ public class ResearchController {
             return "redirect:/research/list";
         }
         else {
-            redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
+            redirectAttrs.addFlashAttribute("error","Please fill in the rest of the information fields!");
             return "redirect:/research/list";
         }
     }

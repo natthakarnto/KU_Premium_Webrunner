@@ -42,7 +42,7 @@ public class FDA356Controller {
                         fda356Service.update(fda356);
                         return "redirect:/fda356/list";
                     }else {
-                        redirectAttrs.addFlashAttribute("error", "Please type only Pass or Not Pass!");
+                        redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
                         return "redirect:/fda356/list";
                     }
 //                } else {
@@ -50,11 +50,11 @@ public class FDA356Controller {
 //                    return "redirect:/fda356/add";
 //                }
             } else {
-                redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
+                redirectAttrs.addFlashAttribute("error", "Please fill in the rest of the information fields!");
                 return "redirect:/fda356/list";
             }
         } else {
-            redirectAttrs.addFlashAttribute("error", "negative number is not allowed!");
+            redirectAttrs.addFlashAttribute("error", "The value must be greater than 0!");
             return "redirect:/fda356/list";
         }
     }
@@ -90,19 +90,19 @@ public class FDA356Controller {
                         fda356Service.addFDA356(fda356);
                         return "redirect:/fda356/list";
                     }else {
-                        redirectAttrs.addFlashAttribute("error", "Please type only Pass or Not Pass!");
+                        redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
                         return "redirect:/fda356/add";
                     }
                 } else {
-                    redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
+                    redirectAttrs.addFlashAttribute("error","Existed products!,please try again");
                     return "redirect:/fda356/add";
                 }
             } else {
-                redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
+                redirectAttrs.addFlashAttribute("error", "Please fill in the rest of the information fields!");
                 return "redirect:/fda356/add";
             }
         } else {
-            redirectAttrs.addFlashAttribute("error", "negative number is not allowed!");
+            redirectAttrs.addFlashAttribute("error", "The value must be greater than 0!");
             return "redirect:/fda356/add";
         }
     }

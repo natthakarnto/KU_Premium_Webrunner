@@ -36,7 +36,7 @@ public class LoginController {
     public String addUser(@ModelAttribute User user, Model model, RedirectAttributes redirectAttrs, @ModelAttribute("repassword") String repassword){
 
         if (!registerCheck(user,repassword)){
-            redirectAttrs.addFlashAttribute("error","Please check your information fields!");
+            redirectAttrs.addFlashAttribute("error","Please fill in the rest of the information fields!");
         }
         else {
             if (!exits(user)){
