@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import th.ac.ku.KuPremiumRunnerWeb.model.Audio;
+import th.ac.ku.KuPremiumRunnerWeb.model.Research;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -69,5 +70,10 @@ public class AudioService {
             }
         }
         return cart2;
+    }
+
+    public void delete(Audio rings) {
+        String url = "http://localhost:8090/audio/" + rings.getProdAudioID();
+        restTemplate.delete(url, rings, Audio.class);
     }
 }

@@ -115,7 +115,7 @@
 
                     <td sec:authorize="hasRole('ADMIN')" style="text-align: center">
                         <a sec:authorize="hasRole('ADMIN')" style="text-align: center" th:href="@{/inspection/edit/{id}(id=${order.track_No})}" ><button type="button" class="btn btn-primary">Edit</button></a>
-<!--                        <a th:href="@{/certificate/remove/{id}(id=${order.prodCertificateID})}" ><button type="button" class="btn btn-danger">Delete</button></a>-->
+                        <a th:href="@{/inspection/remove/{id}(id=${order.getTrack_No()})}"  onclick = "return confirm('Would you like to confirm?')"><button type="button" class="btn btn-primary">Delete</button></a>
                     </td>
                 </tr>
             </div>

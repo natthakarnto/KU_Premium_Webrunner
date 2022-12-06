@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import th.ac.ku.KuPremiumRunnerWeb.model.Certificate;
 import th.ac.ku.KuPremiumRunnerWeb.model.Research;
 import th.ac.ku.KuPremiumRunnerWeb.service.CakesService;
 import th.ac.ku.KuPremiumRunnerWeb.service.ResearchService;
@@ -85,5 +86,12 @@ public class ResearchController {
         if (relatedResearchName.equals("") || (productName.equals(""))){
             return false;
         }return true;
+    }
+
+    @GetMapping("/remove/{id}")
+    public String removeResearch(@PathVariable UUID id, Model model,Authentication authentication){
+        Research set = researchService.getOneById(id);
+        researchService.delete(set);
+        return "redirect:/research/list";
     }
 }

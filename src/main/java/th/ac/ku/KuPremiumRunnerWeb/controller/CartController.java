@@ -41,12 +41,23 @@ public class CartController {
         model.addAttribute("carts", cartService.getCart());
         return "redirect:/cakes";
     }
+
+//    @PostMapping("")
+//    public String addCart(@ModelAttribute("num") int number, @ModelAttribute("productName") String productName, @ModelAttribute("name") UUID id, Model model) {
+//        if (number == 0) {
+//            cartService.addCart(id);
+//        }
+//        model.addAttribute("carts", cartService.getCart());
+//        return "redirect:/products";
+//    }
+
     @GetMapping("/remove/{id}")
     public String remove(@PathVariable UUID id, Model model) {
         cartService.removeCart(id);
         model.addAttribute("carts",cartService.getCart());
         return "redirect:/cart";
     }
+
 //    private boolean exists(UUID id, List<Cart> cart, int number) { //Method เช็คจำนวนที่จะนำเข้าไปใน Cart
 //
 //        for (int i = 0; i < cart.size(); i++) {

@@ -80,10 +80,11 @@ public class CertificateController {
         // พอรับเข้ามาจะเอาเข้า List
         if(checkAddress(certificate.getProdCertificateName(), certificate.getProductName())) {
             certificateService.addCertificate(certificate);
+            System.out.println("ผ่าน");
             return "redirect:/certificate/list";
-        }
-        else {
+        } else {
             redirectAttrs.addFlashAttribute("error","Please fill all the information fields!");
+            System.out.println("ไม่ผ่าน");
             return "redirect:/certificate/add";
         }
     }
@@ -91,7 +92,7 @@ public class CertificateController {
     public boolean checkAddress(String prodCertificateName, String productName){
         if (prodCertificateName.equals("") || (productName.equals(""))){
             return false;
-        }return true;
+        } return true;
     }
 
     @GetMapping("/remove/{id}")

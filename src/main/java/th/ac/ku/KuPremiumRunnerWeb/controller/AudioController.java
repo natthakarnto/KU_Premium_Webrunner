@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import th.ac.ku.KuPremiumRunnerWeb.model.Audio;
+import th.ac.ku.KuPremiumRunnerWeb.model.Research;
 import th.ac.ku.KuPremiumRunnerWeb.service.AudioService;
 import th.ac.ku.KuPremiumRunnerWeb.service.CakesService;
 import th.ac.ku.KuPremiumRunnerWeb.service.UserService;
@@ -86,5 +87,12 @@ public class AudioController {
         if (prodAudioName.equals("") || (productName.equals(""))){
             return false;
         }return true;
+    }
+
+    @GetMapping("/remove/{id}")
+    public String removeAudio(@PathVariable UUID id, Model model,Authentication authentication){
+        Audio set = audioService.getOneById(id);
+        audioService.delete(set);
+        return "redirect:/audio/list";
     }
 }

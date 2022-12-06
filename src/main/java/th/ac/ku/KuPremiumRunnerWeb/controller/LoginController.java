@@ -40,11 +40,11 @@ public class LoginController {
         }
         else {
             if (!exits(user)){
-                redirectAttrs.addFlashAttribute("error","This Email or Username has been used");
+                redirectAttrs.addFlashAttribute("error","This Email or Username has been used!");
             }
             else {
                 if (!checkPassword(user.getPassword(),repassword)){
-                    redirectAttrs.addFlashAttribute("error","please enter the same password");
+                    redirectAttrs.addFlashAttribute("error","Please enter the same password!");
                 }
                 else {
                     userService.addUser(user);
@@ -77,6 +77,7 @@ public class LoginController {
 //        }
 //        return "redirect:/register_rdi";
 //    }
+
     public boolean registerCheck(User user,String repassword){
 
         if ((user.getFirstName().equals("") || (user.getLastName().equals("") || user.getEmail().equals("")) || user.getTelNo().equals(""))

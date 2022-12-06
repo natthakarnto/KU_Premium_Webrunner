@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import th.ac.ku.KuPremiumRunnerWeb.model.Food;
+import th.ac.ku.KuPremiumRunnerWeb.model.Research;
 import th.ac.ku.KuPremiumRunnerWeb.model.Story;
 
 import java.util.ArrayList;
@@ -70,5 +71,10 @@ public class FoodService {
             }
         }
         return cart2;
+    }
+
+    public void delete(Food rings) {
+        String url = "http://localhost:8090/food/" + rings.getProdFoodID();
+        restTemplate.delete(url, rings, Food.class);
     }
 }

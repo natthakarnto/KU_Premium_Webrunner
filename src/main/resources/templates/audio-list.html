@@ -92,8 +92,7 @@
 
                 <td sec:authorize="hasRole('USER')" style="text-align: center">
                     <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/audio/edit/{id}(id=${order.prodAudioID})}" ><button type="button" class="btn btn-primary">Edit this Product Audio</button></a>
-                    <!--                    <a th:href="@{certificate/remove/{id}(id=${order.prodCertificateID})}" ><button type="button" class="btn btn-danger">Delete</button></a>-->
-                </td>
+                    <a th:href="@{/audio/remove/{id}(id=${order.getProdAudioID()})}"  onclick = "return confirm('Would you like to confirm?')"><button type="button" class="btn btn-primary">Delete</button></a>                </td>
             </tr>
         </div>
         </tbody>

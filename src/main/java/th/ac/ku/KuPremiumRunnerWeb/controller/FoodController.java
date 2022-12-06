@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import th.ac.ku.KuPremiumRunnerWeb.model.Food;
+import th.ac.ku.KuPremiumRunnerWeb.model.Research;
 import th.ac.ku.KuPremiumRunnerWeb.model.Story;
 import th.ac.ku.KuPremiumRunnerWeb.service.CakesService;
 import th.ac.ku.KuPremiumRunnerWeb.service.FoodService;
@@ -91,5 +92,12 @@ public class FoodController {
         if (prodFoodName.equals("") || (productName.equals(""))){
             return false;
         }return true;
+    }
+
+    @GetMapping("/remove/{id}")
+    public String removeFood(@PathVariable UUID id, Model model,Authentication authentication){
+        Food set = foodService.getOneById(id);
+        foodService.delete(set);
+        return "redirect:/food/list";
     }
 }

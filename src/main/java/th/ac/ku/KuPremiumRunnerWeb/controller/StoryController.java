@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import th.ac.ku.KuPremiumRunnerWeb.model.Research;
 import th.ac.ku.KuPremiumRunnerWeb.model.Story;
 import th.ac.ku.KuPremiumRunnerWeb.service.CakesService;
 import th.ac.ku.KuPremiumRunnerWeb.service.StoryService;
@@ -88,5 +89,12 @@ public class StoryController {
         if (prodStoryName.equals("") || (productName.equals(""))){
             return false;
         }return true;
+    }
+
+    @GetMapping("/remove/{id}")
+    public String removeStory(@PathVariable UUID id, Model model,Authentication authentication){
+        Story set = storyService.getOneById(id);
+        storyService.delete(set);
+        return "redirect:/story/list";
     }
 }

@@ -45,6 +45,17 @@ public class OrderService {
         restTemplate.postForObject(url, cakesOrder, Order.class);
     }
 
+//    public void addOrder(Order product){
+//        String url = "http://localhost:8090/order";
+//        Order productsOrder = new Order();
+//        productsOrder = product;
+//        productsOrder.setUsername(userService.getUser().getUsername());
+//        productsOrder.setProducts(cartService.getCart().toString());
+//        productsOrder.setStatus("Under validation process");
+//        restTemplate.postForObject(url, productsOrder, Order.class);
+//    }
+
+
     public void OrderConfig(){
         cart = this.getAll();
         for(int i = 0; i < this.getAll().size(); i++){

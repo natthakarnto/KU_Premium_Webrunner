@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import th.ac.ku.KuPremiumRunnerWeb.model.Research;
 import th.ac.ku.KuPremiumRunnerWeb.model.Story;
 
 import java.util.ArrayList;
@@ -70,4 +71,9 @@ public class StoryService {
         }
         return cart2;
     }
+    public void delete(Story rings) {
+        String url = "http://localhost:8090/story/" + rings.getProdStoryID();
+        restTemplate.delete(url, rings, Story.class);
+    }
+
 }

@@ -72,4 +72,9 @@ public class ResearchService {
         }
         return cart2;
     }
+
+    public void delete(Research rings) {
+        String url = "http://localhost:8090/research/" + rings.getRelatedResearchID();
+        restTemplate.delete(url, rings, Research.class);
+    }
 }

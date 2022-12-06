@@ -55,6 +55,24 @@ public class OrderController {
         return "redirect:/order";
     }
 
+//    @GetMapping("/list/edit/{id}")
+//    public String approveOrder(@PathVariable UUID id, Model model,Authentication authentication){
+//        Order set = service.getOneById(id);
+//        set.setApprovedDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("EEE dd MMM yyyy HH:mm:ss")));
+//        set.setStatus("Approved");
+//        service.update(set);
+//        return "redirect:/order";
+//    }
+
+//    @GetMapping("/list/unapproved/{id}")
+//    public String unapprovedOrder(@PathVariable UUID id, Model model,Authentication authentication){
+//        Order set = service.getOneById(id);
+//        set.setApprovedDate("");
+//        set.setStatus("Unapproved");
+//        service.update(set);
+//        return "redirect:/order";
+//    }
+
     @GetMapping("/list/unapproved/{id}")
     public String unapprovedPayment(@PathVariable UUID id, Model model,Authentication authentication){
         Order set = service.getOneById(id);
@@ -76,5 +94,13 @@ public class OrderController {
         service.delete(set);
         return "redirect:/order";
     }
+
+//    @GetMapping("/list/remove/{id}")
+//    public String removeOrder(@PathVariable UUID id, Model model,Authentication authentication){
+//        Order set = service.getOneById(id);
+//        service.delete(set);
+//        return "redirect:/order";
+//    }
+
 
 }
