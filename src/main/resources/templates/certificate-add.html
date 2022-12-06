@@ -23,30 +23,30 @@
 <div class="container" style="background-color: white; margin-top:50px; margin-bottom: 50px; padding-bottom: 20px ;border-radius: 25px;">
     <h1 class="display-6 text-center" style="font-weight: bold; text-align:center; color: cornflowerblue;font-size: 45px ;margin-bottom: 50px; padding-top: 35px">Certificate Add</h1>
 
+    <div class="alert alert-danger" style="text-align: center" role="alert" th:text="${error}" th:if="${error}"></div>
+
+    <div th:if="${message}">
+        <h2 th:text="${message}"/>
+    </div>
+
+    <div>
+        <form method="POST" enctype="multipart/form-data" action="/upload_files/handle_upload">
+            <table>
+                <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+                <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+            </table>
+        </form>
+    </div>
+
+    <div>
+        <ul>
+            <li th:each="file : ${files}">
+                <a th:href="${file}" th:text="${file}" />
+            </li>
+        </ul>
+    </div>
+
     <form th:action="@{/certificate/add}" method="POST">
-
-        <div class="alert alert-danger" style="text-align: center" role="alert" th:text="${error}" th:if="${error}"></div>
-
-        <div th:if="${message}">
-            <h2 th:text="${message}"/>
-        </div>
-
-        <div>
-            <form method="POST" enctype="multipart/form-data" action="/upload_files/handle_upload">
-                <table>
-                    <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-                    <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-                </table>
-            </form>
-        </div>
-
-        <div>
-            <ul>
-                <li th:each="file : ${files}">
-                    <a th:href="${file}" th:text="${file}" />
-                </li>
-            </ul>
-        </div>
 
         <div class="mb-3">
             <label for="productNameInput" class="form-label">ชื่อผลิตภัณฑ์</label>

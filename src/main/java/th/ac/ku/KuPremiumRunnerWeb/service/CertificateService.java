@@ -4,9 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import th.ac.ku.KuPremiumRunnerWeb.model.Cakes;
-import th.ac.ku.KuPremiumRunnerWeb.model.Cart;
 import th.ac.ku.KuPremiumRunnerWeb.model.Certificate;
+import th.ac.ku.KuPremiumRunnerWeb.model.Research;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,6 +14,7 @@ import java.util.UUID;
 
 @Service
 public class CertificateService {
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -27,17 +27,6 @@ public class CertificateService {
         return Arrays.asList(certificates);
     }
 
-//    public List<Certificate> getOrder(){
-//        String url = "http://localhost:8090/cakes";
-//        ResponseEntity<Certificate[]> response = restTemplate.getForEntity(url, Certificate[].class);
-//        Certificate[] certificates = response.getBody();
-//        ArrayList orders = new ArrayList();
-//        for(int i = 0 ; i < certificates.length; i++){
-//            orders.add(new Cart(certificates[i]));
-//        }
-//        return orders;
-//    }
-//
     public void addCertificate(Certificate certificate){
         String url = "http://localhost:8090/certificate";
         restTemplate.postForObject(url, certificate, Certificate.class );
@@ -50,6 +39,7 @@ public class CertificateService {
         Certificate certificate = response.getBody();
         return certificate;
     }
+
     public void update(Certificate certificate){
         String url = "http://localhost:8090/certificate/" + certificate.getProdCertificateID();
         restTemplate.put(url, certificate, Certificate.class);
@@ -88,5 +78,4 @@ public class CertificateService {
         String url = "http://localhost:8090/certificate/" + rings.getProdCertificateID();
         restTemplate.delete(url, rings, Certificate.class);
     }
-
 }

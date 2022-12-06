@@ -120,7 +120,7 @@
                     <td style="text-align: center" th:text="${order.fda_418_Cer}"></td>
 
                     <td sec:authorize="hasRole('ADMIN')" style="text-align: center">
-                        <a sec:authorize="hasRole('ADMIN')" style="text-align: center" th:href="@{/audit/edit/{id}(id=${order.auditID})}" ><button type="button" class="btn btn-primary">Edit</button></a>
+                        <a sec:authorize="hasRole('ADMIN')" style="text-align: center" th:href="@{/audit/edit/{id}(id=${order.auditID})}" ><button type="button" class="btn btn-primary" style="margin-bottom: 5px">Edit</button></a>
                         <a th:href="@{/audit/remove/{id}(id=${order.getAuditID()})}"  onclick = "return confirm('Would you like to confirm?')"><button type="button" class="btn btn-primary">Delete</button></a>
                     </td>
                 </tr>

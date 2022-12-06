@@ -91,7 +91,7 @@
                 <td style="text-align: center" th:text="${order.prodFoodName}"></td>
 
                 <td sec:authorize="hasRole('USER')" style="text-align: center">
-                    <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/food/edit/{id}(id=${order.prodFoodID})}" ><button type="button" class="btn btn-primary">Edit this Food Traceability Video</button></a>
+                    <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/food/edit/{id}(id=${order.prodFoodID})}" ><button type="button" class="btn btn-primary" style="margin-bottom: 5px">Edit this Food Traceability Video</button></a>
                     <a th:href="@{/food/remove/{id}(id=${order.getProdFoodID()})}"  onclick = "return confirm('Would you like to confirm?')"><button type="button" class="btn btn-primary">Delete</button></a>
                 </td>
             </tr>

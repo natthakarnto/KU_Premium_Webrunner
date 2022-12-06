@@ -27,12 +27,12 @@
   <table class="table table-striped" style="text-align: center">
     <thead>
     <tr>
-      <th>Product Picture</th>
+      <th style="color: cornflowerblue">Product Picture</th>
       <!--      <th>Product ID</th>-->
-      <th>Product Name</th>
+      <th style="color: cornflowerblue">Product Name</th>
       <!--      <th>Product Owner ID</th>-->
-      <th>Product Volume</th>
-      <th>Product Price</th>
+      <th style="color: cornflowerblue">Product Category</th>
+      <th style="color: cornflowerblue">Product Price</th>
     </tr>
     </thead>
     <tbody>
@@ -44,7 +44,7 @@
       <td th:text="${cake.getCakes().productName}"></td>
       <!--เพิ่มรหัสเจ้าของสินค้าด้วยฮับ-->
       <!--      <td text="T0000001"></td>-->
-      <td th:text="${cake.getCakes().productVolume}"></td>
+      <td th:text="${cake.getCakes().productCategory}"></td>
       <td th:text="${cake.getCakes().price}"></td>
       <td>
         <a th:href="@{/cart/remove/{id}(id=${cake.getCakes().pID})}">

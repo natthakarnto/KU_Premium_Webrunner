@@ -171,7 +171,7 @@
                     <td style="text-align: center" th:text="${order.yeast_mold_f}"></td>
 
                     <td sec:authorize="hasRole('ADMIN')" style="text-align: center">
-                        <a sec:authorize="hasRole('ADMIN')" style="text-align: center" th:href="@{/fda356/edit/{id}(id=${order.fda356ID})}" ><button type="button" class="btn btn-primary">Edit</button></a>
+                        <a sec:authorize="hasRole('ADMIN')" style="text-align: center" th:href="@{/fda356/edit/{id}(id=${order.fda356ID})}" ><button type="button" class="btn btn-primary" style="margin-bottom: 5px">Edit</button></a>
                         <a th:href="@{/fda356/remove/{id}(id=${order.getFda356ID()})}"  onclick = "return confirm('Would you like to confirm?')"><button type="button" class="btn btn-primary">Delete</button></a>                    </td>
                 </tr>
             </div>
