@@ -91,7 +91,7 @@
                 <td style="text-align: center" th:text="${order.relatedResearchName}"></td>
 
                 <td sec:authorize="hasRole('USER')" style="text-align: center">
-                    <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/research/edit/{id}(id=${order.relatedResearchID})}" ><button type="button" class="btn btn-primary" style="margin-bottom: 5px">Edit this Related Research</button></a>
+                    <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/research/edit/{id}(id=${order.relatedResearchID})}" ><button type="button" class="btn btn-primary" style="margin-bottom: 0px">Edit this Related Research</button></a>
                     <a th:href="@{/research/remove/{id}(id=${order.getRelatedResearchID()})}"  onclick = "return confirm('Would you like to confirm?')"><button type="button" class="btn btn-primary">Delete</button></a>
                 </td>
             </tr>

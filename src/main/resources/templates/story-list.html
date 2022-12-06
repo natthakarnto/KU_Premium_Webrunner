@@ -91,7 +91,7 @@
                 <td style="text-align: center" th:text="${order.prodStoryName}"></td>
 
                 <td sec:authorize="hasRole('USER')" style="text-align: center">
-                    <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/story/edit/{id}(id=${order.prodStoryID})}" ><button type="button" class="btn btn-primary" style="margin-bottom: 5px">Edit this Story Embedded Video</button></a>
+                    <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/story/edit/{id}(id=${order.prodStoryID})}" ><button type="button" class="btn btn-primary" style="margin-bottom: 0px">Edit this Story Embedded Video</button></a>
                     <a th:href="@{/story/remove/{id}(id=${order.getProdStoryID()})}"  onclick = "return confirm('Would you like to confirm?')"><button type="button" class="btn btn-primary">Delete</button></a>
                 </td>
             </tr>

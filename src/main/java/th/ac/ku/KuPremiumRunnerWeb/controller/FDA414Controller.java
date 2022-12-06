@@ -93,7 +93,7 @@ public class FDA414Controller {
             }
         } else {
             redirectAttrs.addFlashAttribute("error", "The value must be greater than 0!");
-            return "redirect:/fda414/edit";
+            return "redirect:/fda414/add";
         }
     }
 
