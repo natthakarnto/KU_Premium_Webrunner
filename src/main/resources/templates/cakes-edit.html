@@ -99,6 +99,8 @@
     <form th:object="${cakes}" th:action="@{/cakes/edit}" method="POST">
 
         <input type="hidden" th:field="*{pID}" id="id">
+<!--        <input type="hidden" th:field="*{username}" id="username">-->
+<!--        <input type="hidden" th:field="*{poID}" id="productOwnerInput">-->
 
         <!--        <div class="mb-3">-->
         <!--            <label for="nameInput" class="form-label">Product Name</label>-->
@@ -113,19 +115,20 @@
                 </div>
             </div>
             <div class="col">
+<!--                <div class="mb-3">-->
+<!--                    <label for="productOwnerInput" class="form-label">รหัสเจ้าของสินค้า</label>-->
+<!--                    <input id="productOwnerInput" type="text" class="form-control" th:field="*{poID}">-->
+<!--                </div>-->
+
                 <div class="mb-3">
-                    <label for="productOwnerInput" class="form-label">รหัสเจ้าของสินค้า</label>
-                    <input id="productOwnerInput" type="text" class="form-control" th:field="*{poID}">
+                    <label class="form-label">รหัสเจ้าของสินค้า</label>
+                    <input type="hidden" th:field="*{poID}" id="productOwnerInput">
+                    <h4 class="form-control" type="text" th:utext="${cakes.getPoID()}"></h4>
                 </div>
             </div>
         </div>
+
         <div class="row mb-4">
-            <!--            <div class="col">-->
-            <!--                <div class="form-outline">-->
-            <!--                    <label for="nameInput" class="form-label" >เลขรหัสสินค้า</label>-->
-            <!--                    <input id="nameInput" type="text" class="form-control" name="pID"> &lt;!&ndash;Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล&ndash;&gt;-->
-            <!--                </div>-->
-            <!--            </div>-->
             <div class="col">
                 <div class="form-outline">
                     <label for="productInput" class="form-label">ราคาสินค้า</label>
@@ -173,8 +176,21 @@
             </div>
             <div class="col">
                 <div class="mb-3">
+<!--                    <label for="productSizeInput" class="form-label">ขนาดของผลิตภัณฑ์</label>-->
+<!--                    <input id="productSizeInput" type="text" class="form-control" th:field="*{productSize}">-->
+
                     <label for="productSizeInput" class="form-label">ขนาดของผลิตภัณฑ์</label>
-                    <input id="productSizeInput" type="text" class="form-control" th:field="*{productSize}">
+                    <select th:field="*{productSize}" id="productSizeInput" type="text" class="form-control">
+                        <option value="None">None</option>
+                        <optgroup label="Product Size">
+                            <option value="ไม่ผ่าน">SS</option>
+                            <option value="ไม่ผ่าน">S</option>
+                            <option value="ไม่ผ่าน">M</option>
+                            <option value="ไม่ผ่าน">L</option>
+                            <option value="ไม่ผ่าน">XL</option>
+                            <option value="ไม่ผ่าน">XXL</option>
+                        </optgroup>
+                    </select>
                 </div>
             </div>
         </div>
@@ -220,8 +236,13 @@
         <div class="row mb-4">
             <div class="col">
                 <div class="mb-3">
-                    <label for="PCIDInput" class="form-label">เลขใบรับรองผลิตภัณฑ์</label>
-                    <input id="PCIDInput" type="text" class="form-control" th:field="*{pcID}">
+<!--                    <label for="PCIDInput" class="form-label">เลขใบรับรองผลิตภัณฑ์</label>-->
+<!--                    <input id="PCIDInput" type="text" class="form-control" th:field="*{pcID}">-->
+
+                    <label class="form-label">เลขใบรับรองผลิตภัณฑ์</label>
+                    <input type="hidden" th:field="*{pcID}" id="PCIDInput">
+                    <h4 class="form-control" type="text" th:utext="${cakes.pcID}"></h4>
+
                 </div>
             </div>
             <div class="col">

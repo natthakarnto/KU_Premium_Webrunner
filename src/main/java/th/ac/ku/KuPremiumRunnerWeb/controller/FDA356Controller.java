@@ -38,13 +38,13 @@ public class FDA356Controller {
                     , fda356.getColi_s(), fda356.getColi_c(), fda356.getColi_f(), fda356.getYeast_mold_s(), fda356.getYeast_mold_r()
                     , fda356.getYeast_c(), fda356.getMold_c(), fda356.getYeast_mold_f())) {
 //                if(fda356Service.checkNameFDA(fda356.getProductName())) {
-                    if(checkTrueFalse(fda356.getPh_value_f(), fda356.getColi_f(), fda356.getYeast_mold_f())) {
+//                    if(checkTrueFalse(fda356.getPh_value_f(), fda356.getColi_f(), fda356.getYeast_mold_f())) {
                         fda356Service.update(fda356);
                         return "redirect:/fda356/list";
-                    }else {
-                        redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
-                        return "redirect:/fda356/list";
-                    }
+//                    }else {
+//                        redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
+//                        return "redirect:/fda356/list";
+//                    }
 //                } else {
 //                    redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
 //                    return "redirect:/fda356/add";
@@ -69,12 +69,14 @@ public class FDA356Controller {
     public String getCakes(Model model, Authentication authentication) {
         userServices.setLoginUser(authentication.getName());
         model.addAttribute("fda356", fda356Service.getAll());
+        model.addAttribute("productsFDA356", cakesService.getDummy(authentication.getName()));
         return "fda356-edit";
     }
 
     @GetMapping("/add")
-    public String getAddForm(Model model){
-        model.addAttribute("certificate", fda356Service.getAll());
+    public String getAddForm(Model model, Authentication authentication){
+        model.addAttribute("fda356", fda356Service.getAll());
+        model.addAttribute("productsFDA356", cakesService.getDummy(authentication.getName()));
         return "fda356-add";
     }
 
@@ -86,13 +88,13 @@ public class FDA356Controller {
                     , fda356.getColi_s(), fda356.getColi_c(), fda356.getColi_f(), fda356.getYeast_mold_s(), fda356.getYeast_mold_r()
                     , fda356.getYeast_c(), fda356.getMold_c(), fda356.getYeast_mold_f())) {
                 if(fda356Service.checkNameFDA(fda356.getProductName())) {
-                    if(checkTrueFalse(fda356.getPh_value_f(), fda356.getColi_f(), fda356.getYeast_mold_f())) {
+//                    if(checkTrueFalse(fda356.getPh_value_f(), fda356.getColi_f(), fda356.getYeast_mold_f())) {
                         fda356Service.addFDA356(fda356);
                         return "redirect:/fda356/list";
-                    }else {
-                        redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
-                        return "redirect:/fda356/add";
-                    }
+//                    }else {
+//                        redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
+//                        return "redirect:/fda356/add";
+//                    }
                 } else {
                     redirectAttrs.addFlashAttribute("error","Existed products!,please try again");
                     return "redirect:/fda356/add";
@@ -124,21 +126,21 @@ public class FDA356Controller {
         }return true;
     }
 
-    public boolean checkTrueFalse(String ph_value_f, String coli_f, String yeast_mold_f) {
-        if (ph_value_f.equals("Pass") || ph_value_f.equals("Not Pass") || ph_value_f.equals("pass") || ph_value_f.equals("not pass") || ph_value_f.equals("NotPass")) {
-            if (coli_f.equals("Pass") || coli_f.equals("Not Pass") || coli_f.equals("pass") || coli_f.equals("not pass") || coli_f.equals("NotPass")) {
-                if (yeast_mold_f.equals("Pass") || yeast_mold_f.equals("Not Pass") || yeast_mold_f.equals("pass") || yeast_mold_f.equals("not pass") || yeast_mold_f.equals("NotPass")) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
+//    public boolean checkTrueFalse(String ph_value_f, String coli_f, String yeast_mold_f) {
+//        if (ph_value_f.equals("Pass") || ph_value_f.equals("Not Pass") || ph_value_f.equals("pass") || ph_value_f.equals("not pass") || ph_value_f.equals("NotPass")) {
+//            if (coli_f.equals("Pass") || coli_f.equals("Not Pass") || coli_f.equals("pass") || coli_f.equals("not pass") || coli_f.equals("NotPass")) {
+//                if (yeast_mold_f.equals("Pass") || yeast_mold_f.equals("Not Pass") || yeast_mold_f.equals("pass") || yeast_mold_f.equals("not pass") || yeast_mold_f.equals("NotPass")) {
+//                    return true;
+//                } else {
+//                    return false;
+//                }
+//            } else {
+//                return false;
+//            }
+//        } else {
+//            return false;
+//        }
+//    }
 
     @GetMapping("/remove/{id}")
     public String removeFDA356(@PathVariable UUID id, Model model,Authentication authentication){

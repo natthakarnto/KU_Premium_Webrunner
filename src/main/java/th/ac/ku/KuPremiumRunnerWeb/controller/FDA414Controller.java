@@ -34,13 +34,13 @@ public class FDA414Controller {
     public String edit(@ModelAttribute FDA414 fda414, Model model, RedirectAttributes redirectAttrs) {
         if(checkNum(fda414.getLead_s(), fda414.getLead_c())) {
             if (checkAddress(fda414.getProductName(), fda414.getR_name(), fda414.getLead_s(), fda414.getLead_c(), fda414.getLead_f())) {
-                if(checkTrueFalse(fda414.getLead_f())) {
+//                if(checkTrueFalse(fda414.getLead_f())) {
                     fda414Service.update(fda414);
                     return "redirect:/fda414/list";
-                }else {
-                    redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
-                    return "redirect:/fda414/list";
-                }
+//                }else {
+//                    redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
+//                    return "redirect:/fda414/list";
+//                }
             } else {
                 redirectAttrs.addFlashAttribute("error", "Please fill in the rest of the information fields!");
                 return "redirect:/fda414/list";
@@ -61,12 +61,14 @@ public class FDA414Controller {
     public String getCakes(Model model, Authentication authentication) {
         userServices.setLoginUser(authentication.getName());
         model.addAttribute("fda414", fda414Service.getAll());
+        model.addAttribute("productsFDA414", cakesService.getDummy(authentication.getName()));
         return "fda414-edit";
     }
 
     @GetMapping("/add")
-    public String getAddForm(Model model){
+    public String getAddForm(Model model, Authentication authentication){
         model.addAttribute("fda414", fda414Service.getAll());
+        model.addAttribute("productsFDA414", cakesService.getDummy(authentication.getName()));
         return "fda414-add";
     }
 
@@ -76,13 +78,13 @@ public class FDA414Controller {
         if(checkNum(fda414.getLead_s(), fda414.getLead_c())) {
             if (checkAddress(fda414.getProductName(), fda414.getR_name(), fda414.getLead_s(), fda414.getLead_c(), fda414.getLead_f())) {
                 if(fda414Service.checkNameFDA(fda414.getProductName())) {
-                    if(checkTrueFalse(fda414.getLead_f())) {
+//                    if(checkTrueFalse(fda414.getLead_f())) {
                         fda414Service.addFDA414(fda414);
                         return "redirect:/fda414/list";
-                    }else {
-                        redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
-                        return "redirect:/fda414/add";
-                    }
+//                    }else {
+//                        redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
+//                        return "redirect:/fda414/add";
+//                    }
                 } else {
                     redirectAttrs.addFlashAttribute("error","Existed products!,please try again");
                     return "redirect:/fda414/add";

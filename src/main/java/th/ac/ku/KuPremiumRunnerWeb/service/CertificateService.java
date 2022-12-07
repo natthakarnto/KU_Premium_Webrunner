@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import th.ac.ku.KuPremiumRunnerWeb.model.Cakes;
 import th.ac.ku.KuPremiumRunnerWeb.model.Certificate;
 import th.ac.ku.KuPremiumRunnerWeb.model.Research;
+import th.ac.ku.KuPremiumRunnerWeb.model.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +19,10 @@ public class CertificateService {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    private Certificate certificate;
+
+    private Cakes cakes;
 
     private List<Certificate> rings = new ArrayList<>();
 
@@ -77,5 +83,9 @@ public class CertificateService {
     public void delete(Certificate rings) {
         String url = "http://localhost:8090/certificate/" + rings.getProdCertificateID();
         restTemplate.delete(url, rings, Certificate.class);
+    }
+
+    public Certificate getCertificate(){
+        return certificate;
     }
 }

@@ -36,14 +36,14 @@ public class AuditController {
         if (checkAddress(audit.getProductName(), audit.getFda_356_Att(), audit.getFda_356_Res(), audit.getFda_356_Cer(), audit.getFda_414_Att(),
                 audit.getFda_414_Res(), audit.getFda_414_Cer(), audit.getFda_416_Att(), audit.getFda_416_Res(), audit.getFda_416_Cer(),
                 audit.getFda_418_Att(), audit.getFda_418_Res(), audit.getFda_418_Cer())) {
-            if(checkTrueFalse(audit.getFda_356_Att(), audit.getFda_414_Att(), audit.getFda_416_Att(), audit.getFda_418_Att(),
-                    audit.getFda_356_Res(), audit.getFda_414_Res(), audit.getFda_416_Res(), audit.getFda_418_Res())) {
+//            if(checkTrueFalse(audit.getFda_356_Att(), audit.getFda_414_Att(), audit.getFda_416_Att(), audit.getFda_418_Att(),
+//                    audit.getFda_356_Res(), audit.getFda_414_Res(), audit.getFda_416_Res(), audit.getFda_418_Res())) {
                 auditService.update(audit);
                 return "redirect:/audit/list";
-            } else {
-                redirectAttrs.addFlashAttribute("error", "Please type only True or False!");
-                return "redirect:/audit/list";
-            }
+//            } else {
+//                redirectAttrs.addFlashAttribute("error", "Please type only True or False!");
+//                return "redirect:/audit/list";
+//            }
         } else {
             redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
             return "redirect:/audit/list";
@@ -60,12 +60,14 @@ public class AuditController {
     public String getCakes(Model model, Authentication authentication) {
         userServices.setLoginUser(authentication.getName());
         model.addAttribute("audit", auditService.getAll());
+        model.addAttribute("productsAudit", cakesService.getDummy(authentication.getName()));
         return "audit-edit";
     }
 
     @GetMapping("/add")
-    public String getAddForm(Model model){
+    public String getAddForm(Model model, Authentication authentication){
         model.addAttribute("audit", auditService.getAll());
+        model.addAttribute("productsAudit", cakesService.getDummy(authentication.getName()));
         return "audit-add";
     }
 
@@ -75,14 +77,14 @@ public class AuditController {
                 audit.getFda_414_Res(), audit.getFda_414_Cer(), audit.getFda_416_Att(), audit.getFda_416_Res(), audit.getFda_416_Cer(),
                 audit.getFda_418_Att(), audit.getFda_418_Res(), audit.getFda_418_Cer())) {
             if(auditService.checkNameAudit(audit.getProductName())) {
-                if(checkTrueFalse(audit.getFda_356_Att(), audit.getFda_414_Att(), audit.getFda_416_Att(), audit.getFda_418_Att(),
-                        audit.getFda_356_Res(), audit.getFda_414_Res(), audit.getFda_416_Res(), audit.getFda_418_Res())) {
+//                if(checkTrueFalse(audit.getFda_356_Att(), audit.getFda_414_Att(), audit.getFda_416_Att(), audit.getFda_418_Att(),
+//                        audit.getFda_356_Res(), audit.getFda_414_Res(), audit.getFda_416_Res(), audit.getFda_418_Res())) {
                     auditService.addAudit(audit);
                     return "redirect:/audit/list";
-                } else {
-                    redirectAttrs.addFlashAttribute("error", "Please type only True or False!");
-                    return "redirect:/audit/add";
-                }
+//                } else {
+//                    redirectAttrs.addFlashAttribute("error", "Please type only True or False!");
+//                    return "redirect:/audit/add";
+//                }
             } else {
                 redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
                 return "redirect:/audit/add";

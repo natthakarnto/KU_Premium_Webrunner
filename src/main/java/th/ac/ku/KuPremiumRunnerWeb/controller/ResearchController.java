@@ -59,12 +59,15 @@ public class ResearchController {
     public String getCakes(Model model, Authentication authentication) {
         userServices.setLoginUserCakes(authentication.getName());
         model.addAttribute("research", researchService.getAll());
+        model.addAttribute("cakesResearch", cakesService.getDummy(authentication.getName()));
         return "research-edit";
     }
 
     @GetMapping("/add")
-    public String getAddForm(Model model){
+    public String getAddForm(Model model, Authentication authentication){
+        userServices.setLoginUserCakes(authentication.getName());
         model.addAttribute("research", researchService.getAll());
+        model.addAttribute("cakesResearch", cakesService.getDummy(authentication.getName()));
         return "research-add";
     }
 

@@ -40,13 +40,13 @@ public class FDA418Controller {
                     , fda418.getSorbic_c(), fda418.getBenzoic_sorbic_f(), fda418.getSynt_s(), fda418.getSynt_c(), fda418.getSynt_f()
                     , fda418.getSod_s(), fda418.getSod_c(), fda418.getSod_f(), fda418.getPotas_s(), fda418.getPotas_c(), fda418.getPotas_f()
                     , fda418.getPlate_s(), fda418.getPlate_c(), fda418.getPlate_f())) {
-                if(checkTrueFalse(fda418.getBenzoic_sorbic_f(), fda418.getSynt_f(), fda418.getSod_f(), fda418.getPotas_f(), fda418.getPlate_f())) {
+//                if(checkTrueFalse(fda418.getBenzoic_sorbic_f(), fda418.getSynt_f(), fda418.getSod_f(), fda418.getPotas_f(), fda418.getPlate_f())) {
                     fda418Service.update(fda418);
                     return "redirect:/fda418/list";
-                }else {
-                    redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
-                    return "redirect:/fda418/list";
-                }
+//                }else {
+//                    redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
+//                    return "redirect:/fda418/list";
+//                }
             } else {
                 redirectAttrs.addFlashAttribute("error", "Please fill in the rest of the information fields!");
                 return "redirect:/fda418/list";
@@ -67,12 +67,14 @@ public class FDA418Controller {
     public String getCakes(Model model, Authentication authentication) {
         userServices.setLoginUser(authentication.getName());
         model.addAttribute("fda418", fda418Service.getAll());
+        model.addAttribute("productsFDA418", cakesService.getDummy(authentication.getName()));
         return "fda418-edit";
     }
 
     @GetMapping("/add")
-    public String getAddForm(Model model){
+    public String getAddForm(Model model, Authentication authentication){
         model.addAttribute("fda418", fda418Service.getAll());
+        model.addAttribute("productsFDA418", cakesService.getDummy(authentication.getName()));
         return "fda418-add";
     }
 
@@ -86,13 +88,13 @@ public class FDA418Controller {
             , fda418.getSod_s(), fda418.getSod_c(), fda418.getSod_f(), fda418.getPotas_s(), fda418.getPotas_c(), fda418.getPotas_f()
             , fda418.getPlate_s(), fda418.getPlate_c(), fda418.getPlate_f())) {
                 if(fda418Service.checkNameFDA(fda418.getProductName())) {
-                    if(checkTrueFalse(fda418.getBenzoic_sorbic_f(), fda418.getSynt_f(), fda418.getSod_f(), fda418.getPotas_f(), fda418.getPlate_f())) {
+//                    if(checkTrueFalse(fda418.getBenzoic_sorbic_f(), fda418.getSynt_f(), fda418.getSod_f(), fda418.getPotas_f(), fda418.getPlate_f())) {
                         fda418Service.addFDA418(fda418);
                         return "redirect:/fda418/list";
-                    }else {
-                        redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
-                        return "redirect:/fda418/add";
-                    }
+//                    }else {
+//                        redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
+//                        return "redirect:/fda418/add";
+//                    }
                 } else {
                     redirectAttrs.addFlashAttribute("error","Existed products!,please try again");
                     return "redirect:/fda418/add";

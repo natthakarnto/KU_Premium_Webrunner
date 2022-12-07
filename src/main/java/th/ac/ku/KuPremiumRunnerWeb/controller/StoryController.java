@@ -63,12 +63,14 @@ public class StoryController {
     public String getCakes(Model model, Authentication authentication) {
         userServices.setLoginUserCakes(authentication.getName());
         model.addAttribute("story", storyService.getAll());
+        model.addAttribute("cakesStory", cakesService.getDummy(authentication.getName()));
         return "story-edit";
     }
 
     @GetMapping("/add")
-    public String getAddForm(Model model){
+    public String getAddForm(Model model, Authentication authentication){
         model.addAttribute("story", storyService.getAll());
+        model.addAttribute("cakesStory", cakesService.getDummy(authentication.getName()));
         return "story-add";
     }
 

@@ -61,12 +61,14 @@ public class AudioController {
     public String getCakes(Model model, Authentication authentication) {
         userServices.setLoginUserCakes(authentication.getName());
         model.addAttribute("audio", audioService.getAll());
+        model.addAttribute("cakesAudio", cakesService.getDummy(authentication.getName()));
         return "audio-edit";
     }
 
     @GetMapping("/add")
-    public String getAddForm(Model model){
+    public String getAddForm(Model model, Authentication authentication){
         model.addAttribute("audio", audioService.getAll());
+        model.addAttribute("cakesAudio", cakesService.getDummy(authentication.getName()));
         return "audio-add";
     }
 

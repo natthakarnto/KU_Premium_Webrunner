@@ -37,13 +37,13 @@ public class FDA416Controller {
         if(checkNum(fda416.getSalla_s(), fda416.getSalla_c(), fda416.getSareus_s(), fda416.getSareus_c())) {
             if(checkAddress(fda416.getProductName(), fda416.getR_name(), fda416.getSalla_s(), fda416.getSalla_c()
                     , fda416.getSalla_f(), fda416.getSareus_c(), fda416.getSareus_c(), fda416.getSareus_f())) {
-                if(checkTrueFalse(fda416.getSalla_f(), fda416.getSareus_f())) {
+//                if(checkTrueFalse(fda416.getSalla_f(), fda416.getSareus_f())) {
                     fda416Service.update(fda416);
                     return "redirect:/fda416/list";
-                } else {
-                    redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
-                    return "redirect:/fda416/list";
-                }
+//                } else {
+//                    redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
+//                    return "redirect:/fda416/list";
+//                }
             } else {
                 redirectAttrs.addFlashAttribute("error", "Please fill in the rest of the information fields!");
                 return "redirect:/fda416/list";
@@ -64,12 +64,14 @@ public class FDA416Controller {
     public String getCakes(Model model, Authentication authentication) {
         userServices.setLoginUser(authentication.getName());
         model.addAttribute("fda416", fda416Service.getAll());
+        model.addAttribute("productsFDA416", cakesService.getDummy(authentication.getName()));
         return "fda416-edit";
     }
 
     @GetMapping("/add")
-    public String getAddForm(Model model){
+    public String getAddForm(Model model, Authentication authentication){
         model.addAttribute("fda416", fda416Service.getAll());
+        model.addAttribute("productsFDA416", cakesService.getDummy(authentication.getName()));
         return "fda416-add";
     }
 
@@ -80,13 +82,13 @@ public class FDA416Controller {
             if (checkAddress(fda416.getProductName(), fda416.getR_name(), fda416.getSalla_s(), fda416.getSalla_c()
                     , fda416.getSalla_f(), fda416.getSareus_c(), fda416.getSareus_c(), fda416.getSareus_f())) {
                 if(fda416Service.checkNameFDA(fda416.getProductName())) {
-                    if(checkTrueFalse(fda416.getSalla_f(), fda416.getSareus_f())) {
+//                    if(checkTrueFalse(fda416.getSalla_f(), fda416.getSareus_f())) {
                         fda416Service.addFDA416(fda416);
                         return "redirect:/fda416/list";
-                    }else {
-                        redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
-                        return "redirect:/fda416/add";
-                    }
+//                    }else {
+//                        redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
+//                        return "redirect:/fda416/add";
+//                    }
                 } else {
                     redirectAttrs.addFlashAttribute("error","Existed products!,please try again");
                     return "redirect:/fda416/add";

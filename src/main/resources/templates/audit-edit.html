@@ -37,23 +37,41 @@
 
         <input type="hidden" th:field="*{auditID}" id="id">
 
+<!--        <div class="mb-3">-->
+<!--            <label for="productNameInput" class="form-label">ชื่อสินค้า</label>-->
+<!--            <input id="productNameInput" type="text" class="form-control" th:field="*{productName}">-->
+<!--        </div>-->
+
         <div class="mb-3">
-            <label for="productNameInput" class="form-label">ชื่อสินค้า</label>
-            <input id="productNameInput" type="text" class="form-control" th:field="*{productName}">
+            <label class="form-label">ชื่อผลิตภัณฑ์</label>
+            <input type="hidden" th:field="*{productName}" id="productNameInput">
+            <h4 class="form-control" type="text" th:utext="${audit.getProductName()}"></h4>
         </div>
 
         <div class="row mb-4">
             <div class="col" >
                 <div class="form-outline">
+<!--                    <label for="fda356AttInput" class="form-label">การเข้าตรวจตามประกาศอ.ย.ฉบับ 356</label>-->
+<!--                    <input id="fda356AttInput" type="text" class="form-control" th:field="*{fda_356_Att}" placeholder="Type only True or False"> &lt;!&ndash;Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล&ndash;&gt;-->
+
                     <label for="fda356AttInput" class="form-label">การเข้าตรวจตามประกาศอ.ย.ฉบับ 356</label>
-                    <input id="fda356AttInput" type="text" class="form-control" th:field="*{fda_356_Att}" placeholder="Type only True or False"> <!--Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล-->
+                    <select th:field="*{fda_356_Att}" id="fda356AttInput" type="text" class="form-control">
+                        <option value="เข้าตรวจ">เข้าตรวจ</option>
+                        <option value="ไม่เข้าตรวจ">ไม่เข้าตรวจ</option>
+                    </select>
                 </div>
             </div>
 
             <div class="col">
                 <div class="form-outline">
+<!--                    <label for="fda356ResInput" class="form-label">สรุปผลตรวจตามประกาศอ.ย.ฉบับ 356</label>-->
+<!--                    <input id="fda356ResInput" type="text" class="form-control" th:field="*{fda_356_Res}" placeholder="Type only True or False">-->
+
                     <label for="fda356ResInput" class="form-label">สรุปผลตรวจตามประกาศอ.ย.ฉบับ 356</label>
-                    <input id="fda356ResInput" type="text" class="form-control" th:field="*{fda_356_Res}" placeholder="Type only True or False">
+                    <select th:field="*{fda_356_Res}" id="fda356ResInput" type="text" class="form-control">
+                        <option value="ผ่านการตรวจสอบ">ผ่านการตรวจสอบ</option>
+                        <option value="ไม่ผ่านการตรวจสอบ">ไม่ผ่านการตรวจสอบ</option>
+                    </select>
                 </div>
             </div>
 
@@ -68,15 +86,27 @@
         <div class="row mb-4">
             <div class="col" >
                 <div class="form-outline">
+<!--                    <label for="fda414AttInput" class="form-label">การเข้าตรวจตามประกาศอ.ย.ฉบับ 414</label>-->
+<!--                    <input id="fda414AttInput" type="text" class="form-control" th:field="*{fda_414_Att}" placeholder="Type only True or False"> &lt;!&ndash;Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล&ndash;&gt;-->
+
                     <label for="fda414AttInput" class="form-label">การเข้าตรวจตามประกาศอ.ย.ฉบับ 414</label>
-                    <input id="fda414AttInput" type="text" class="form-control" th:field="*{fda_414_Att}" placeholder="Type only True or False"> <!--Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล-->
+                    <select th:field="*{fda_414_Att}" id="fda414AttInput" type="text" class="form-control">
+                        <option value="เข้าตรวจ">เข้าตรวจ</option>
+                        <option value="ไม่เข้าตรวจ">ไม่เข้าตรวจ</option>
+                    </select>
                 </div>
             </div>
 
             <div class="col">
                 <div class="form-outline">
+<!--                    <label for="fda414ResInput" class="form-label">สรุปผลตรวจตามประกาศอ.ย.ฉบับ 414</label>-->
+<!--                    <input id="fda414ResInput" type="text" class="form-control" th:field="*{fda_414_Res}" placeholder="Type only True or False">-->
+
                     <label for="fda414ResInput" class="form-label">สรุปผลตรวจตามประกาศอ.ย.ฉบับ 414</label>
-                    <input id="fda414ResInput" type="text" class="form-control" th:field="*{fda_414_Res}" placeholder="Type only True or False">
+                    <select th:field="*{fda_414_Res}" id="fda414ResInput" type="text" class="form-control">
+                        <option value="ผ่านการตรวจสอบ">ผ่านการตรวจสอบ</option>
+                        <option value="ไม่ผ่านการตรวจสอบ">ไม่ผ่านการตรวจสอบ</option>
+                    </select>
                 </div>
             </div>
 
@@ -91,15 +121,27 @@
         <div class="row mb-4">
             <div class="col" >
                 <div class="form-outline">
+<!--                    <label for="fda416AttInput" class="form-label">การเข้าตรวจตามประกาศอ.ย.ฉบับ 416</label>-->
+<!--                    <input id="fda416AttInput" type="text" class="form-control"th:field="*{fda_416_Att}" placeholder="Type only True or False"> &lt;!&ndash;Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล&ndash;&gt;-->
+
                     <label for="fda416AttInput" class="form-label">การเข้าตรวจตามประกาศอ.ย.ฉบับ 416</label>
-                    <input id="fda416AttInput" type="text" class="form-control"th:field="*{fda_416_Att}" placeholder="Type only True or False"> <!--Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล-->
+                    <select th:field="*{fda_416_Att}" id="fda416AttInput" type="text" class="form-control">
+                        <option value="เข้าตรวจ">เข้าตรวจ</option>
+                        <option value="ไม่เข้าตรวจ">ไม่เข้าตรวจ</option>
+                    </select>
                 </div>
             </div>
 
             <div class="col">
                 <div class="form-outline">
+<!--                    <label for="fda416ResInput" class="form-label">สรุปผลตรวจตามประกาศอ.ย.ฉบับ 416</label>-->
+<!--                    <input id="fda416ResInput" type="text" class="form-control" th:field="*{fda_416_Res}" placeholder="Type only True or False">-->
+
                     <label for="fda416ResInput" class="form-label">สรุปผลตรวจตามประกาศอ.ย.ฉบับ 416</label>
-                    <input id="fda416ResInput" type="text" class="form-control" th:field="*{fda_416_Res}" placeholder="Type only True or False">
+                    <select th:field="*{fda_416_Res}" id="fda416ResInput" type="text" class="form-control">
+                        <option value="ผ่านการตรวจสอบ">ผ่านการตรวจสอบ</option>
+                        <option value="ไม่ผ่านการตรวจสอบ">ไม่ผ่านการตรวจสอบ</option>
+                    </select>
                 </div>
             </div>
 
@@ -114,15 +156,27 @@
         <div class="row mb-4">
             <div class="col" >
                 <div class="form-outline">
+<!--                    <label for="fda418AttInput" class="form-label">การเข้าตรวจตามประกาศอ.ย.ฉบับ 418</label>-->
+<!--                    <input id="fda418AttInput" type="text" class="form-control" th:field="*{fda_418_Att}" placeholder="Type only True or False"> &lt;!&ndash;Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล&ndash;&gt;-->
+
                     <label for="fda418AttInput" class="form-label">การเข้าตรวจตามประกาศอ.ย.ฉบับ 418</label>
-                    <input id="fda418AttInput" type="text" class="form-control" th:field="*{fda_418_Att}" placeholder="Type only True or False"> <!--Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล-->
+                    <select th:field="*{fda_418_Att}" id="fda418AttInput" type="text" class="form-control">
+                        <option value="เข้าตรวจ">เข้าตรวจ</option>
+                        <option value="ไม่เข้าตรวจ">ไม่เข้าตรวจ</option>
+                    </select>
                 </div>
             </div>
 
             <div class="col">
                 <div class="form-outline">
+<!--                    <label for="fda418ResInput" class="form-label">สรุปผลตรวจตามประกาศอ.ย.ฉบับ 418</label>-->
+<!--                    <input id="fda418ResInput" type="text" class="form-control" th:field="*{fda_418_Res}" placeholder="Type only True or False">-->
+
                     <label for="fda418ResInput" class="form-label">สรุปผลตรวจตามประกาศอ.ย.ฉบับ 418</label>
-                    <input id="fda418ResInput" type="text" class="form-control" th:field="*{fda_418_Res}" placeholder="Type only True or False">
+                    <select th:field="*{fda_418_Res}" id="fda418ResInput" type="text" class="form-control">
+                        <option value="ผ่านการตรวจสอบ">ผ่านการตรวจสอบ</option>
+                        <option value="ไม่ผ่านการตรวจสอบ">ไม่ผ่านการตรวจสอบ</option>
+                    </select>
                 </div>
             </div>
 
@@ -143,7 +197,7 @@
 
             <div class="col text-end" style="margin-top: 15px">
                 <div class="mb-3">
-                    <a class="btn btn-primary" style="margin-right: 35px; margin-bottom: -35px" th:href="@{/audit/list}">Back</a>
+                    <a class="btn btn-primary" style="margin-right: 35px; margin-bottom: -25px" th:href="@{/audit/list}">Back</a>
                 </div>
             </div>
         </div>

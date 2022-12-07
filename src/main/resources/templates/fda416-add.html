@@ -61,12 +61,17 @@
 <!--            </ul>-->
 <!--        </div>-->
 
-        <div class="mb-3">
-            <label for="productInput" class="form-label">ชื่อสินค้า</label>
-            <input id="productInput" type="text" class="form-control" name="productName">
-        </div>
+<!--        <div class="mb-3">-->
+<!--            <label for="productInput" class="form-label">ชื่อสินค้า</label>-->
+<!--            <input id="productInput" type="text" class="form-control" name="productName">-->
+<!--        </div>-->
 
-        <div class="mb-3">
+        <label for="productNameInput" class="form-label">ชื่อผลิตภัณฑ์</label>
+        <select name="productName" id="productNameInput" type="text" class="form-control">
+            <option th:each="productsFDA416 : ${productsFDA416}" th:value="${productsFDA416.productName}" th:utext="${productsFDA416.productName}"></option>
+        </select>
+
+        <div class="mb-3" style="margin-top: 20px">
             <label for="weightInput" class="form-label">ชื่อผู้ตรวจสอบตามประกาศอ.ย. 416</label>
             <input id="weightInput" type="text" class="form-control" name="r_name">
         </div>
@@ -90,8 +95,14 @@
         </div>
 
         <div class="mb-3">
+<!--            <label for="salla_FInput" class="form-label">สรุปผลการตรวจสอบ Salmonella</label>-->
+<!--            <input id="salla_FInput" type="text" class="form-control" name="salla_f" placeholder="Type only Pass or Not Pass">-->
+
             <label for="salla_FInput" class="form-label">สรุปผลการตรวจสอบ Salmonella</label>
-            <input id="salla_FInput" type="text" class="form-control" name="salla_f" placeholder="Type only Pass or Not Pass">
+            <select name="salla_f" id="salla_FInput" type="text" class="form-control">
+                <option value="ผ่าน">ผ่าน</option>
+                <option value="ไม่ผ่าน">ไม่ผ่าน</option>
+            </select>
         </div>
 
         <div class="row mb-4">
@@ -113,8 +124,14 @@
         </div>
 
         <div class="mb-3">
+<!--            <label for="sareusFInput" class="form-label">สรุปผลการตรวจสอบ S.areus</label>-->
+<!--            <input id="sareusFInput" type="text" class="form-control" name="sareus_f" placeholder="Type only Pass or Not Pass">-->
+
             <label for="sareusFInput" class="form-label">สรุปผลการตรวจสอบ S.areus</label>
-            <input id="sareusFInput" type="text" class="form-control" name="sareus_f" placeholder="Type only Pass or Not Pass">
+            <select name="sareus_f" id="sareusFInput" type="text" class="form-control">
+                <option value="ผ่าน">ผ่าน</option>
+                <option value="ไม่ผ่าน">ไม่ผ่าน</option>
+            </select>
         </div>
 
         <div class="text-center">

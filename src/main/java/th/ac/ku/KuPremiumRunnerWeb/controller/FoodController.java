@@ -66,12 +66,14 @@ public class FoodController {
     public String getCakes(Model model, Authentication authentication) {
         userServices.setLoginUserCakes(authentication.getName());
         model.addAttribute("food", foodService.getAll());
+        model.addAttribute("cakesFood", cakesService.getDummy(authentication.getName()));
         return "food-edit";
     }
 
     @GetMapping("/add")
-    public String getAddForm(Model model){
+    public String getAddForm(Model model, Authentication authentication){
         model.addAttribute("food", foodService.getAll());
+        model.addAttribute("cakesFood", cakesService.getDummy(authentication.getName()));
         return "food-add";
     }
 

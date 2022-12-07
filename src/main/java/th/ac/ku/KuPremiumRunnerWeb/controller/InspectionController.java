@@ -34,13 +34,13 @@ public class InspectionController {
     public String edit(@ModelAttribute Inspection inspection, Model model, RedirectAttributes redirectAttrs) {
         if (checkAddress(inspection.getProductName(), inspection.getSent_Date(), inspection.getR_Name(), inspection.getR_Rank()
                 , inspection.getNote(), inspection.getStatus())) {
-            if(checkTrueFalse(inspection.getStatus())) {
+//            if(checkTrueFalse(inspection.getStatus())) {
                 inspectionService.update(inspection);
                 return "redirect:/inspection/list";
-            } else {
-                redirectAttrs.addFlashAttribute("error", "Please type in either \"Done\" or \"Not Done yet\"!");
-                return "redirect:/inspection/list";
-            }
+//            } else {
+//                redirectAttrs.addFlashAttribute("error", "Please type in either \"Done\" or \"Not Done yet\"!");
+//                return "redirect:/inspection/list";
+//            }
         } else {
             redirectAttrs.addFlashAttribute("error", "Please fill in the rest of the information fields!");
             return "redirect:/inspection/list";
@@ -57,12 +57,14 @@ public class InspectionController {
     public String getCakes(Model model, Authentication authentication) {
         userServices.setLoginUser(authentication.getName());
         model.addAttribute("inspection", inspectionService.getAll());
+        model.addAttribute("productsInspection", cakesService.getDummy(authentication.getName()));
         return "inspection-edit";
     }
 
     @GetMapping("/add")
-    public String getAddForm(Model model){
+    public String getAddForm(Model model, Authentication authentication){
         model.addAttribute("inspection", inspectionService.getAll());
+        model.addAttribute("productsInspection", cakesService.getDummy(authentication.getName()));
         return "inspection-add";
     }
 
@@ -71,13 +73,13 @@ public class InspectionController {
             if (checkAddress(inspection.getProductName(), inspection.getSent_Date(), inspection.getR_Name(), inspection.getR_Rank()
                     , inspection.getNote(), inspection.getStatus())) {
                 if(inspectionService.checkNameInspection(inspection.getProductName())) {
-                    if(checkTrueFalse(inspection.getStatus())) {
+//                    if(checkTrueFalse(inspection.getStatus())) {
                         inspectionService.addInspection(inspection);
                         return "redirect:/inspection/list";
-                    }else {
-                        redirectAttrs.addFlashAttribute("error", "Please type in either \"Done\" or \"Not Done yet\"!");
-                        return "redirect:/inspection/add";
-                    }
+//                    }else {
+//                        redirectAttrs.addFlashAttribute("error", "Please type in either \"Done\" or \"Not Done yet\"!");
+//                        return "redirect:/inspection/add";
+//                    }
                 } else {
                     redirectAttrs.addFlashAttribute("error","Existed products!,please try again");
                     return "redirect:/inspection/add";

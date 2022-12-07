@@ -26,7 +26,7 @@ public class CertificateController {
     private UserService userServices;
 
     @GetMapping("/edit/{id}")
-    public String getEditForm(@PathVariable UUID id, Model model) {
+    public String getEditForm(@PathVariable UUID id, Model model, Authentication authentication) {
         Certificate certificate = certificateService.getOneById(id);
         model.addAttribute("certificate", certificate);
         return "certificate-edit";
@@ -34,8 +34,8 @@ public class CertificateController {
 
     @PostMapping("/edit")
     public String edit(@ModelAttribute Certificate certificate, Model model, RedirectAttributes redirectAttrs) {
-        // พอรับเข้ามาจะเอาเข้า List
-        if(checkAddress(certificate.getProdCertificateName(), certificate.getProductName())) {
+//         พอรับเข้ามาจะเอาเข้า List
+        if(checkAddress(certificate.getProdCertificateName())) {
             certificateService.update(certificate);
             return "redirect:/certificate/list";
         }
@@ -55,12 +55,15 @@ public class CertificateController {
     public String getCakes(Model model, Authentication authentication) {
         userServices.setLoginUserCakes(authentication.getName());
         model.addAttribute("certificate", certificateService.getAll());
+        model.addAttribute("cakesCertificate", cakesService.getDummy(authentication.getName()));
         return "certificate-edit";
     }
 
     @GetMapping("/add")
-    public String getAddForm(Model model){
+    public String getAddForm(Model model, Authentication authentication){
+        userServices.setLoginUser(authentication.getName());
         model.addAttribute("certificate", certificateService.getAll());
+        model.addAttribute("cakesCertificate", cakesService.getDummy(authentication.getName()));
         return "certificate-add";
     }
 
@@ -68,7 +71,7 @@ public class CertificateController {
     public String addCertificate(@ModelAttribute Certificate certificate, Model model, RedirectAttributes redirectAttrs) {
         // พอรับเข้ามาจะเอาเข้า List
 
-        if(checkAddress(certificate.getProdCertificateName(), certificate.getProductName())) {
+        if(checkAddress(certificate.getProdCertificateName())) {
             certificateService.addCertificate(certificate);
             return "redirect:/certificate/list";
         }
@@ -78,8 +81,8 @@ public class CertificateController {
         }
     }
 
-    public boolean checkAddress(String prodCertificateName, String productName){
-        if (prodCertificateName.equals("") || (productName.equals(""))){
+    public boolean checkAddress(String prodCertificateName){
+        if (prodCertificateName.equals("")){
             return false;
         }
         return true;

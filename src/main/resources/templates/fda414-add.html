@@ -60,12 +60,17 @@
 <!--            </ul>-->
 <!--        </div>-->
 
-        <div class="mb-3">
-            <label for="productInput" class="form-label">ชื่อสินค้า</label>
-            <input id="productInput" type="text" class="form-control" name="productName">
-        </div>
+<!--        <div class="mb-3">-->
+<!--            <label for="productInput" class="form-label">ชื่อสินค้า</label>-->
+<!--            <input id="productInput" type="text" class="form-control" name="productName">-->
+<!--        </div>-->
 
-        <div class="mb-3">
+        <label for="productNameInput" class="form-label">ชื่อผลิตภัณฑ์</label>
+        <select name="productName" id="productNameInput" type="text" class="form-control">
+            <option th:each="productsFDA414 : ${productsFDA414}" th:value="${productsFDA414.productName}" th:utext="${productsFDA414.productName}"></option>
+        </select>
+
+        <div class="mb-3" style="margin-top: 20px">
             <label for="NAAFDA414Input" class="form-label">ชื่อผู้ตรวจสอบตามประกาศอ.ย. 414</label>
             <input id="NAAFDA414Input" type="text" class="form-control" name="r_name">
         </div>
@@ -81,8 +86,14 @@
         </div>
 
         <div class="mb-3">
+<!--            <label for="LeadFInput" class="form-label">สรุปผลการตรวจสอบตะกั่ว</label>-->
+<!--            <input id="LeadFInput" type="text" class="form-control" name="lead_f" placeholder="Type only Pass or Not Pass">-->
+
             <label for="LeadFInput" class="form-label">สรุปผลการตรวจสอบตะกั่ว</label>
-            <input id="LeadFInput" type="text" class="form-control" name="lead_f" placeholder="Type only Pass or Not Pass">
+            <select name="lead_f" id="LeadFInput" type="text" class="form-control">
+                <option value="ผ่าน">ผ่าน</option>
+                <option value="ไม่ผ่าน">ไม่ผ่าน</option>
+            </select>
         </div>
 
         <div class="text-center">

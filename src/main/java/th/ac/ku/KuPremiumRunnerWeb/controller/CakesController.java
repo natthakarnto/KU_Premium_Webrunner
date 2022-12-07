@@ -37,10 +37,10 @@ public class CakesController {
     @PostMapping("/edit")
     public String edit(@ModelAttribute Cakes cakes, Model model, RedirectAttributes redirectAttrs) {
         if(checkCake(cakes.getPrice(), cakes.getProductQuantity(), cakes.getProductDiscountPercent(), cakes.getPriceExcludingVat(), cakes.getPricePromotion())) {
-            if(checkAddress(cakes.getProductName(), cakes.getProductCategory(),cakes.getPoID(),cakes.getProductDescription(),
+            if(checkAddress(cakes.getProductName(), cakes.getProductCategory(),cakes.getProductDescription(),
                     cakes.getProductAttrib(), cakes.getProductUsageGuideline(),cakes.getProductIngredients(), cakes.getProductNutrition(),
                     cakes.getProductUseIndication(),cakes.getProductSize(), cakes.getProductVolume(), cakes.getProductWeight(),
-                    cakes.getProductPromotion(), cakes.getPcID(), cakes.getPrr_ID(), cakes.getPsvID(),cakes.getFtvID(), cakes.getaID(),
+                    cakes.getProductPromotion(), cakes.getPrr_ID(), cakes.getPsvID(),cakes.getFtvID(), cakes.getaID(),
                     cakes.getRreID())) {
                 cakesService.update(cakes);
                 return "redirect:/cakes";
@@ -53,12 +53,19 @@ public class CakesController {
     }
 
     @GetMapping
-    public String getCakes(Model model, Authentication authentication)
-    {
+    public String getCakes(Model model, Authentication authentication) {
         userServices.setLoginUser(authentication.getName());
-        model.addAttribute("cakes", cakesService.getAll());
+        model.addAttribute("cakes", cakesService.getDummy(authentication.getName())); // เปลี่ยน getDummy
         return "cakes";
     }
+
+//    @GetMapping
+//    public String getCakesCertificate(Model model, Authentication authentication) {
+//        userServices.setLoginUser(authentication.getName());
+//        model.addAttribute("cakes", cakesService.getDummy(authentication.getName())); // เปลี่ยน getDummy
+//        return "certificate-add";
+//    }
+
     @GetMapping("/add")
     public String getAddForm(){
         return "cakes-add";
@@ -67,10 +74,10 @@ public class CakesController {
     @PostMapping("/add")
     public String addCakes(@ModelAttribute Cakes cakes, Model model, RedirectAttributes redirectAttrs) {
         if(checkCake(cakes.getPrice(), cakes.getProductQuantity(), cakes.getProductDiscountPercent(), cakes.getPriceExcludingVat(), cakes.getPricePromotion())){
-            if(checkAddress(cakes.getProductName(), cakes.getProductCategory(),cakes.getPoID(),cakes.getProductDescription(),
+            if(checkAddress(cakes.getProductName(), cakes.getProductCategory(),cakes.getProductDescription(),
                     cakes.getProductAttrib(), cakes.getProductUsageGuideline(),cakes.getProductIngredients(), cakes.getProductNutrition(),
                     cakes.getProductUseIndication(),cakes.getProductSize(), cakes.getProductVolume(), cakes.getProductWeight(),
-                    cakes.getProductPromotion(), cakes.getPcID(), cakes.getPrr_ID(), cakes.getPsvID(),cakes.getFtvID(), cakes.getaID(),
+                    cakes.getProductPromotion(), cakes.getPrr_ID(), cakes.getPsvID(),cakes.getFtvID(), cakes.getaID(),
                     cakes.getRreID())) {
                 if(cakesService.checkNameProduct(cakes.getProductName())) {
                     cakesService.addCakes(cakes);
@@ -97,15 +104,15 @@ public class CakesController {
         return false;
     }
 
-    public boolean checkAddress(String productName, String productCategory, String poID, String productDescription //Method ดักให้ใส่ข้อมูลให้ครบ
+    public boolean checkAddress(String productName, String productCategory, String productDescription //Method ดักให้ใส่ข้อมูลให้ครบ
             ,String productAttrib, String productUsageGuideline, String productIngredients, String productNutrition, String productUseIndication
-            ,String productSize, String productVolume, String productWeight, String productPromotion,String pcID, String prr_ID,
+            ,String productSize, String productVolume, String productWeight, String productPromotion, String prr_ID,
                                 String psvID, String ftvID, String aID, String rreID) {
-        if (productName.equals("") || productCategory.equals("") || poID.equals("") || productDescription.equals("")
+        if (productName.equals("") || productCategory.equals("")  || productDescription.equals("")
                 || productAttrib.equals("") || productUsageGuideline.equals("") || productIngredients.equals("") || productNutrition.equals("")
                 || productUseIndication.equals("") || productSize.equals("") || productVolume.equals("")
                 || productWeight.equals("") || productPromotion.equals("")
-                || pcID.equals("") || prr_ID.equals("") || psvID.equals("") || ftvID.equals("") || aID.equals("") || rreID.equals("")) {
+                || prr_ID.equals("") || psvID.equals("") || ftvID.equals("") || aID.equals("") || rreID.equals("")) {
             return false;
         }
         return true;

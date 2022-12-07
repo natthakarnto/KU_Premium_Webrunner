@@ -37,9 +37,15 @@
 
         <input type="hidden" th:field="*{fda356ID}" id="id">
 
+<!--        <div class="mb-3">-->
+<!--            <label for="productInput" class="form-label">ชื่อสินค้า</label>-->
+<!--            <input id="productInput" type="text" class="form-control" th:field="*{productName}">-->
+<!--        </div>-->
+
         <div class="mb-3">
-            <label for="productInput" class="form-label">ชื่อสินค้า</label>
-            <input id="productInput" type="text" class="form-control" th:field="*{productName}">
+            <label class="form-label">ชื่อผลิตภัณฑ์</label>
+            <input type="hidden" th:field="*{productName}" id="productNameInput">
+            <h4 class="form-control" type="text" th:utext="${fda356.getProductName()}"></h4>
         </div>
 
         <div class="mb-3">
@@ -66,10 +72,14 @@
 
             <div class="col">
                 <div class="form-outline">
+<!--                    <label for="phValueFInput" class="form-label">สรุปผลการตรวจสอบค่า PH</label>-->
+<!--                    <input id="phValueFInput" type="text" class="form-control" th:field="*{ph_value_f}" placeholder="Type only Pass or Not Pass">-->
+
                     <label for="phValueFInput" class="form-label">สรุปผลการตรวจสอบค่า PH</label>
-                    <input id="phValueFInput" type="text" class="form-control" th:field="*{ph_value_f}" placeholder="Type only Pass or Not Pass">
-                    <!--                        <label class="form-label" for="form7Example5">รหัสเจ้าของสินค้า</label>-->
-                    <!--                        <input type="text" id="form7Example5" class="form-control" th:name="productOwnerID"/>-->
+                    <select th:field="*{ph_value_f}" id="phValueFInput" type="text" class="form-control">
+                        <option value="ผ่าน">ผ่าน</option>
+                        <option value="ไม่ผ่าน">ไม่ผ่าน</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -93,10 +103,14 @@
 
             <div class="col">
                 <div class="mb-3">
+<!--                    <label for="coliformFInput" class="form-label">สรุปผลการตรวจสอบโคลิฟอร์ม</label>-->
+<!--                    <input id="coliformFInput" type="text" class="form-control" th:field="*{coli_f}" placeholder="Type only Pass or Not Pass">-->
+
                     <label for="coliformFInput" class="form-label">สรุปผลการตรวจสอบโคลิฟอร์ม</label>
-                    <input id="coliformFInput" type="text" class="form-control" th:field="*{coli_f}" placeholder="Type only Pass or Not Pass">
-                    <!--                        <label class="form-label" for="form7Example5">รหัสเจ้าของสินค้า</label>-->
-                    <!--                        <input type="text" id="form7Example5" class="form-control" th:name="productOwnerID"/>-->
+                    <select th:field="*{coli_f}" id="coliformFInput" type="text" class="form-control">
+                        <option value="ผ่าน">ผ่าน</option>
+                        <option value="ไม่ผ่าน">ไม่ผ่าน</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -138,8 +152,14 @@
         </div>
 
         <div class="mb-3">
+<!--            <label for="yeastMoldFInput" class="form-label">สรุปผลการตรวจสอบยีสต์และรา</label>-->
+<!--            <input id="yeastMoldFInput" type="text" class="form-control" placeholder="Type only Pass or Not Pass" th:field="*{yeast_mold_f}">-->
+
             <label for="yeastMoldFInput" class="form-label">สรุปผลการตรวจสอบยีสต์และรา</label>
-            <input id="yeastMoldFInput" type="text" class="form-control" placeholder="Type only Pass or Not Pass" th:field="*{yeast_mold_f}">
+            <select th:field="*{yeast_mold_f}" id="yeastMoldFInput" type="text" class="form-control">
+                <option value="ผ่าน">ผ่าน</option>
+                <option value="ไม่ผ่าน">ไม่ผ่าน</option>
+            </select>
         </div>
 
         <div class="row mb-4">

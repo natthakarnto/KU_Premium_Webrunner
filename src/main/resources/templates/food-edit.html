@@ -37,9 +37,16 @@
 
         <input type="hidden" th:field="*{prodFoodID}" id="id">
 
+<!--        <div class="mb-3">-->
+<!--            <label for="productNameInput" class="form-label">ชื่อผลิตภัณฑ์</label>-->
+<!--&lt;!&ndash;            <input id="productNameInput" type="text" class="form-control" th:field="*{productName}">&ndash;&gt;-->
+<!--            <h6 class="form-control" id="productNameInput" style="margin-top: 0px" type="text" th:text="${food.getProductName()}">Id</h6>-->
+<!--        </div>-->
+
         <div class="mb-3">
-            <label for="productNameInput" class="form-label">ชื่อผลิตภัณฑ์</label>
-            <input id="productNameInput" type="text" class="form-control" th:field="*{productName}">
+            <label class="form-label">ชื่อผลิตภัณฑ์</label>
+            <input type="hidden" th:field="*{productName}" id="productNameInput">
+            <h4 class="form-control" type="text" th:utext="${food.getProductName()}"></h4>
         </div>
 
         <div class="mb-3">

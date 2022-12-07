@@ -62,11 +62,18 @@
 <!--        </div>-->
 
         <div class="row mb-4">
+<!--            <div class="col" >-->
+<!--                <div class="form-outline">-->
+<!--                    <label for="productNameInput" class="form-label">ชื่อสินค้า</label>-->
+<!--                    <input id="productNameInput" type="text" class="form-control" name="productName"> &lt;!&ndash;Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล&ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>-->
+
             <div class="col" >
-                <div class="form-outline">
-                    <label for="productNameInput" class="form-label">ชื่อสินค้า</label>
-                    <input id="productNameInput" type="text" class="form-control" name="productName"> <!--Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล-->
-                </div>
+                <label for="productNameInput" class="form-label">ชื่อผลิตภัณฑ์</label>
+                <select name="productName" id="productNameInput" type="text" class="form-control">
+                    <option th:each="productsInspection : ${productsInspection}" th:value="${productsInspection.productName}" th:utext="${productsInspection.productName}"></option>
+                </select>
             </div>
 
             <div class="col">
@@ -84,7 +91,7 @@
 <!--            </div>-->
         </div>
 
-        <div class="row mb-4">
+        <div class="row mb-4" style="margin-top: 20px">
             <div class="col" >
                 <div class="form-outline">
                     <label for="rNameInput" class="form-label">ชื่อผู้ตรวจสอบ</label>
@@ -101,8 +108,14 @@
 
             <div class="col">
                 <div class="form-outline">
+<!--                    <label for="statusInput" class="form-label">สถานะการตรวจสอบ</label>-->
+<!--                    <input id="statusInput" type="text" class="form-control" name="status" placeholder="Type only Done or Not Done">-->
+
                     <label for="statusInput" class="form-label">สถานะการตรวจสอบ</label>
-                    <input id="statusInput" type="text" class="form-control" name="status" placeholder="Type only Done or Not Done">
+                    <select name="status" id="statusInput" type="text" class="form-control">
+                        <option value="เรียบร้อย">เรียบร้อย</option>
+                        <option value="ไม่เรียบร้อย">ไม่เรียบร้อย</option>
+                    </select>
                 </div>
             </div>
         </div>

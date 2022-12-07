@@ -41,14 +41,14 @@
     <div class="alert alert-danger" style="text-align: center" role="alert" th:text="${error}" th:if="${error}"></div>
 
     <div th:if="${message}">
-        <h4 th:text="${message}"></h4>
+        <h6 th:text="${message}" style="color: mediumseagreen"/>
     </div>
 
     <div>
         <form method="POST" enctype="multipart/form-data" action="/upload_files/handle_upload">
             <table>
-                <tr><td>File to upload (.png):</td><td><input type="file" name="file" /></td></tr>
-                <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+                <tr><td>File to upload (.png):</td><td><input type="file" name="file"/></td></tr>
+                <tr><td></td><td><input type="submit" value="Upload" style="margin-top: 5px; font-weight: bold" onclick = "return confirm('Would you like to confirm?')" /></td></tr>
             </table>
         </form>
     </div>
@@ -75,31 +75,24 @@
 <!--    </form>-->
 
     <form th:action="@{/cakes/add}" method="POST">
+
         <div class="row mb-4">
             <div class="col">
                 <div class="mb-3">
                     <label for="productNameInput" class="form-label">ชื่อผลิตภัณฑ์</label>
                     <input id="productNameInput" type="text" class="form-control" name="productName" placeholder="Ex.Cleansing Water">
-                    <!--                        <label class="form-label" for="form7Example4">ชื่อสินค้าภาษาไทย</label>-->
-                    <!--                        <input type="text" id="form7Example4" class="form-control" th:name="productNameTH"/>-->
                 </div>
             </div>
-            <div class="col">
-                <div class="mb-3">
-                    <label for="productOwnerInput" class="form-label">รหัสเจ้าของสินค้า</label>
-                    <input id="productOwnerInput" type="text" class="form-control" name="poID" placeholder="Ex.T0000001">
-                    <!--                        <label class="form-label" for="form7Example5">รหัสเจ้าของสินค้า</label>-->
-                    <!--                        <input type="text" id="form7Example5" class="form-control" th:name="productOwnerID"/>-->
-                </div>
-            </div>
+
+<!--            <div class="col">-->
+<!--                <div class="mb-3">-->
+<!--                    <label for="productOwnerInput" class="form-label">รหัสเจ้าของสินค้า</label>-->
+<!--                    <input id="productOwnerInput" type="text" class="form-control" name="poID" placeholder="Ex.T0000001">-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
+
         <div class="row mb-4">
-            <!--            <div class="col">-->
-            <!--                <div class="form-outline">-->
-            <!--                    <label for="nameInput" class="form-label" >เลขรหัสสินค้า</label>-->
-            <!--                    <input id="nameInput" type="text" class="form-control" name="pID"> &lt;!&ndash;Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล&ndash;&gt;-->
-            <!--                </div>-->
-            <!--            </div>-->
             <div class="col">
                 <div class="form-outline">
                     <label for="productInput" class="form-label">ราคาสินค้า (Baht)</label>
@@ -138,6 +131,7 @@
             <label for="productUseIndicationInput" class="form-label">ข้อบ่งใช้</label>
             <input id="productUseIndicationInput" type="text" class="form-control" name="productUseIndication" placeholder="Ex.ใช่รับประทานเหมาะสำหรับคนที่ทานคีโต หรือใช้ตกแต่งหน้าขนม...">
         </div>
+
         <div class="row mb-4">
             <div class="col">
                 <div class="mb-3">
@@ -145,11 +139,24 @@
                     <input id="productQuantityInput" type="text" class="form-control" name="productQuantity" placeholder="Ex.49">
                 </div>
             </div>
+
             <div class="col">
-                <div class="mb-3">
-                    <label for="productSizeInput" class="form-label">ขนาดของผลิตภัณฑ์</label>
-                    <input id="productSizeInput" type="text" class="form-control" name="productSize" placeholder="Ex.Shirt = S, M, L, XL">
-                </div>
+<!--                <div class="mb-3">-->
+<!--                    <label for="productSizeInput" class="form-label">ขนาดของผลิตภัณฑ์</label>-->
+<!--                    <input id="productSizeInput" type="text" class="form-control" name="productSize" placeholder="Ex.Shirt = S, M, L, XL">-->
+                <label for="productSizeInput" class="form-label">ขนาดของผลิตภัณฑ์</label>
+                <select name="productSize" id="productSizeInput" type="text" class="form-control">
+                        <option value="None">None</option>
+                    <optgroup label="Product Size">
+                        <option value="ไม่ผ่าน">SS</option>
+                        <option value="ไม่ผ่าน">S</option>
+                        <option value="ไม่ผ่าน">M</option>
+                        <option value="ไม่ผ่าน">L</option>
+                        <option value="ไม่ผ่าน">XL</option>
+                        <option value="ไม่ผ่าน">XXL</option>
+                    </optgroup>
+                </select>
+<!--                </div>-->
             </div>
         </div>
         <div class="row mb-4">

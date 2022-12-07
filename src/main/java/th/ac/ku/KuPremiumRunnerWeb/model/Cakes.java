@@ -9,6 +9,7 @@ public class Cakes {
 
     private UUID pID; //PK
     private String productName;
+    private String username;
     private String productCategory;
     private double price;
     private String poID;
@@ -55,9 +56,10 @@ public class Cakes {
         this.pID = pID;
     }
 
-    public Cakes(UUID pID, String productName, String productCategory, double price, String poID, String productDescription, String productAttrib, String productUsageGuideline, String productIngredients, String productNutrition, String productUseIndication, int productQuantity, String productSize, String productVolume, String productWeight, String productPromotion, double productDiscountPercent, double priceExcludingVat, double pricePromotion, String pcID, String prr_ID, String psvID, String ftvID, String aID, String rreID) {
+    public Cakes(UUID pID, String productName, String username, String productCategory, double price, String poID, String productDescription, String productAttrib, String productUsageGuideline, String productIngredients, String productNutrition, String productUseIndication, int productQuantity, String productSize, String productVolume, String productWeight, String productPromotion, double productDiscountPercent, double priceExcludingVat, double pricePromotion, String pcID, String prr_ID, String psvID, String ftvID, String aID, String rreID) {
         this.pID = pID;
         this.productName = productName;
+        this.username = username;
         this.productCategory = productCategory;
         this.price = price;
         this.poID = poID;
@@ -81,7 +83,10 @@ public class Cakes {
         this.ftvID = ftvID;
         this.aID = aID;
         this.rreID = rreID;
-//        this.photos = photos;
+    }
+
+    public Cakes() {
+
     }
 
     public String getProductName() {
@@ -90,6 +95,14 @@ public class Cakes {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getProductCategory() {
@@ -295,6 +308,7 @@ public class Cakes {
         return "{" +
                 pID +
                 "->" + productName +
+                "->" + username +
                 "->" + productCategory +
                 "->" + price +
                 "->" + poID +
@@ -318,21 +332,6 @@ public class Cakes {
                 "->" + ftvID +
                 "->" + aID +
                 "->" + rreID ;
-//                "->" + photos ;
 
     }
-
-//    public String getPhotos() {
-//        return photos;
-//    }
-//
-//    public void setPhotos(String photos) {
-//        this.photos = photos;
-//    }
-//    @Transient
-//    public String getPhotosImagePath() {
-//        if (photos == null || pID == null) return null;
-//
-//        return "./KU_Premium_Webrunner/src/main/resources/static/images/" + pID + "/" + photos;
-//    }
 }

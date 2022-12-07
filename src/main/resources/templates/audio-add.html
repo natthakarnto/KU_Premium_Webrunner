@@ -24,14 +24,14 @@
     <h1 class="display-6 text-center" style="font-weight: bold; text-align:center; color: cornflowerblue ;font-size: 45px ;margin-bottom: 50px; padding-top: 35px">Product Audio Add</h1>
 
     <div th:if="${message}">
-        <h4 th:text="${message}"></h4>
+        <h6 th:text="${message}" style="color: mediumseagreen"/>
     </div>
 
     <div>
-        <form method="POST" enctype="multipart/form-data" action="/upload_files/handle_upload">
+        <form method="POST" enctype="multipart/form-data" action="/upload_files/audio_upload">
             <table>
                 <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-                <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+                <tr><td></td><td><input type="submit" value="Upload" style="margin-top: 5px; font-weight: bold" onclick = "return confirm('Would you like to confirm?')"/></td></tr>
             </table>
         </form>
     </div>
@@ -48,12 +48,17 @@
 
     <form th:action="@{/audio/add}" method="POST">
 
-        <div class="mb-3">
-            <label for="productNameInput" class="form-label">ชื่อผลิตภัณฑ์</label>
-            <input id="productNameInput" type="text" class="form-control" name="productName">
-        </div>
+<!--        <div class="mb-3">-->
+<!--            <label for="productNameInput" class="form-label">ชื่อผลิตภัณฑ์</label>-->
+<!--            <input id="productNameInput" type="text" class="form-control" name="productName">-->
+<!--        </div>-->
 
-        <div class="mb-3">
+        <label for="productNameInput" class="form-label">ชื่อผลิตภัณฑ์</label>
+        <select name="productName" id="productNameInput" type="text" class="form-control">
+            <option th:each="cakesAudio : ${cakesAudio}" th:value="${cakesAudio.productName}" th:utext="${cakesAudio.productName}"></option>
+        </select>
+
+        <div class="mb-3" style="margin-top: 15px">
             <label for="productOwnerInput" class="form-label">ชื่อไฟล์เสียงแนะนำผลิตภัณฑ์</label>
             <input id="productOwnerInput" type="text" class="form-control" name="prodAudioName">
         </div>

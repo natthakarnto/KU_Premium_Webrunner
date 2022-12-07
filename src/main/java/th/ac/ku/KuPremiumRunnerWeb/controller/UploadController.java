@@ -49,9 +49,59 @@ public class UploadController {
 
         storageService.store(file);
         redirectAttributes.addFlashAttribute("message",
-                "You successfully uploaded " + file.getOriginalFilename() + "!");
+                "You uploaded '"+ file.getOriginalFilename() + "' successfully!");
 
         return "redirect:/cakes/add";
+    }
+
+    @PostMapping("/certificate_upload")
+    public String handleCertificateUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+
+        storageService.store(file);
+        redirectAttributes.addFlashAttribute("message",
+                "You uploaded '"+ file.getOriginalFilename() + "' successfully!");
+
+        return "redirect:/certificate/add";
+    }
+
+    @PostMapping("/research_upload")
+    public String handleResearchUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+
+        storageService.store(file);
+        redirectAttributes.addFlashAttribute("message",
+                "You uploaded '"+ file.getOriginalFilename() + "' successfully!");
+
+        return "redirect:/research/add";
+    }
+
+    @PostMapping("/story_upload")
+    public String handleStoryUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+
+        storageService.store(file);
+        redirectAttributes.addFlashAttribute("message",
+                "You uploaded '"+ file.getOriginalFilename() + "' successfully!");
+
+        return "redirect:/story/add";
+    }
+
+    @PostMapping("/food_upload")
+    public String handleFoodUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+
+        storageService.store(file);
+        redirectAttributes.addFlashAttribute("message",
+                "You uploaded '"+ file.getOriginalFilename() + "' successfully!");
+
+        return "redirect:/food/add";
+    }
+
+    @PostMapping("/audio_upload")
+    public String handleAudioUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+
+        storageService.store(file);
+        redirectAttributes.addFlashAttribute("message",
+                "You uploaded '"+ file.getOriginalFilename() + "' successfully!");
+
+        return "redirect:/audio/add";
     }
 
     @ExceptionHandler(StorageFileNotFoundException.class)

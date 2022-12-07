@@ -37,9 +37,15 @@
 
         <input type="hidden" th:field="*{fda418ID}" id="id">
 
+<!--        <div class="mb-3">-->
+<!--            <label for="productInput" class="form-label">ชื่อสินค้า</label>-->
+<!--            <input id="productInput" type="text" class="form-control" th:field="*{productName}">-->
+<!--        </div>-->
+
         <div class="mb-3">
-            <label for="productInput" class="form-label">ชื่อสินค้า</label>
-            <input id="productInput" type="text" class="form-control" th:field="*{productName}">
+            <label class="form-label">ชื่อผลิตภัณฑ์</label>
+            <input type="hidden" th:field="*{productName}" id="productNameInput">
+            <h4 class="form-control" type="text" th:utext="${fda418.getProductName()}"></h4>
         </div>
 
         <div class="mb-3">
@@ -71,8 +77,14 @@
 
             <div class="col">
                 <div class="form-outline">
+<!--                    <label for="benzoicSorbicFInput" class="form-label">สรุปผลการตรวจสอบกรดเบนโซอิกและกรดซอร์บิค</label>-->
+<!--                    <input id="benzoicSorbicFInput" type="text" class="form-control" th:field="*{benzoic_sorbic_f}" placeholder="Type only Pass or Not Pass">-->
+
                     <label for="benzoicSorbicFInput" class="form-label">สรุปผลการตรวจสอบกรดเบนโซอิกและกรดซอร์บิค</label>
-                    <input id="benzoicSorbicFInput" type="text" class="form-control" th:field="*{benzoic_sorbic_f}" placeholder="Type only Pass or Not Pass">
+                    <select th:field="*{benzoic_sorbic_f}" id="benzoicSorbicFInput" type="text" class="form-control">
+                        <option value="ผ่าน">ผ่าน</option>
+                        <option value="ไม่ผ่าน">ไม่ผ่าน</option>
+                    </select>
                     <!--                        <label class="form-label" for="form7Example5">รหัสเจ้าของสินค้า</label>-->
                     <!--                        <input type="text" id="form7Example5" class="form-control" th:name="productOwnerID"/>-->
                 </div>
@@ -98,10 +110,14 @@
 
             <div class="col">
                 <div class="form-outline">
+<!--                    <label for="syntFInput" class="form-label">สรุปผลการตรวจสอบสีผสมอาหาร</label>-->
+<!--                    <input id="syntFInput" type="text" class="form-control" th:field="*{synt_f}" placeholder="Type only Pass or Not Pass">-->
+
                     <label for="syntFInput" class="form-label">สรุปผลการตรวจสอบสีผสมอาหาร</label>
-                    <input id="syntFInput" type="text" class="form-control" th:field="*{synt_f}" placeholder="Type only Pass or Not Pass">
-                    <!--                        <label class="form-label" for="form7Example5">รหัสเจ้าของสินค้า</label>-->
-                    <!--                        <input type="text" id="form7Example5" class="form-control" th:name="productOwnerID"/>-->
+                    <select th:field="*{synt_f}" id="syntFInput" type="text" class="form-control">
+                        <option value="ผ่าน">ผ่าน</option>
+                        <option value="ไม่ผ่าน">ไม่ผ่าน</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -125,8 +141,14 @@
 
             <div class="col">
                 <div class="form-outline">
+<!--                    <label for="sodFInput" class="form-label">สรุปผลการตรวจสอบเกลือโซเดียมเบนโซเอต</label>-->
+<!--                    <input id="sodFInput" type="text" class="form-control" th:field="*{sod_f}" placeholder="Type only Pass or Not Pass">-->
+
                     <label for="sodFInput" class="form-label">สรุปผลการตรวจสอบเกลือโซเดียมเบนโซเอต</label>
-                    <input id="sodFInput" type="text" class="form-control" th:field="*{sod_f}" placeholder="Type only Pass or Not Pass">
+                    <select th:field="*{sod_f}" id="sodFInput" type="text" class="form-control">
+                        <option value="ผ่าน">ผ่าน</option>
+                        <option value="ไม่ผ่าน">ไม่ผ่าน</option>
+                    </select>
                     <!--                        <label class="form-label" for="form7Example5">รหัสเจ้าของสินค้า</label>-->
                     <!--                        <input type="text" id="form7Example5" class="form-control" th:name="productOwnerID"/>-->
                 </div>
@@ -152,8 +174,14 @@
 
             <div class="col">
                 <div class="form-outline">
+<!--                    <label for="potasFInput" class="form-label">สรุปผลการตรวจสอบกรดโปรแทสเซียมซอร์เบท</label>-->
+<!--                    <input id="potasFInput" type="text" class="form-control" th:field="*{potas_f}" placeholder="Type only Pass or Not Pass">-->
+
                     <label for="potasFInput" class="form-label">สรุปผลการตรวจสอบกรดโปรแทสเซียมซอร์เบท</label>
-                    <input id="potasFInput" type="text" class="form-control" th:field="*{potas_f}" placeholder="Type only Pass or Not Pass">
+                    <select th:field="*{potas_f}" id="potasFInput" type="text" class="form-control">
+                        <option value="ผ่าน">ผ่าน</option>
+                        <option value="ไม่ผ่าน">ไม่ผ่าน</option>
+                    </select>
                     <!--                        <label class="form-label" for="form7Example5">รหัสเจ้าของสินค้า</label>-->
                     <!--                        <input type="text" id="form7Example5" class="form-control" th:name="productOwnerID"/>-->
                 </div>
@@ -179,8 +207,14 @@
 
             <div class="col">
                 <div class="form-outline">
+<!--                    <label for="plateCountFInput" class="form-label">สรุปผลการตรวจสอบวัดปริมาณจุลินทรีย์</label>-->
+<!--                    <input id="plateCountFInput" type="text" class="form-control" th:field="*{plate_f}" placeholder="Type only Pass or Not Pass">-->
+
                     <label for="plateCountFInput" class="form-label">สรุปผลการตรวจสอบวัดปริมาณจุลินทรีย์</label>
-                    <input id="plateCountFInput" type="text" class="form-control" th:field="*{plate_f}" placeholder="Type only Pass or Not Pass">
+                    <select th:field="*{plate_f}" id="plateCountFInput" type="text" class="form-control">
+                        <option value="ผ่าน">ผ่าน</option>
+                        <option value="ไม่ผ่าน">ไม่ผ่าน</option>
+                    </select>
                     <!--                        <label class="form-label" for="form7Example5">รหัสเจ้าของสินค้า</label>-->
                     <!--                        <input type="text" id="form7Example5" class="form-control" th:name="productOwnerID"/>-->
                 </div>
