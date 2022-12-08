@@ -84,8 +84,7 @@ public class CakesService {
             ,this.getAll().get(i).getProductNutrition(), this.getAll().get(i).getProductUseIndication(), this.getAll().get(i).getProductQuantity()
             ,this.getAll().get(i).getProductSize(), this.getAll().get(i).getProductVolume(), this.getAll().get(i).getProductWeight()
             ,this.getAll().get(i).getProductPromotion(), this.getAll().get(i).getProductDiscountPercent(), this.getAll().get(i).getPriceExcludingVat()
-            ,this.getAll().get(i).getPricePromotion() ,this.getAll().get(i).getPcID(), this.getAll().get(i).getPrr_ID(), this.getAll().get(i).getPsvID()
-            ,this.getAll().get(i).getFtvID(), this.getAll().get(i).getaID(),this.getAll().get(i).getRreID());
+            ,this.getAll().get(i).getPricePromotion());
             rings.get(i).add(ring);
         }
     }

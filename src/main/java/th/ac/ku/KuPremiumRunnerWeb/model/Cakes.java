@@ -17,36 +17,22 @@ public class Cakes {
     private String productAttrib;
     private String productUsageGuideline;
     private String productIngredients;
-
     private String productNutrition;
-
     private String productUseIndication;
     private int productQuantity;
     private String productSize;
     private String productVolume;
     private String productWeight;
-
     private String productPromotion;
-
     private double productDiscountPercent;
-
     private double priceExcludingVat;
-
     private double pricePromotion;
-
-    private String pcID;
-
-    private String prr_ID;
-
-    private String psvID;
-
-    private String ftvID;
-
-    private String aID;
-
-    private String rreID;
-
-//    private String photos;
+//    private String pcID;
+//    private String prr_ID;
+//    private String psvID;
+//    private String ftvID;
+//    private String aID;
+//    private String rreID;
 
     public UUID getpID() {
         return pID;
@@ -56,7 +42,7 @@ public class Cakes {
         this.pID = pID;
     }
 
-    public Cakes(UUID pID, String productName, String username, String productCategory, double price, String poID, String productDescription, String productAttrib, String productUsageGuideline, String productIngredients, String productNutrition, String productUseIndication, int productQuantity, String productSize, String productVolume, String productWeight, String productPromotion, double productDiscountPercent, double priceExcludingVat, double pricePromotion, String pcID, String prr_ID, String psvID, String ftvID, String aID, String rreID) {
+    public Cakes(UUID pID, String productName, String username, String productCategory, double price, String poID, String productDescription, String productAttrib, String productUsageGuideline, String productIngredients, String productNutrition, String productUseIndication, int productQuantity, String productSize, String productVolume, String productWeight, String productPromotion, double productDiscountPercent, double priceExcludingVat, double pricePromotion) {
         this.pID = pID;
         this.productName = productName;
         this.username = username;
@@ -77,12 +63,12 @@ public class Cakes {
         this.productDiscountPercent = productDiscountPercent;
         this.priceExcludingVat = priceExcludingVat;
         this.pricePromotion = pricePromotion;
-        this.pcID = pcID;
-        this.prr_ID = prr_ID;
-        this.psvID = psvID;
-        this.ftvID = ftvID;
-        this.aID = aID;
-        this.rreID = rreID;
+//        this.pcID = pcID;
+//        this.prr_ID = prr_ID;
+//        this.psvID = psvID;
+//        this.ftvID = ftvID;
+//        this.aID = aID;
+//        this.rreID = rreID;
     }
 
     public Cakes() {
@@ -241,53 +227,53 @@ public class Cakes {
         this.pricePromotion = pricePromotion;
     }
 
-    public String getPcID() {
-        return pcID;
-    }
-
-    public void setPcID(String pcID) {
-        this.pcID = pcID;
-    }
-
-    public String getPrr_ID() {
-        return prr_ID;
-    }
-
-    public void setPrr_ID(String prr_ID) {
-        this.prr_ID = prr_ID;
-    }
-
-    public String getPsvID() {
-        return psvID;
-    }
-
-    public void setPsvID(String psvID) {
-        this.psvID = psvID;
-    }
-
-    public String getFtvID() {
-        return ftvID;
-    }
-
-    public void setFtvID(String ftvID) {
-        this.ftvID = ftvID;
-    }
-
-    public String getaID() {
-        return aID;
-    }
-
-    public void setaID(String aID) {
-        this.aID = aID;
-    }
-
-    public String getRreID() {
-        return rreID;
-    }
-
-    public void setRreID(String rreID) {
-        this.rreID = rreID;
-    }
+//    public String getPcID() {
+//        return pcID;
+//    }
+//
+//    public void setPcID(String pcID) {
+//        this.pcID = pcID;
+//    }
+//
+//    public String getPrr_ID() {
+//        return prr_ID;
+//    }
+//
+//    public void setPrr_ID(String prr_ID) {
+//        this.prr_ID = prr_ID;
+//    }
+//
+//    public String getPsvID() {
+//        return psvID;
+//    }
+//
+//    public void setPsvID(String psvID) {
+//        this.psvID = psvID;
+//    }
+//
+//    public String getFtvID() {
+//        return ftvID;
+//    }
+//
+//    public void setFtvID(String ftvID) {
+//        this.ftvID = ftvID;
+//    }
+//
+//    public String getaID() {
+//        return aID;
+//    }
+//
+//    public void setaID(String aID) {
+//        this.aID = aID;
+//    }
+//
+//    public String getRreID() {
+//        return rreID;
+//    }
+//
+//    public void setRreID(String rreID) {
+//        this.rreID = rreID;
+//    }
 
     public List<Cakes> getCartList() {
         return cartList;
@@ -325,13 +311,13 @@ public class Cakes {
                 "->" + productPromotion +
                 "->" + productDiscountPercent +
                 "->" + priceExcludingVat +
-                "->" + pricePromotion +
-                "->" + pcID +
-                "->" + prr_ID +
-                "->" + psvID +
-                "->" + ftvID +
-                "->" + aID +
-                "->" + rreID ;
+                "->" + pricePromotion ;
+//                "->" + pcID +
+//                "->" + prr_ID +
+//                "->" + psvID +
+//                "->" + ftvID +
+//                "->" + aID +
+//                "->" + rreID ;
 
     }
 }

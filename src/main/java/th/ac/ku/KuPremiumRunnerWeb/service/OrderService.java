@@ -77,8 +77,7 @@ public class OrderService {
                 Cakes cakes = new Cakes(UUID.fromString(list1.get(0)),list1.get(1),list1.get(2),list1.get(3),Double.parseDouble(list1.get(4))
                         ,list1.get(5), list1.get(6), list1.get(7), list1.get(8), list1.get(9), list1.get(10), list1.get(11)
                         ,parseInt(list1.get(12)), list1.get(13),list1.get(14),list1.get(15), list1.get(16), Double.parseDouble(list1.get(17))
-                        ,Double.parseDouble(list1.get(18)), Double.parseDouble(list1.get(19)), list1.get(20), list1.get(21),
-                        list1.get(22), list1.get(23), list1.get(24), list1.get(25));
+                        ,Double.parseDouble(list1.get(18)), Double.parseDouble(list1.get(19)));
 
                 cart.get(i).add(new Cart(cakes));
 //                cart.get(i).add(new Cart(cakes,parseInt(list1.get(5))));

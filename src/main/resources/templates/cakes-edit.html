@@ -238,57 +238,57 @@
             </div>
         </div>
 
-        <div class="row mb-4">
-            <div class="col">
-                <div class="mb-3">
-<!--                    <label for="PCIDInput" class="form-label">เลขใบรับรองผลิตภัณฑ์</label>-->
-<!--                    <input id="PCIDInput" type="text" class="form-control" th:field="*{pcID}">-->
+<!--        <div class="row mb-4">-->
+<!--            <div class="col">-->
+<!--                <div class="mb-3">-->
+<!--&lt;!&ndash;                    <label for="PCIDInput" class="form-label">เลขใบรับรองผลิตภัณฑ์</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input id="PCIDInput" type="text" class="form-control" th:field="*{pcID}">&ndash;&gt;-->
 
-                    <label class="form-label">เลขใบรับรองผลิตภัณฑ์</label>
-                    <input type="hidden" th:field="*{pcID}" id="PCIDInput">
-                    <h4 class="form-control" type="text" th:utext="${cakes.pcID}"></h4>
+<!--                    <label class="form-label">เลขใบรับรองผลิตภัณฑ์</label>-->
+<!--                    <input type="hidden" th:field="*{pcID}" id="PCIDInput">-->
+<!--                    <h4 class="form-control" type="text" th:utext="${cakes.pcID}"></h4>-->
 
-                </div>
-            </div>
-            <div class="col">
-                <div class="mb-3">
-                    <label for="PRR_IDInput" class="form-label">เลขผลงานวิจัยที่รองรับผลิตภัณฑ์</label>
-                    <input id="PRR_IDInput" type="text" class="form-control" th:field="*{prr_ID}">
-                </div>
-            </div>
-        </div>
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col">-->
+<!--                <div class="mb-3">-->
+<!--                    <label for="PRR_IDInput" class="form-label">เลขผลงานวิจัยที่รองรับผลิตภัณฑ์</label>-->
+<!--                    <input id="PRR_IDInput" type="text" class="form-control" th:field="*{prr_ID}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
-        <div class="row mb-4">
-            <div class="col">
-                <div class="mb-3">
-                    <label for="PSVIDInput" class="form-label">Product story embedded video ID</label>
-                    <input id="PSVIDInput" type="text" class="form-control" th:field="*{psvID}">
-                </div>
-            </div>
-            <div class="col">
-                <div class="mb-3">
-                    <label for="FTVIDInput" class="form-label">Food traceability embedded video ID</label>
-                    <input id="FTVIDInput" type="text" class="form-control" th:field="*{ftvID}">
-                </div>
-            </div>
-        </div>
+<!--        <div class="row mb-4">-->
+<!--            <div class="col">-->
+<!--                <div class="mb-3">-->
+<!--                    <label for="PSVIDInput" class="form-label">Product story embedded video ID</label>-->
+<!--                    <input id="PSVIDInput" type="text" class="form-control" th:field="*{psvID}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col">-->
+<!--                <div class="mb-3">-->
+<!--                    <label for="FTVIDInput" class="form-label">Food traceability embedded video ID</label>-->
+<!--                    <input id="FTVIDInput" type="text" class="form-control" th:field="*{ftvID}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
-        <div class="row mb-4">
-            <div class="col">
-                <div class="mb-3">
-                    <label for="AIDInput" class="form-label">Audio ID</label>
-                    <input id="AIDInput" type="text" class="form-control" th:field="*{aID}">
-                </div>
-            </div>
-            <div class="col">
-                <div class="mb-3">
-                    <label for="RREIDInput" class="form-label">เลขคะแนนและรีวิวของผลิตภัณฑ์</label>
-                    <input id="RREIDInput" type="text" class="form-control" th:field="*{rreID}">
-                </div>
-            </div>
-        </div>
+<!--        <div class="row mb-4">-->
+<!--            <div class="col">-->
+<!--                <div class="mb-3">-->
+<!--                    <label for="AIDInput" class="form-label">Audio ID</label>-->
+<!--                    <input id="AIDInput" type="text" class="form-control" th:field="*{aID}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col">-->
+<!--                <div class="mb-3">-->
+<!--                    <label for="RREIDInput" class="form-label">เลขคะแนนและรีวิวของผลิตภัณฑ์</label>-->
+<!--                    <input id="RREIDInput" type="text" class="form-control" th:field="*{rreID}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
-        <div sec:authorize="hasRole('USER')" class="text-center" style="padding-top: 0px; padding-bottom: 15px">
+        <div sec:authorize="hasRole('USER')" class="text-center" style="padding-top: 10px; padding-bottom: 20px">
             <button type="submit" class="btn btn-primary" onclick = "return confirm('Would you like to confirm?')">Edit Product</button>
         </div>
 
