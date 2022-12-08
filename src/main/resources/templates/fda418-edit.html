@@ -55,21 +55,24 @@
 
         <div class="mb-3">
             <label for="sumBenzoicSorbicInput" class="form-label">เกณฑ์การตรวจกรดเบนโซอิกและซอร์บิค</label>
-            <input id="sumBenzoicSorbicInput" type="text" class="form-control" th:field="*{sum_benzoic_sorbic}">
+<!--            <input id="sumBenzoicSorbicInput" type="text" class="form-control" th:field="*{sum_benzoic_sorbic}">-->
+            <input id="sumBenzoicSorbicInput" type="number" class="form-control" value="0" step="0.1" min="0" max="99999.9" th:field="*{sum_benzoic_sorbic}">
         </div>
 
         <div class="row mb-4">
             <div class="col" >
                 <div class="form-outline">
                     <label for="benzoicCInput" class="form-label">ปริมาณกรดเบนโซอิก</label>
-                    <input id="benzoicCInput" type="text" class="form-control" th:field="*{benzoic_c}"> <!--Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล-->
+<!--                    <input id="benzoicCInput" type="text" class="form-control" th:field="*{benzoic_c}"> &lt;!&ndash;Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล&ndash;&gt;-->
+                    <input id="benzoicCInput" type="number" class="form-control" value="0" step="0.1" min="0" max="99999.9" th:field="*{benzoic_c}">
                 </div>
             </div>
 
             <div class="col">
                 <div class="form-outline">
                     <label for="sorbicCInput" class="form-label">ปริมาณกรดซอร์บิค</label>
-                    <input id="sorbicCInput" type="text" class="form-control" th:field="*{sorbic_c}">
+<!--                    <input id="sorbicCInput" type="text" class="form-control" th:field="*{sorbic_c}">-->
+                    <input id="sorbicCInput" type="number" class="form-control" value="0" step="0.1" min="0" max="99999.9" th:field="*{sorbic_c}">
                     <!--                        <label class="form-label" for="form7Example4">ชื่อสินค้าภาษาไทย</label>-->
                     <!--                        <input type="text" id="form7Example4" class="form-control" th:name="productNameTH"/>-->
                 </div>
@@ -95,14 +98,16 @@
             <div class="col" >
                 <div class="form-outline">
                     <label for="syntSInput" class="form-label">เกณฑ์การตรวจสีผสมอาหาร</label>
-                    <input id="syntSInput" type="text" class="form-control" th:field="*{synt_s}"> <!--Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล-->
+<!--                    <input id="syntSInput" type="text" class="form-control" th:field="*{synt_s}"> &lt;!&ndash;Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล&ndash;&gt;-->
+                    <input id="syntSInput" type="number" class="form-control" value="0" step="0.1" min="0" max="99999.9" th:field="*{synt_s}">
                 </div>
             </div>
 
             <div class="col">
                 <div class="form-outline">
                     <label for="syntRInput" class="form-label">ปริมาณสีผสมอาหาร</label>
-                    <input id="syntRInput" type="text" class="form-control" th:field="*{synt_c}">
+<!--                    <input id="syntRInput" type="text" class="form-control" th:field="*{synt_c}">-->
+                    <input id="syntRInput" type="number" class="form-control" value="0" step="0.1" min="0" max="99999.9" th:field="*{synt_c}">
                     <!--                        <label class="form-label" for="form7Example4">ชื่อสินค้าภาษาไทย</label>-->
                     <!--                        <input type="text" id="form7Example4" class="form-control" th:name="productNameTH"/>-->
                 </div>
@@ -126,14 +131,16 @@
             <div class="col" >
                 <div class="form-outline">
                     <label for="sodSInput" class="form-label">เกณฑ์การตรวจเกลือโซเดียมเบนโซเอต</label>
-                    <input id="sodSInput" type="text" class="form-control" th:field="*{sod_s}"> <!--Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล-->
+<!--                    <input id="sodSInput" type="text" class="form-control" th:field="*{sod_s}"> &lt;!&ndash;Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล&ndash;&gt;-->
+                    <input id="sodSInput" type="number" class="form-control" value="0" step="0.1" min="0" max="99999.9" th:field="*{sod_s}">
                 </div>
             </div>
 
             <div class="col">
                 <div class="form-outline">
                     <label for="sodRInput" class="form-label">ปริมาณเกลือโซเดียมเบนโซเอต</label>
-                    <input id="sodRInput" type="text" class="form-control" th:field="*{sod_c}">
+<!--                    <input id="sodRInput" type="text" class="form-control" th:field="*{sod_c}">-->
+                    <input id="sodRInput" type="number" class="form-control" value="0" step="0.1" min="0" max="99999.9" th:field="*{sod_c}">
                     <!--                        <label class="form-label" for="form7Example4">ชื่อสินค้าภาษาไทย</label>-->
                     <!--                        <input type="text" id="form7Example4" class="form-control" th:name="productNameTH"/>-->
                 </div>
@@ -159,14 +166,16 @@
             <div class="col" >
                 <div class="form-outline">
                     <label for="potasSInput" class="form-label">เกณฑ์การตรวจสอบกรดโปรแทสเซียมซอร์เบท</label>
-                    <input id="potasSInput" type="text" class="form-control" th:field="*{potas_s}"> <!--Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล-->
+<!--                    <input id="potasSInput" type="text" class="form-control" th:field="*{potas_s}"> &lt;!&ndash;Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล&ndash;&gt;-->
+                    <input id="potasSInput" type="number" class="form-control" value="0" step="0.1" min="0" max="99999.9" th:field="*{potas_s}">
                 </div>
             </div>
 
             <div class="col">
                 <div class="form-outline">
                     <label for="potasRInput" class="form-label">ปริมาณโปรแทสเซียมซอร์เบท</label>
-                    <input id="potasRInput" type="text" class="form-control" th:field="*{potas_c}">
+<!--                    <input id="potasRInput" type="text" class="form-control" th:field="*{potas_c}">-->
+                    <input id="potasRInput" type="number" class="form-control" value="0" step="0.1" min="0" max="99999.9" th:field="*{potas_c}">
                     <!--                        <label class="form-label" for="form7Example4">ชื่อสินค้าภาษาไทย</label>-->
                     <!--                        <input type="text" id="form7Example4" class="form-control" th:name="productNameTH"/>-->
                 </div>
@@ -192,14 +201,16 @@
             <div class="col" >
                 <div class="form-outline">
                     <label for="plateCountSInput" class="form-label">เกณฑ์การตรวจวัดปริมาณจุลินทรีย์</label>
-                    <input id="plateCountSInput" type="text" class="form-control" th:field="*{plate_s}"> <!--Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล-->
+<!--                    <input id="plateCountSInput" type="text" class="form-control" th:field="*{plate_s}"> &lt;!&ndash;Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล&ndash;&gt;-->
+                    <input id="plateCountSInput" type="number" class="form-control" value="0" step="0.1" min="0" max="99999.9" th:field="*{plate_s}">
                 </div>
             </div>
 
             <div class="col">
                 <div class="form-outline">
                     <label for="plateCountInput" class="form-label">ผลการตรวจวัดปริมาณจุลินทรีย์</label>
-                    <input id="plateCountInput" type="text" class="form-control" th:field="*{plate_c}">
+<!--                    <input id="plateCountInput" type="text" class="form-control" th:field="*{plate_c}">-->
+                    <input id="plateCountInput" type="number" class="form-control" value="0" step="0.1" min="0" max="99999.9" th:field="*{plate_c}">
                     <!--                        <label class="form-label" for="form7Example4">ชื่อสินค้าภาษาไทย</label>-->
                     <!--                        <input type="text" id="form7Example4" class="form-control" th:name="productNameTH"/>-->
                 </div>

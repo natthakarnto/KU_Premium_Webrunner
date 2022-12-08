@@ -69,7 +69,7 @@ public class CakesService {
         Cakes cakesOrder = new Cakes();
         cakesOrder = cakes;
         cakesOrder.setUsername(userService.getUser().getUsername());
-        cakesOrder.setPcID(String.valueOf(certificateService.getCertificate().getProdCertificateID()));
+//        cakesOrder.setPcID(String.valueOf(certificateService.getCertificate().getProdCertificateID()));
         restTemplate.put(url, cakes, Cakes.class);
     }
 

@@ -98,7 +98,7 @@ public class CakesController {
     }
 
     public boolean checkCake(double price, int productQuantity, double productDiscountPercent, double priceExcludingVat, double pricePromotion){ //Method ดักห้ามใส่จำนวนเป็น 0
-        if(price > 0 && productQuantity > 0 && productDiscountPercent > 0 && priceExcludingVat > 0 && pricePromotion > 0){
+        if(price > 0.00 && productQuantity > 0 && productDiscountPercent >= 0 && priceExcludingVat > 0.00 && pricePromotion > 0.00){
             return true;
         }
         return false;

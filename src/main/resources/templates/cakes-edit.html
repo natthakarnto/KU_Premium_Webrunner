@@ -132,7 +132,8 @@
             <div class="col">
                 <div class="form-outline">
                     <label for="productInput" class="form-label">ราคาสินค้า</label>
-                    <input id="productInput" type="text" class="form-control" th:field="*{price}">
+<!--                    <input id="productInput" type="text" class="form-control" th:field="*{price}">-->
+                    <input id="productInput" type="number" class="form-control" step="0.01" min="0.01" max="9999.99" th:field="*{price}">
                 </div>
             </div>
             <div class="col">
@@ -171,7 +172,8 @@
             <div class="col">
                 <div class="mb-3">
                     <label for="productQuantityInput" class="form-label">จำนวณของผลิตภัณฑ์</label>
-                    <input id="productQuantityInput" type="text" class="form-control" th:field="*{productQuantity}">
+<!--                    <input id="productQuantityInput" type="text" class="form-control" th:field="*{productQuantity}">-->
+                    <input id="productQuantityInput" type="number" class="form-control" step="1" min="1" max="9999" th:field="*{productQuantity}">
                 </div>
             </div>
             <div class="col">
@@ -216,19 +218,22 @@
             <div class="col">
                 <div class="form-outline">
                     <label for="productDiscountPercentIDInput" class="form-label">เปอร์เซ็นต์ส่วนลดสินค้า</label>
-                    <input id="productDiscountPercentIDInput" type="text" class="form-control" th:field="*{productDiscountPercent}"> <!--Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล-->
+<!--                    <input id="productDiscountPercentIDInput" type="text" class="form-control" th:field="*{productDiscountPercent}"> &lt;!&ndash;Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล&ndash;&gt;-->
+                    <input id="productDiscountPercentIDInput" type="number" class="form-control" step="5" min="0" max="100" th:field="*{productDiscountPercent}">
                 </div>
             </div>
             <div class="col">
                 <div class="form-outline">
                     <label for="priceExcludingVatInput" class="form-label">ราคาก่อนรวมภาษี</label>
-                    <input id="priceExcludingVatInput" type="text" class="form-control" th:field="*{priceExcludingVat}">
+<!--                    <input id="priceExcludingVatInput" type="text" class="form-control" th:field="*{priceExcludingVat}">-->
+                    <input id="priceExcludingVatInput" type="number" class="form-control" step="0.01" min="0.01" max="9999.99" th:field="*{priceExcludingVat}" >
                 </div>
             </div>
             <div class="col">
                 <div class="form-outline">
                     <label for="pricePromotionInput" class="form-label">ราคาหลังโปรโมชั่น</label>
-                    <input id="pricePromotionInput" type="text" class="form-control" th:field="*{pricePromotion}">
+<!--                    <input id="pricePromotionInput" type="text" class="form-control" th:field="*{pricePromotion}">-->
+                    <input id="pricePromotionInput" type="number" class="form-control" step="0.01" min="0.01" max="9999.99" th:field="*{pricePromotion}">
                 </div>
             </div>
         </div>
