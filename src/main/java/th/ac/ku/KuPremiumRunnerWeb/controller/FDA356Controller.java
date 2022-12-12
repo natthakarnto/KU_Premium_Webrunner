@@ -37,18 +37,8 @@ public class FDA356Controller {
             if (checkAddress(fda356.getProductName(), fda356.getR_name(), fda356.getPh_value_s(), fda356.getPh_value_c(), fda356.getPh_value_f()
                     , fda356.getColi_s(), fda356.getColi_c(), fda356.getColi_f(), fda356.getYeast_mold_s(), fda356.getYeast_mold_r()
                     , fda356.getYeast_c(), fda356.getMold_c(), fda356.getYeast_mold_f())) {
-//                if(fda356Service.checkNameFDA(fda356.getProductName())) {
-//                    if(checkTrueFalse(fda356.getPh_value_f(), fda356.getColi_f(), fda356.getYeast_mold_f())) {
                         fda356Service.update(fda356);
                         return "redirect:/fda356/list";
-//                    }else {
-//                        redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
-//                        return "redirect:/fda356/list";
-//                    }
-//                } else {
-//                    redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
-//                    return "redirect:/fda356/add";
-//                }
             } else {
                 redirectAttrs.addFlashAttribute("error", "Please fill in the rest of the information fields!");
                 return "redirect:/fda356/list";
@@ -88,13 +78,8 @@ public class FDA356Controller {
                     , fda356.getColi_s(), fda356.getColi_c(), fda356.getColi_f(), fda356.getYeast_mold_s(), fda356.getYeast_mold_r()
                     , fda356.getYeast_c(), fda356.getMold_c(), fda356.getYeast_mold_f())) {
                 if(fda356Service.checkNameFDA(fda356.getProductName())) {
-//                    if(checkTrueFalse(fda356.getPh_value_f(), fda356.getColi_f(), fda356.getYeast_mold_f())) {
                         fda356Service.addFDA356(fda356);
                         return "redirect:/fda356/list";
-//                    }else {
-//                        redirectAttrs.addFlashAttribute("error", "Please type in either Pass or Not Pass!");
-//                        return "redirect:/fda356/add";
-//                    }
                 } else {
                     redirectAttrs.addFlashAttribute("error","Existed products!,please try again");
                     return "redirect:/fda356/add";

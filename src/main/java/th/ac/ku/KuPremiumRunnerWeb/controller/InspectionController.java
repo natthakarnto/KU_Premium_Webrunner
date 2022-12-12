@@ -32,15 +32,10 @@ public class InspectionController {
 
     @PostMapping("/edit")
     public String edit(@ModelAttribute Inspection inspection, Model model, RedirectAttributes redirectAttrs) {
-        if (checkAddress(inspection.getProductName(), inspection.getSent_Date(), inspection.getR_Name(), inspection.getR_Rank()
-                , inspection.getNote(), inspection.getStatus())) {
-//            if(checkTrueFalse(inspection.getStatus())) {
+        if (checkAddress(inspection.getProductName(), inspection.getSent_Date(), inspection.getR_Name(),
+                inspection.getR_Rank(), inspection.getNote(), inspection.getStatus())) {
                 inspectionService.update(inspection);
                 return "redirect:/inspection/list";
-//            } else {
-//                redirectAttrs.addFlashAttribute("error", "Please type in either \"Done\" or \"Not Done yet\"!");
-//                return "redirect:/inspection/list";
-//            }
         } else {
             redirectAttrs.addFlashAttribute("error", "Please fill in the rest of the information fields!");
             return "redirect:/inspection/list";

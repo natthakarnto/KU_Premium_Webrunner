@@ -36,14 +36,8 @@ public class AuditController {
         if (checkAddress(audit.getProductName(), audit.getFda_356_Att(), audit.getFda_356_Res(), audit.getFda_356_Cer(), audit.getFda_414_Att(),
                 audit.getFda_414_Res(), audit.getFda_414_Cer(), audit.getFda_416_Att(), audit.getFda_416_Res(), audit.getFda_416_Cer(),
                 audit.getFda_418_Att(), audit.getFda_418_Res(), audit.getFda_418_Cer())) {
-//            if(checkTrueFalse(audit.getFda_356_Att(), audit.getFda_414_Att(), audit.getFda_416_Att(), audit.getFda_418_Att(),
-//                    audit.getFda_356_Res(), audit.getFda_414_Res(), audit.getFda_416_Res(), audit.getFda_418_Res())) {
                 auditService.update(audit);
                 return "redirect:/audit/list";
-//            } else {
-//                redirectAttrs.addFlashAttribute("error", "Please type only True or False!");
-//                return "redirect:/audit/list";
-//            }
         } else {
             redirectAttrs.addFlashAttribute("error", "Please fill all the information fields!");
             return "redirect:/audit/list";
@@ -77,14 +71,8 @@ public class AuditController {
                 audit.getFda_414_Res(), audit.getFda_414_Cer(), audit.getFda_416_Att(), audit.getFda_416_Res(), audit.getFda_416_Cer(),
                 audit.getFda_418_Att(), audit.getFda_418_Res(), audit.getFda_418_Cer())) {
             if(auditService.checkNameAudit(audit.getProductName())) {
-//                if(checkTrueFalse(audit.getFda_356_Att(), audit.getFda_414_Att(), audit.getFda_416_Att(), audit.getFda_418_Att(),
-//                        audit.getFda_356_Res(), audit.getFda_414_Res(), audit.getFda_416_Res(), audit.getFda_418_Res())) {
                     auditService.addAudit(audit);
                     return "redirect:/audit/list";
-//                } else {
-//                    redirectAttrs.addFlashAttribute("error", "Please type only True or False!");
-//                    return "redirect:/audit/add";
-//                }
             } else {
                 redirectAttrs.addFlashAttribute("error","Please don't use existing same products!");
                 return "redirect:/audit/add";
@@ -143,7 +131,7 @@ public class AuditController {
     }
 
     @GetMapping("/remove/{id}")
-    public String removeInspection(@PathVariable UUID id, Model model,Authentication authentication){
+    public String removeAudit(@PathVariable UUID id, Model model,Authentication authentication){
         Audit set = auditService.getOneById(id);
         auditService.delete(set);
         return "redirect:/audit/list";
